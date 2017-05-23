@@ -6,9 +6,7 @@
         <li>
         <a href="{{ site.url }}/publications.html">Publications</a>
         </li>
-        <li class="dropdown"
-        {% if page.url == '{{ site.url }}/LiveDiff/' %} class="active"{% endif %}
-        {% if page.url == '{{ site.url }}/IRDNumberScanner/' %} class="active"{% endif %}
+        <li class="dropdown" {% if page.url == '{{ site.url }}/LiveDiff/' %} or  class="active"{% endif %} {% if page.url == '{{ site.url }}/IRDNumberScanner/' %} class="active"{% endif %}
         {% if page.url == '{{ site.url }}/NetXML-API-and-Tools/' %} class="active"{% endif %}>
             <a href="{{ site.url }}/software.html" class="dropbtn">Software</a>
             <div class="dropdown-content">
