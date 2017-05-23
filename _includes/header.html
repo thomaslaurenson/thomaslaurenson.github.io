@@ -1,12 +1,12 @@
 <div class="nav">
     <ul>
-        <li {% if page.url == '{{ site.url }}/index.html' %} class="active"{% endif %}>
-            <a href="{{ site.url }}/index.html">About</a>
+        <li>
+            <a href="{{ site.url }}/index.html" {% if page.url == '{{ site.url }}/index.html' %} class="active"{% endif %}>About</a>
         </li>
         <li>
-        <a href="{{ site.url }}/publications.html">Publications</a>
+            <a href="{{ site.url }}/publications.html" {% if page.url == '{{ site.url }}/publications.html' %} class="active"{% endif %}>Publications</a>
         </li>
-        <li class="dropdown" {% if page.url == '{{ site.url }}/LiveDiff/' or page.url == '{{ site.url }}/IRDNumberScanner/' or page.url == '{{ site.url }}/NetXML-API-and-Tools/' %} class="active"{% endif %}>
+        <li class="dropdown">
             <a href="{{ site.url }}/software.html" class="dropbtn">Software</a>
             <div class="dropdown-content">
             <a href="{{ site.url }}/LiveDiff/">LiveDiff</a>
@@ -15,7 +15,6 @@
             </div>
         </li>
         <li class="dropdown"
-            {% if page.url == '{{ site.url }}/Building-A-LoRaWAN-Network/' %} class="active"{% endif %}>
             <a href="/articles.html" class="dropbtn">Articles</a>
             <div class="dropdown-content">
             <a href="{{ site.url }}/Building-A-LoRaWAN-Network/">Building a LoRaWAN Network</a>
