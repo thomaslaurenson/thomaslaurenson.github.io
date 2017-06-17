@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Thomas Laurenson's Home Page
+title: Thomas Laurenson | Home Page
 ---
 
 # About

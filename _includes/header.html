@@ -1,24 +1,18 @@
 <div class="nav">
     <ul>
         <li>
-            <a href="{{ site.url }}/index.html" {% if page.url == '{{ site.url }}/index.html' %} class="active"{% endif %}>About</a>
-        </li>
+            <a href="{{ site.url }}/" {% if page.title == 'Thomas Laurenson | Home Page' %}class="active"{% endif %}>About</a>
+        </li> 
         <li>
-            <a href="{{ site.url }}/publications.html" {% if page.url == '{{ site.url }}/publications.html' %} class="active"{% endif %}>Publications</a>
+            <a href="{{ site.url }}/publications.html" {% if page.title == 'Thomas Laurenson | Publications' %}class="active"{% endif %}>Publications</a>
         </li>
         <li class="dropdown">
-            <a href="{{ site.url }}/software.html" class="dropbtn">Software</a>
+            <a href="{{ site.url }}/#" class="dropbtn">Software</a>
             <div class="dropdown-content">
             <a href="{{ site.url }}/LiveDiff/">LiveDiff</a>
             <a href="{{ site.url }}/IRDNumberScanner/">IRD Number Scanner</a>
             <a href="{{ site.url }}/NetXML-API-and-Tools/">NetXML API &amp; Tools</a>
             </div>
-        </li>
-        <li class="dropdown">
-            <a href="{{ site.url }}/articles.html" class="dropbtn">Articles</a>
-            <div class="dropdown-content">
-            <a href="{{ site.url }}/Building-A-LoRaWAN-Network/">Building a LoRaWAN Network</a>
-            </div>
-        </li>        
+        </li>   
     </ul>
 </div><!-- /.nav -->

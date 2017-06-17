@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Homepage
+title: Thomas Laurenson | Publications
 ---
 
 # Publications
