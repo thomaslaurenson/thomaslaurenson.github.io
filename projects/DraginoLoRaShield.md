@@ -48,7 +48,7 @@ This section covers a complete and thorough walkthrough for installing an AU915 
 
 The [Dragino LoRaShield](http://www.dragino.com/products/module/item/102-lora-shield.html) is an affordable Arduino shield for prototype development of LoRaWAN devices. The device is excellent for a prototype node. The version used in this project in the US900 version - however, this device is not specifically supported for the AU915 specification. A photo of the device is included below for reference. 
 
-![](resources/Lora_Shield_v1.4.jpg "Dragino LoraShield v1.4")
+![](../resources/Lora_Shield_v1.4.jpg "Dragino LoraShield v1.4")
 
 Attaching the LoRaWAN shield to an Arduino is a very simple process. Just plug the shield into the matching pins available. Plug and play! Below is a photo of a Dragino LoRaShield attached to an Arduino.
 
