@@ -33,3 +33,17 @@
     display: block;
     text-align: left;
 }
+
+@media print, screen and (max-width: 480px) {
+
+  li.title, li.downloads {
+    display: none !important;
+  }
+  
+  nav {
+    width: 100% !important;
+  }
+}
+
+
+
