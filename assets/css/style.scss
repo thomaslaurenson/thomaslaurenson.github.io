@@ -1,0 +1,35 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* HEADER CONFIGURATION */
+
+#header nav li.fork {
+	float: right;
+	margin-right: 10px;
+}
+#header nav li.title {
+	float: left;
+	margin-left: 10px;
+	font-size: 11px;
+}
+#header nav li.dropdown {
+    display: inline-block;
+}
+#header nav .dropdown-content {
+    display: none;
+    position: absolute;
+    color: #f0e7d5;
+    min-width: 100px;
+    z-index: 1;
+}
+#header nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+#header nav .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}

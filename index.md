@@ -1,37 +1,25 @@
-## Welcome to GitHub Pages
+---
+layout: default
+title: About
+---
 
-You can use the [editor on GitHub](https://github.com/thomaslaurenson/thomaslaurenson.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+A lecturer in the Bachelor of Information Technology (BIT) program at Otago Polytechnic in Dunedin, New Zealand. Recently finished my PhD candidature at the University of Otago in Dunedin, New Zealand. I currently reside in Dunedin, however, I was bought up in and lived most of my life in Auckland, New Zealand. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I currently teach the following courses at Otago Polytech:
 
-### Markdown
++ Introduction to Computer Security (500 level)
++ Operating Systems: Linux (500 level)
++ BIT Project: LoRaWAN Project Group (600 level)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+My PhD research topic was in the field of Digital Forensics. Specifically, automated forensic analysis of application software artifacts. The application software being investigated was centered on anti-forensic tool usage.
 
-```markdown
-Syntax highlighted code block
+Although I have a general interest in the entire field of computing, my primary research areas include:
 
-# Header 1
-## Header 2
-### Header 3
++ Digital Forensics
++ Anti-forensic tools
++ Digital Forensics XML
++ File system analysis
++ Windows Registry analysis
++ Wireless networking and security
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/thomaslaurenson/thomaslaurenson.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Additionally, I have a passion for the Linux operating system and the Python programming language. I am also an avid supported of the Free Software Foundation, the Open Source Initiative and attempt to adopt an open and public research philosophy.
