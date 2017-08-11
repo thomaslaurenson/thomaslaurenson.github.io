@@ -36,12 +36,33 @@
 
 @media print, screen and (max-width: 480px) {
 
+  #header {
+    margin-top: 0px;
+    height: 160px;
+  }
+
   li.title, li.downloads {
-    display: none !important;
+    display: block;
+    width: 100% !important;
   }
   
+  li.title a, li.downloads a {
+    width: 90% !important;
+  }  
+  
+  li.fork {
+    display: none !important;
+  }  
+  
+  li.title .dropdown-content {
+    text-decoration: none;
+    text-align: center;
+    width: 94% !important; 
+  }  
+
   nav {
-    width: 100% !important;
+    /* width: 100% !important; */
+    display: block;
   }
 }
 
