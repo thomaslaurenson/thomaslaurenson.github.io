@@ -1,6 +1,6 @@
 ---
 layout: default
-title: NetXMLTools | Thomas Laurenson
+title: NetXMLTools
 ---
 
 NetXML.py is an API that can parse the contents of a NetXML document. The NetXML standard is commonly used in wireless sniffing tools (e.g., kismet and airodump-ng) and stores information regarding any discovered wireless networks. The NetXML.py module creates major NetXML classes with an emphasis on type safety, serializability, and de-serializability. You can process a NetXML document using the iterparse function.

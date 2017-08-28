@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Dragino LoRaShield - Node Configuration for Australian and New Zealand Frequencies (AU915 MHz) | Thomas Laurenson
+title: Dragino LoRaShield - Node Configuration for Australian and New Zealand Frequencies (AU915 MHz)
 ---
 
 The Dragino LoRaShield is a popular example of an easy to use development/prototype board for use in LoRaWAN networks. The Dragino LoRaShield is an Arduino shield that provides the ability to function as either a LoRaWAN node, or a single channel LoRaWAN gateway. This documentation, and accompanying source code focusses solely on creating a development LoRaWAN node. The specific purpose of this repository (and guide) is to provide an example of the Dragino LoRaShield device operating on the standardised LoRaWAN frequencies for Australia and New Zealand... specifically the 915 MHz to 930 MHz frequency, more commonly known as *AU915*.
