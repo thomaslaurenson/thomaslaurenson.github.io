@@ -19,14 +19,19 @@ CellXML-Registry-1.0.0.exe -d directory
 The following list provides some examples of CellXML-Registry usage:
 
 1. Generate RegXML from hive file:
+
 ```
 CellXML-Registry-1.0.0.exe -f NTUSER.DAT
 ```
+
 2. Generate RegXML from hive file with a very verbose log file:
+
 ```
 CellXML-Registry-1.0.0.exe -v 2 -f NTUSER.DAT
 ```
+
 3. Generate RegXML from directory of hive files:
+
 ```
 CellXML-Registry-1.0.0.exe -d C:\Test-Hives
 ```
