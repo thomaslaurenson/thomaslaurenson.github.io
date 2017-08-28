@@ -1,4 +1,8 @@
-# LiveDiff
+---
+layout: default
+title: LiveDiff | Thomas Laurenson
+---
+
 LiveDiff is a portable Windows differencing tool to perform system-level reverse engineering. LiveDiff is specifically developed to perform reverse engineering of application software to aid creating application profiles. LiveDiff is a portable tool designed for use on the Microsoft Windows operating system. 
 
 ## LiveDiff Availability
