@@ -5,27 +5,37 @@ LiveDiff is a portable Windows differencing tool to perform system-level reverse
 
 The source code for LiveDiff is distributed on GitHub: 
 
-`https://github.com/thomaslaurenson/LiveDiff`
+```
+https://github.com/thomaslaurenson/LiveDiff
+```
 
 Precompiled binaries for Microsoft Windows can be found on the GitHub releases page:
 
-`https://github.com/thomaslaurenson/LiveDiff/releases`
+```
+https://github.com/thomaslaurenson/LiveDiff/releases
+```
 
 ## LiveDiff Usage
 
 LiveDiff is a console application. It needs to be run using the Command Prompt. Running as administrator is preferred as some file system and Windows Registry entries can only be accessed with administrator rights. On Windows 7 you can load the Command Prompt as administrator using the following actions:
 
-`Start Menu > All Programs > Accessories > Command Prompt > Right Click > Run as Administrator`
+```
+Start Menu > All Programs > Accessories > Command Prompt > Right Click > Run as Administrator
+```
 
 To run LiveDiff and view the help menu use the following command (given that you are in the correct directory with the LiveDiff executable):
 
-`LiveDiff-1.0.0.exe -h`
+```
+LiveDiff-1.0.0.exe -h
+```
 
 LiveDiff can be executed without any command line arguments to begin a looped snapshot collection and comparison cycle. The general operation is: 1) A snapshot is collected of the file system and Windows Registry; 2) An action is performed by the user (e.g., install an application); 3) Another snapshot is collected; 4) The before and after snapshots are compared and differential analysis performed to determine system level changes (e.g., files that have been created during application installation). This snapshot and comparison process is looped until the user decide to exit the program.
 
 To start a looped snapshot and comparison process, execute LiveDiff without any command line arguments:
 
-`LiveDiff-1.0.0.exe`
+```
+LiveDiff-1.0.0.exe
+```
 
 LiveDiff has a variety of command line arguments to provide additional functionality when performing system-level reverse engineering. This functionality and the associated command line arguments are discussed in the following subsections.
 
@@ -33,7 +43,9 @@ LiveDiff has a variety of command line arguments to provide additional functiona
 
 Dynamic blacklisting is a novel technique used to filter irrelevant file system and Registry entries from differential analysis. Dynamic blacklisting works by performing a system snapshot before any differential analysis/reverse engineering is performed. The initial system snapshot is used to populate an in-memory blacklist of known file system and Registry paths (the full, or absolute, logical file system location). Any data files or Regitry values that are encountered are subjected to a blacklist lookup using the full path, if a match is found the entry is ignored. To include dynamic blacklisting to filter operating system files and Registry values when collecting snapshots use LiveDiff with the -d (for Dynamic blacklist) argument:
 
-`LiveDiff-1.0.0.exe -d`
+```
+LiveDiff-1.0.0.exe -d
+```
 
 #### LiveDiff Best Practices
 
