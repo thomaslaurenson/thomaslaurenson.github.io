@@ -1,6 +1,6 @@
 # thomaslaurenson.github.io
 
-Personal homepage and blog for Thomas Laurenson: [thomaslaurenson.com](https://thomaslaurenson.com)
+Personal homepage and blog for Thomas Laurenson: [thomaslaurenson.com](https://www.thomaslaurenson.com)
 
 ## License
 
