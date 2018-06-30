@@ -1,11 +1,8 @@
-FROM gliderlabs/alpine:3.2
-MAINTAINER Yevgeniy Brikman <jim@ybrikman.com>
-
-# Install all the dependencies for Jekyll
-RUN apk-install bash build-base git libffi-dev zlib-dev libxml2-dev libxslt-dev ruby ruby-dev nodejs
+FROM jekyll/jekyll:latest  
+MAINTAINER Thomas Laurenson <thomas@thomaslaurenson.com>
 
 # Install Jekyll
-RUN gem install bundler jekyll --no-ri --no-rdoc
+RUN gem install bundler jekyll
 
 # Install nokogiri separately because it's special
 RUN gem install nokogiri -v 1.6.7.2 -- --use-system-libraries
@@ -27,4 +24,4 @@ ADD . /src
 EXPOSE 4000
 
 # Run jekyll serve
-CMD ["./jekyll-serve.sh"]
+CMD ["./jekyll-serve-docker.sh"]
