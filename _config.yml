@@ -1,0 +1,58 @@
+# Website settings
+url: "https://www.thomaslaurenson.com/blog/"
+
+# Internal nav
+nav:
+  main:
+    blog: "/blog"
+    projects: "/projects"
+  blog:
+    all: "/blog"
+    popular: "/blog/popular"
+    tags: "/blog/tags"
+    rss: "/feed.xml"
+
+# Bio settings
+name: "Thomas Laurenson"
+description: "I'm Thomas Laurenson. A researcher, developer and teacher in the fields of Digital Forensics, Information Security and Internet of Things (IoT)."
+thumbnail_path: "profile-photos/thomaslaurenson-small.jpg"
+interactive_resume_url: "https://www.thomaslaurenson.com/"
+#website_repo_url: "https://github.com/thomaslaurenson/thomaslaurenson.github.io"
+
+# URLs
+contact_urls:
+  twitter:
+    url: "https://twitter.com/thomaslaurenson"
+    label: "Twitter"
+    icon: "twitter-square"
+    username: "@thomaslaurenson"
+  email:
+    url: "mailto:thomas@thomaslaurenson.com"
+    label: "Email"
+    value: "thomas@thomaslaurenson.com"
+    icon: "envelope-square"
+  github:
+    url: "https://github.com/thomaslaurenson"
+    label: "GitHub"
+    icon: "github-square"    
+  linkedin:
+    url: "https://www.linkedin.com/in/thomas-laurenson-857978166"
+    label: "LinkedIn"
+    icon: "linkedin-square"
+
+# Jekyll build settings
+paginate: 10
+paginate_path: "/blog/page:num"
+permalink: "/blog/:year/:month/:day/:title/"
+sass:
+  sass_dir: "/assets/css"
+  style: :compressed
+highlighter: rouge
+timezone: 'Pacific/Auckland'
+repository: thomaslaurenson/thomaslaurenson.github.io
+
+# Plugins (GitHub Pages only support a few)
+gems:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-paginate
