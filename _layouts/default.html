@@ -4,14 +4,14 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  {% include head.html %}
+  {% include head.html %}  
+</head>
+<body>
   {% if page.include_ads %}
     {% include adsense.html include_ads=page.include_ads %}
   {% elsif layout.include_ads %}
     {% include adsense.html include_ads=layout.include_ads %}    
-  {% endif %}    
-</head>
-<body>
+  {% endif %}  
   {% include nav.html %}
   {% if page.include_header %}
     {% include header.html include_header=page.include_header %}
