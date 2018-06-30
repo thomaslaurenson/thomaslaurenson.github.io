@@ -17,7 +17,7 @@ name: "Thomas Laurenson"
 description: "I'm Thomas Laurenson. A researcher, developer and teacher in the fields of Digital Forensics, Information Security and Internet of Things (IoT)."
 thumbnail_path: "profile-photos/thomaslaurenson-small.jpg"
 interactive_resume_url: "https://www.thomaslaurenson.com/"
-#website_repo_url: "https://github.com/thomaslaurenson/thomaslaurenson.github.io"
+website_repo_url: "https://github.com/thomaslaurenson/thomaslaurenson.github.io"
 
 # URLs
 contact_urls:
