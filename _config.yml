@@ -13,6 +13,7 @@ nav:
     rss: "/feed.xml"
 
 # Bio settings
+title: "Thomas Laurenson"
 name: "Thomas Laurenson"
 description: "I'm Thomas Laurenson. A researcher, developer and teacher in the fields of Digital Forensics, Information Security and Internet of Things (IoT)."
 thumbnail_path: "profile-photos/thomaslaurenson-small.jpg"
@@ -52,7 +53,7 @@ timezone: 'Pacific/Auckland'
 repository: thomaslaurenson/thomaslaurenson.github.io
 
 # Plugins (GitHub Pages only support a few)
-gems:
+plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-paginate
