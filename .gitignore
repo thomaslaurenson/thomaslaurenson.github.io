@@ -14,7 +14,6 @@ _site/
 .ruby-version
 /test/source/file_name.txt
 /vendor
-Gemfile.lock
 bin/
 bbin/
 coverage
