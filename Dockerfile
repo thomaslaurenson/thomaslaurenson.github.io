@@ -5,7 +5,8 @@ MAINTAINER Thomas Laurenson <thomas@thomaslaurenson.com>
 RUN gem install bundler jekyll
 
 # Install nokogiri separately because it's special
-RUN gem install nokogiri -v 1.6.7.2 -- --use-system-libraries
+#RUN gem install nokogiri -v 1.6.7.2 -- --use-system-libraries
+RUN gem install nokogiri -v 1.8.3 -- --use-system-libraries
 
 # Copy the Gemfile and Gemfile.lock into the image and run bundle install in a
 # way that will be cached
