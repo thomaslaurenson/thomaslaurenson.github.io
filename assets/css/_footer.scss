@@ -21,3 +21,21 @@ body {
   padding-bottom: $footer-vertical-padding;
   width: 100%;
 }
+
+#footer-text {
+  color: black;
+  margin-left: 50px;
+}
+#footer-icons {
+  margin-right: 50px; 
+}
+
+$breakPoint: 45em;
+@media screen and (max-width: $breakPoint) {
+  #footer-text {
+    margin-left: 0px;
+  }
+  #footer-icons {
+    margin-right: 0px; 
+  } 
+}
