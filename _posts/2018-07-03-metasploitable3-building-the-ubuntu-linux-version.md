@@ -147,7 +147,7 @@ We will start by moving into the `/tmp` directory, a good place for temporary fi
 thomasl@server:~$ cd /tmp
 {% endhighlight %}
 
-Now, download the Debian package. This tutorial use Vagrant version 2.1.2. It would be worth checking if there is an updated Debian 64-bit package when you are building. Check the [Download Vagrant website](https://www.vagrantup.com/downloads.html) and use an updated URL if an update is available. Download Vagrant using the following command:
+Now, download the Debian package. This tutorial uses Vagrant version 2.1.2. It would be worth checking if there is an updated Debian 64-bit package when you are building. Check the [Download Vagrant website](https://www.vagrantup.com/downloads.html) and use an updated URL if an update is available. Download Vagrant using the following command:
 
 {% highlight bash %}
 thomasl@server:/tmp$ wget https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
@@ -173,13 +173,13 @@ You're running an up-to-date version of Vagrant!
 
 The third requirement for building Metasploitable3 is the [packer](https://www.packer.io/) tool. Again, this tool is produced by HashiCorp, and is used to automates the creation of any type of machine image.
 
-There is only a binary available for packer, distributed in a zip archive. Now, download the Debian package. This tutorial use Packer version 1.2.4. It would be worth checking if there is an updated version when you are building. Check the [Download Packer website](https://www.packer.io/downloads.html) and use an updated URL if an update is available. Download Packer using the following command:
+There is only a binary available for packer, distributed in a zip archive. Now, download the Debian package. This tutorial uses Packer version 1.2.4. It would be worth checking if there is an updated version when you are building. Check the [Download Packer website](https://www.packer.io/downloads.html) and use an updated URL if an update is available. Download Packer using the following command:
 
 {% highlight bash %}
 thomasl@server:/tmp$ wget https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip
 {% endhighlight %}
 
-Unzip the file. Note the `unzip` tool is provided by default in Ubuntu Desktop 18.04, but hash not been in the past. If the following command does not work, make sure to install the `unzip` utility using: `sudo apt install unzip`. Not extract the zip archive:
+Unzip the file. Note the `unzip` tool is provided by default in Ubuntu Desktop 18.04, but has not been in the past. If the following command does not work, make sure to install the `unzip` utility using: `sudo apt install unzip`. Not extract the zip archive:
 
 {% highlight bash %}
 thomasl@server:/tmp$ unzip packer_1.2.4_linux_amd64.zip
