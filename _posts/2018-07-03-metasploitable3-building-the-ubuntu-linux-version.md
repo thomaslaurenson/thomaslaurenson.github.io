@@ -6,6 +6,7 @@ tags:
 - PenTesting
 - Linux
 thumbnail_path: blog/thumbs/2018/padlock.png
+add_to_popular_list: true
 ---
 
 Metasploitable3 is an intentionally vulnerable machine build for exploit testing (aka. pen testing). Back in November, 2016, [Rapid7](https://blog.rapid7.com/2016/11/15/test-your-might-with-the-shiny-new-metasploitable3/) released Metasploitable3. I had used the previous version, [Metasploitable2](https://metasploit.help.rapid7.com/docs/metasploitable-2), to learn the basics of penetration testing. It was an excellent platform for exploratory testing, and I was sure Metasploitable3 was going to be the same experience... it was!
