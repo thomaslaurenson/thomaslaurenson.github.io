@@ -48,7 +48,7 @@ The next configuration specifies that there is an attempt to save each line of a
 shopt -s cmdhist
 ```
 
-The final major setting is to comfigure the history file to reload after every entry. This means that we can append after every executed command, rather than when a shell session is exited. To achieve this, the `PROMPT_COMMAND` setting can be leveraged. Any value specified for the `PROMPT_COMMAND` is executed as a command prior to issuing each primary prompt. We will leverage it to reload the BASH history.
+The final major setting is to configure the history file to reload after every entry. This means that we can append after every executed command, rather than when a shell session is exited. To achieve this, the `PROMPT_COMMAND` setting can be leveraged. Any value specified for the `PROMPT_COMMAND` is executed as a command prior to issuing each primary prompt. We will leverage it to reload the BASH history.
 
 ```
 # After each command, append to the history file and reread it
@@ -96,7 +96,7 @@ Interestingly, there is another variable named `HISTSIZE` which has the exact sa
 HISTSIZE=-1
 ```
 
-The `HISTCONTROL` variable is used to control how commands are saved on the history list. Of the available configurations, the value of `ignoredups` causes lines matching the previous history entry to not be saved. Basically, do not save duplicates of the same command run twice (or more times) in sucession.
+The `HISTCONTROL` variable is used to control how commands are saved on the history list. Of the available configurations, the value of `ignoredups` causes lines matching the previous history entry to not be saved. Basically, do not save duplicates of the same command run twice (or more times) in succession.
 
 ```
 # Do not store a duplicate of the last entered command
