@@ -78,7 +78,7 @@ Now, edit the DHCP configuration:
 sudo vim /etc/dhcp/dhcpd.conf
 {% endhighlight %}
 
-Add the following configuration for the DHCP server. Make sure to enter the domain name used in the network by replacing `"<ENTER-DOMAIN-NAME-HERE>"` with the actual domain name. For example: `mydomain.edu`. Also make sure to enter one or more DNS servers to distribute via DHCP by replacing `<DNS-IP-1>`. For example: `8.8.8.8` for the Google DNS server. This is a comma-separated list.
+Add the following configuration for the DHCP server. 
 
 {% highlight bash %}
 option domain-name-servers 8.8.8.8, 8.8.8.4;
@@ -91,9 +91,9 @@ option routers 192.168.100.10;
 }
 {% endhighlight %}
 
-A good resource for DHCP options is the [dhcp-options man page from die.net](https://linux.die.net/man/5/dhcp-options). The first two lines of the configuration above specify DNS settings. This allows translation of computer-friendly IP addresses to human-firendly domain names; for example: `google.com` corresponds to `172.217.25.142`. If you want, you can specify a `domain-name` option as well, but this is not required. However, make sure to include the `domain-name-servers` option with valid IP addresses from DNS servers. You can use the free Google DNS server using the value `8.8.8.8` or `8.8.8.4`, or use any other DNS server that you wish.
+A good resource for DHCP options is the [dhcp-options man page from die.net](https://linux.die.net/man/5/dhcp-options). The first line of the configuration above specify DNS settings. This allows translation of computer-friendly IP addresses to human-friendly domain names; for example: `google.com` corresponds to `172.217.25.142`. If you want, you can specify a `domain-name` option as well, but this is not required. However, make sure to include the `domain-name-servers` option with valid IP addresses from DNS servers. You can use the free Google DNS server using the value `8.8.8.8` or `8.8.8.4`, or use any other DNS server that you wish.
 
-The remaining options specified above are for IP address allocation. This configuration is for the IP range `192.168.100.0\24`, or from `192.168.100.0` to `192.168.100.254`. The `range` option specifies the range of addresses to provide for lease, in this case it is limited to 80 addresses, from `192.168.100.20` to `192.168.100.100`. This can be modified to suit. Finally, the `routers` option, specifies the address of the _gateway_ machine, which has a static IP address of `192.168.100.10`. The `routers` option has the IP address of the _gateway_ becuase this is the machine that forwards traffic from the internal network to external networks.
+The remaining options specified above are for IP address allocation. This configuration is for the IP range `192.168.100.0\24`, or from `192.168.100.0` to `192.168.100.254`. The `range` option specifies the range of addresses to provide for lease, in this case it is limited to 80 addresses, from `192.168.100.20` to `192.168.100.100`. This can be modified to suit. Finally, the `routers` option, specifies the address of the _gateway_ machine, which has a static IP address of `192.168.100.10`. The `routers` option has the IP address of the _gateway_ because this is the machine that forwards traffic from the internal network to external networks.
 
 Save the file, then restart service:
 
@@ -217,4 +217,4 @@ Then finishing it off with pinging any Internet DNS name:
 ping google.com
 {% endhighlight %}
 
-If all these tests pass, the configuration was sucessful!
+If all these tests pass, the configuration was successful!
