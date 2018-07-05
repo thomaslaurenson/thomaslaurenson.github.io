@@ -5,7 +5,7 @@ tags:
 - Linux
 - BASH
 - history
-thumbnail_path: blog/thumbs/2018/bash.png
+thumbnail_path: blog/thumbs/bash.png
 ---
 
 It is my continual venture to make my job easier. Like my sysadmin roots taught me, try to automate the process, and document thoroughly. In my job as a lecturer I try to automate many aspects of the courses I run. Even though it takes time up front... next semester will be easier!

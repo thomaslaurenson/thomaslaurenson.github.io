@@ -5,7 +5,7 @@ tags:
 - Metasploitable3
 - PenTesting
 - Linux
-thumbnail_path: blog/thumbs/2018/padlock.png
+thumbnail_path: blog/thumbs/padlock.png
 add_to_popular_list: true
 ---
 

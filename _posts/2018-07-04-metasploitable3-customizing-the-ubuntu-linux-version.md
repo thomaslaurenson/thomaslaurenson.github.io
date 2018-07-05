@@ -5,7 +5,7 @@ tags:
 - Metasploitable3
 - PenTesting
 - Linux
-thumbnail_path: blog/thumbs/2018/padlock.png
+thumbnail_path: blog/thumbs/padlock.png
 ---
 
 My previous post was a tutorial about [Metasploitable3]( {% post_url 2018-07-03-metasploitable3-building-the-ubuntu-linux-version %}), where I specified the steps required to build the Metasploitable3 Ubuntu Linux version that is not officially finished or documented. In this tutorial, we go a step further and perform some customization of the Metasploitable3 virtual machine. This is performed during the actual build process of the virtual machine and requires editing various configuration files, then rebuilding the virtual machine. In this post I will cover how to customize the vulnerabilities, users, and flags in the Metasploitable3 virtual machine.
