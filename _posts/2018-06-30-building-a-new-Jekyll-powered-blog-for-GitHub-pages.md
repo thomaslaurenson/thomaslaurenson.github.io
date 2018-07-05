@@ -5,7 +5,7 @@ tags:
 - Blog
 - Jekyll
 - Tutorial
-thumbnail_path: blog/thumbs/2018/jekyll.png
+thumbnail_path: blog/thumbs/jekyll.png
 ---
 
 Throughout my life I have started and half-accomplished making a blog on various occasions. I dabbled with WordPress... I didn't like it. I tried Blogger... again, I couldn't really get into it. I built my own static website with a blog and the maintenance was horrific! I guess that should have come as no surprise. There just didn't seem to be a platform that I could really sink my teeth into. This changed when I discovered [Jekyll](https://jekyllrb.com/).  

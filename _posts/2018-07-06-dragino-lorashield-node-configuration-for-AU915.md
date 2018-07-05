@@ -5,7 +5,7 @@ tags:
 - IoT
 - LoRaWAN
 - AU915
-thumbnail_path: blog/thumbs/2018/lorawan.png
+thumbnail_path: blog/thumbs/lorawan.png
 redirect_from:
   - /projects/DraginoLoRaShield.html
 ---
