@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MQTT Web Application Using JavaScript and MQTT Paho Library - How to subscribe to data from LoRaWAN IoT devices"
+title: "MQTT Web Application Using JavaScript and Paho MQTT Library - How to subscribe to data from LoRaWAN IoT devices"
 tags:
 - IoT
 - LoRaWAN
@@ -8,6 +8,12 @@ tags:
 - Javascript
 thumbnail_path: blog/thumbs/lorawan.png
 ---
+
+This post outlines a tutorial and explanation of how to use the Paho MQTT JavaScript library to build a basic web application to subscribe to MQTT messages from a broker. The resultant source code is available: [mqtt-demo.zip]({{ site.baseurl }}/assets/files/mqtt-demo.zip). Please feel free to use it as a base in your project. The final web application is simple, yet functional.
+
+{% include figure.html path="blog/posts/mqtt/styled-web-application.png" alt="The completed web application" %}
+
+## Introduction
 
 MQTT is a machine-to-machine connectivity/communication protocol. So what does this mean? MQTT is used by machines (think computer programs) for the transfer of data (think messages). Although MQTT has serveral uses, it is exceptionally prominent in the _Internet of Things_. The technology suits IoT because it is exceptionally lightweight and provides the functionality to subscribe and publish messages. And, of course, it suits IoT because it is naturally a machine-to-machine network.
 
@@ -31,6 +37,10 @@ This post covers how to write a simple MQTT subscription client for an IoT/LoRaW
 The first thing we need is an MQTT library to build our client. Writing an MQTT client is greatly simplified by using a well-documented and thoroughly tested library. I mean, why re-invent the wheel, when a group of talented developers have already designed and excellent wheel!
 
 The [Eclipse Paho project](https://www.eclipse.org/paho/) is an excellent open source MQTT client that is available for a variety of programming languages, including JavaScript. The [Eclipse Paho Downloads](https://www.eclipse.org/paho/downloads.php) page provides a summary of the support for different programming languages and the functionality provided in each. The [Eclipse Paho JavaScript client GitHub](https://github.com/eclipse/paho.mqtt.javascript) page has some good documentation on getting started using the library. However, in this post we will cover each step and explain it along the way.
+
+## MQTT Over Websockets
+
+In order to connect and subscribe to MQTT using JavaScript from within a web browser, MQTT must be configured to operate over websockets. This is not implemented by default in most MQTT brokers; for example, Mosquitto does not enable websockets by default. Make sure the MQTT broker you are attempting to connect to using this tutorial has websockets enabled and that you have the correct websocket port.
 
 ## Building a MQTT Web Application
 
@@ -441,4 +451,4 @@ In this tutorial we have built a custom web application capable of MQTT subcript
 
 {% include figure.html path="blog/posts/mqtt/styled-web-application.png" alt="The completed web application" %}
 
-This tutorial barely scratched the surface of building a _robust_ web application for an Internet of Things application. However, we covered the fundamentals. From this knowledge you could implement the same MQTT connection and subscription, but then use the MQTT message data to build a graph or map! As always, feel free to comment if you have any questions or feedback.
+This tutorial barely scratched the surface of building a _robust_ web application for an Internet of Things application. However, we covered the fundamentals. From this knowledge you could implement the same MQTT connection and subscription, but then use the MQTT message data to build a graph or map! As always, feel free to comment if you have any questions or feedback. If you are interested in a further tutorial that covers secure MQTT please leave a comment. Thanks! 
