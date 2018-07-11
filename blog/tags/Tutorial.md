@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Tutorial"
+title: "Blog Tags: Tutorial"
 tag: Tutorial
 ---

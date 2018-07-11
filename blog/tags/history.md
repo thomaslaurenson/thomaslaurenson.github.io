@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: history"
+title: "Blog Tags: history"
 tag: history
 ---

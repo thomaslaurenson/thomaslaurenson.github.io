@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Git"
+title: "Blog Tags: Git"
 tag: Git
 ---

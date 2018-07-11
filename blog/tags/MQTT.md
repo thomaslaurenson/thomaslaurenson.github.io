@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: MQTT"
+title: "Blog Tags: MQTT"
 tag: MQTT
 ---

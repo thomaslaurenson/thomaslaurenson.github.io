@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: LoRaWAN"
+title: "Blog Tags: LoRaWAN"
 tag: LoRaWAN
 ---
