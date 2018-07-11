@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Networking"
+title: "Blog Tags: Networking"
 tag: Networking
 ---

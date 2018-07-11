@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: SQL Injection"
+title: "Blog Tags: SQL Injection"
 tag: SQL Injection
 ---

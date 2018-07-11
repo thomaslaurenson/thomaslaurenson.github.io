@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Metasploitable3"
+title: "Blog Tags: Metasploitable3"
 tag: Metasploitable3
 ---

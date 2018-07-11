@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: IoT"
+title: "Blog Tags: IoT"
 tag: IoT
 ---

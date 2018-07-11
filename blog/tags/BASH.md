@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: BASH"
+title: "Blog Tags: BASH"
 tag: BASH
 ---
