@@ -53,7 +53,7 @@ for tag in total_tags:
     tag_filename = tag_dir + tag + '.md'
     print("  > %s" % tag_filename)
     f = open(tag_filename, 'a')
-    write_str = '---\nlayout: tagpage\ntitle: \"Blog Tags: ' + tag + '\"\ntag: ' + tag + '\nrobots: noindex\n---\n'
+    write_str = '---\nlayout: tagpage\ntitle: \"Blog Tags: ' + tag + '\"\ntag: ' + tag + '\nsitemap: false\nrobots: noindex\n---\n'
     f.write(write_str)
     f.close()
 print(">>> Finished generating tagfiles...")
