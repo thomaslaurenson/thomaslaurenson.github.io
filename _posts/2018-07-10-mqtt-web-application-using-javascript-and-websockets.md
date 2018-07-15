@@ -9,7 +9,7 @@ tags:
 thumbnail_path: blog/thumbs/lorawan.png
 ---
 
-This post outlines a tutorial and explanation of how to use the Paho MQTT JavaScript library to build a basic web application to subscribe to MQTT messages from a broker. The resultant source code is available: [mqtt-demo.zip]({{ site.baseurl }}/assets/files/mqtt-demo.zip). Please feel free to use it as a base in your project. The final web application is simple, yet functional.
+This post outlines a tutorial and explanation of how to use the Paho MQTT JavaScript library to build a basic web application to subscribe to MQTT messages from a broker. The resultant source code is available from the following repository: [js-mtt-websockets-demo](https://github.com/thomaslaurenson/MQTT-Subscription-Examples). Please feel free to use it as a base in your project. The final web application is simple, yet functional.
 
 {% include figure.html path="blog/posts/mqtt/styled-web-application.png" alt="The completed web application" %}
 
