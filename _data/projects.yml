@@ -1,7 +1,13 @@
+- name: "Software Development"
+  date: "2018"
+  description: |
+    My GitHub account contains a collection of the software that I have written to distribute. I am regularly writing software for a variety of disciplines including Computer Forensic tools, Information Security tools and Internet of Things libraries and applications. I also document most of my system administration scripts on GitHub from Linux administration to managing virtual machine environments. Some of my more favourite software development project are LiveDiff for performing rapid system-level differential analysis on Windows systems, an intentionally vulnerable Java web application named SecureMilkCartion, and a bulk_extractor plugin for automated detection and validation of NZ Inland Revenue numbers.
+  url: "https://github.com/thomaslaurenson"
+  image: "project-github.jpg"
+
 - name: "Internet of Things Dunedin"
   date: "2018"
   description: |
     IoT Dunedin is a student project I supervise that is run by the Otago Polytechnic Bachelor of Information Technology degree. We research, develop and implement Internet of Things solutions, primarily using LoRaWAN. W have implemented an open LoRaWAN network in Dunedin City, consisting of multiple LoRaWAN gateway devices, providing a long-range wireless network for embedded smart devices to connect to. We also provide the back-end server infrastructure that allows end-users to view or collect the data from their nodes. We provide a variety of development documentation ranging from building LoRaWAN sensor nodes, to web, mobile and desktop applications for end-users.
   url: "https://bit-project-sites.pages.op-bit.nz/iot/"
   image: "project_iot.jpg"
-
