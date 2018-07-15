@@ -8,7 +8,7 @@ tags:
 thumbnail_path: blog/thumbs/securemilkcarton.png
 ---
 
-SecureMilkCarton is an intentionally vulnerable Tomcat web application. It seems vulnerable web applications for learning _hacking_ or _penetration testing_ are a dime-a-dozen. SecureMilkCarton is different, it has been specifically designed to learn *how to secure a poorly written web application* and *how to secure a web server*. 
+SecureMilkCarton is an intentionally vulnerable Java web application that runs on Apache Tomcat. It seems vulnerable web applications for learning _hacking_ or _penetration testing_ are a dime-a-dozen. SecureMilkCarton is different, it has been specifically designed to learn *how to secure a poorly written web application* and *how to secure a web server*. 
 
 The web application itself is riddled with security issues, including:
 
@@ -33,9 +33,7 @@ Since SecureMilkCarton was specifically designed for my _Introduction to Informa
 
 ## Project Repository
 
-The SecureMilkCarton project is hosted on my GitHub account, available at the following URL:
-
-[https://github.com/thomaslaurenson/SecureMilkCarton](https://github.com/thomaslaurenson/SecureMilkCarton)
+The SecureMilkCarton project is hosted on my GitHub account, available at: [SecureMilkCarton](https://github.com/thomaslaurenson/SecureMilkCarton)
 
 The repository is well documented, so please look over the [README](https://github.com/thomaslaurenson/SecureMilkCarton/blob/master/README.md) for technical documentation including installation, configuration, vulnerabilities, project structure, and some general usage examples.
 
@@ -49,27 +47,56 @@ Included with SecureMilkCarton are a collection of tasks, somewhat similar to th
 
 - Install Ubuntu 18.04 server on a VM
 - Make sure git is installed:
-    - `sudo apt install git`
+
+```
+sudo apt install git
+```
+
 - Clone this repository to your home directory:
-    - `cd ~ && git clone https://github.com/thomaslaurenson/SecureMilkCarton.git`
+
+```
+cd ~ && git clone https://github.com/thomaslaurenson/SecureMilkCarton.git
+```
+
 - Run the web application build script:
-    - `cd ~/SecureMilkCarton/build && chmod u+x build.sh && sudo ./build.sh`
     - You will be prompted for the MySQL root user password, use: ``passw0rd`
+
+```
+cd ~/SecureMilkCarton/build && chmod u+x build.sh && sudo ./build.sh
+```
+   
 - Check the web application in a web browser:
-    - `<server-ip-address>:8080/securemilkcarton/`
-    - For example: `192.168.1.10:8080/securemilkcarton/`
+
+```
+<server-ip-address>:8080/securemilkcarton/
+```
 
 ### Option 2: Docker
 
 - Make sure git is installed:
 - Clone this repository to your home directory:
-    - `cd ~ && git clone https://github.com/thomaslaurenson/SecureMilkCarton.git`
-- Install Docker and Docker Compose
+
+```
+cd ~ && git clone https://github.com/thomaslaurenson/SecureMilkCarton.git
+```
+
+- Install Docker and Docker Compose:
+
+```
+sudo apt install docker docker-compose
+```
+
 - Run Docker Compose:
-    - `cd ~/SecureMilkCarton/docker && docker-compose up`
+
+```
+cd ~/SecureMilkCarton/docker && docker-compose up
+```
+
 - Check the web application in a web browser:
-    - `<server-ip-address>:8080/securemilkcarton/`
-    - For example: `192.168.1.10:8080/securemilkcarton/`
+
+```
+<server-ip-address>:8080/securemilkcarton/
+```
 
 ## SecureMilkCarton: Installation using Build Script
 

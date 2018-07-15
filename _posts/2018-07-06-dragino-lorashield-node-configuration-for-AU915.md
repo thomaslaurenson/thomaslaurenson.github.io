@@ -18,7 +18,7 @@ The Dragino LoRaShield is a popular example of an easy to use development/protot
 ](https://github.com/thomaslaurenson/Dragino_LoRaShield_Node_AU915/blob/master/README.md) as a zip file
 2. Add library to Arduino IDE using add a zip file functionality
 3. Plug in Arduino with a Dragino LoRaShield attached
-4. Optional: Edit source code */examples/Dragino_LoRaShield_AU915/Dragino_LoRaShield_AU915.ino* file to send different output/add code for sensors etc.
+4. Optional: Edit source code `Dragino_LoRaShield_AU915.ino` file to send different output/add code for sensors etc.
 5. Select Upload to compile, then upload
 6. View device is functioning correctly by viewing serial output
 7. Done.

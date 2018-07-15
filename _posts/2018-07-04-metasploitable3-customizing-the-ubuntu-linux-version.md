@@ -42,12 +42,20 @@ Once you are happy that you have exported the original virtual machine or just w
 Like the previous step, you can just delete the `.box` file, or back it up. To save it, I recommend moving the file to the same location as the exported virtual machine. Achieved using the following steps:
 
 - Change to the Metasploitable3 repository folder (if in the home directory: `cd ~/metasploitable3`)
-- Move the `.box` file: `mv packer/build/ubuntu_1404_virtualbox_0.1.12.box ~/Documents/`
+- Move the `.box` file: 
+ 
+```
+mv packer/build/ubuntu_1404_virtualbox_0.1.12.box ~/Documents/
+```
 
 If you simply want to delete the previous `.box` file:
 
 - Change to the Metasploitable3 repository folder (if in the home directory: `cd ~/metasploitable3`)
-- Delete the `.box` file: `rm packer/build/ubuntu_1404_virtualbox_0.1.12.box`
+- Delete the `.box` file: 
+ 
+```
+rm packer/build/ubuntu_1404_virtualbox_0.1.12.box
+```
 
 ## Customizing Metasploitable3 Ubuntu Linux Version
 
@@ -57,14 +65,18 @@ The default configuration of Metasploitable3 is excellent for training and testi
 
 According to [HashiCorp](https://www.packer.io/docs/templates/index.html), templates are JSON files that configure the various components of Packer in order to create one or more machine images. The Metasploitable3 project has a collection of Packer templates. For Linux there are three templates:
 
-- `packer/templates/ubuntu_1404.json` (Normal)
-- `packer/templates/pro/ubuntu_1404.json` (Pro)
-- `packer/templates/aws/ubuntu_1404_ctf_2017.json` (CTF)
+```
+packer/templates/ubuntu_1404.json (Normal)
+packer/templates/pro/ubuntu_1404.json (Pro)
+packer/templates/aws/ubuntu_1404_ctf_2017.json (CTF)
+```
 
 And, although not specifically on topic, there are two Packer templates for the Windows Server 2008 build:
 
-- `packer/templates/windows_2008_r2.json` (Normal)
-- `packer/templates/pro/windows_2008_r2.json` (Pro)
+```
+packer/templates/windows_2008_r2.json (Normal)
+packer/templates/pro/windows_2008_r2.json (Pro)
+```
 
 So, there are three Ubuntu Linux templates, that I refer to as: 1) Normal, 2) Pro and 3) CTF. The primary difference between the Normal and Pro templates is that there are no Chef recipes in the Pro template. I have not thoroughly tested, but it appears that no additional software or configuration (apart from installing vmtools) is performed. I think that since the Linux version is still under development, there is not a differentiation yet. When compared to the Windows Server version, the Pro template seems much more secure (from solely looking at the configuration files.)
 
@@ -198,7 +210,7 @@ So far, we have only customized of the build process. It is very easy to customi
 
 By default, Metasploitable3 is configured with a user named: `vagrant` who is used to build the virtual machine. To keep things simple, the password for the account is also `vagrant`. However, the virtual machine cannot be deployed with these default credentials, as it is too easy to break. I have even witnessed other vagrant builds that use the same credentials and could log in without knowing anything about the system (these were not deployed, only in testing environments... but still!). The `vagrant` user configuration can be changed in the build process by editing the following files:
 
-- `metasploitable3/packer/http/preseed.cfg` on the following lines:
+- `packer/http/preseed.cfg` on the following lines:
 
 {% highlight bash %}
 d-i passwd/user-fullname string vagrant
@@ -207,14 +219,14 @@ d-i passwd/user-password password vagrant
 d-i passwd/user-password-again password vagrant
 {% endhighlight %}
 
-- `metasploitable3/packer/templates/ubuntu_1404.json` on the following lines:
+- `packer/templates/ubuntu_1404.json` on the following lines:
 
 {% highlight bash %}
 "ssh_username": "vagrant",
 "ssh_password": "vagrant",
 {% endhighlight %}
 
-- `metasploitable2/Vagrantfile` on the following lines:
+- `Vagrantfile` on the following lines:
 
 {% highlight bash %}
 config.ssh.username = 'vagrant'
