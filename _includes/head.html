@@ -8,3 +8,6 @@
 <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}{{ site.nav.writing.rss }}">
 {% include favicon.html %}
 {% include styles.html %}
+{% if page.robots %}
+<meta name="robots" content="{{page.robots}}" />
+{% endif %}
