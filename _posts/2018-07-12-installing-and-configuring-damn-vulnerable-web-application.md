@@ -265,7 +265,7 @@ Unfortunately, the root account will not work with DVWA due to the way MySQL is 
 mysql -uroot -p
 ```
 
-If you are able to login with the password: `p@ssw0rd`, everything should be working fine. However, if you cannot, you will need to fix the access for the root account. Apparently, [MySQL 5.7 changed the security model]((https://zenidas.wordpress.com/recipes/mysql-5-7-root-login-without-sudo/)), so that root login requires sudo. We will fix this issue, and re-create the root account and specify the permissions we desire. The following steps are not recommended for deploying web application, as we should lock down the database and not use the root account. However, we are installing an intentionally vulnerable web application... hopefully, in a testing environment!
+If you are able to login with the password: `p@ssw0rd`, everything should be working fine. However, if you cannot, you will need to fix the access for the root account. Apparently, [MySQL 5.7 changed the security model](https://zenidas.wordpress.com/recipes/mysql-5-7-root-login-without-sudo/), so that root login requires sudo. We will fix this issue, and re-create the root account and specify the permissions we desire. The following steps are not recommended for deploying web application, as we should lock down the database and not use the root account. However, we are installing an intentionally vulnerable web application... hopefully, in a testing environment!
 
 Start by logging into the MySQL command prompt:
 
