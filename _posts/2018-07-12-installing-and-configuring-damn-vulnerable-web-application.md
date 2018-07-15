@@ -128,9 +128,9 @@ As you can see there are a few issues with the installation at the moment. We wi
 
 The [README file](https://github.com/ethicalhack3r/DVWA/blob/master/README.md) provided by the DVWA authors does summarize a few configuration issues that may be encountered during installation. Most of these issues are currently apparent in our installation too. So we will go ahead and fix these. Without making sure these issues are resolved, the DVWA web application will not function as desired and some exercises will not work correctly. The following list documents the issues we will fix:
 
-- Writable folder `/var/www/html/hackable/uploads/`: No
-- Writable file `/var/www/html/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt`: No
-- Writable folder `/var/www/html/config`: No
+- Writable folder `hackable/uploads/`: No
+- Writable file `phpids_log.txt`: No
+- Writable folder `config/`: No
 - PHP function `allow_url_include`: Disabled
 
 The first three issues are all related to directory permissions. We will fix these first. At any time, feel free to reload the DVWA setup page in your browser to check if the issue has been solved. When resolved the issue will turn from red to green.
