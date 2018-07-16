@@ -14,7 +14,7 @@
       {% else %}
         {% assign tag_url_base = "/blog/tags/" %}
       {% endif %}
-      <a href="{{ tag_url_base }}#{{ tag | uri_escape }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+      <a href="{{ tag_url_base }}{{ tag | uri_escape }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
       {% endfor %}
     </span>
   {% endif %}
