@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dragino LoRa Shield Node Configuration for AU915"
+title: "Dragino LoRa Shield Node Configuration for AU915 (Updated)"
 tags:
 - IoT
 - LoRaWAN
@@ -8,15 +8,15 @@ tags:
 thumbnail_path: blog/thumbs/lorawan.png
 ---
 
-This post summarizes an updated tutorial on how to configure the Dragino LoRa Shield device for the Australian/New Zealand (AU915) frequency using the MCCI Catena Arduino-LMIC library, or my fork of the MCCI Catena Arduino-LMIC library. 
+This post summarizes an updated tutorial on how to configure the Dragino LoRa Shield device for the Australian/New Zealand (AU915) frequency using my fork of the MCCI Catena version of the Arduino-LMIC library. 
 
 ## Background
 
 I recently wrote a post about [Configuring a Dragino LoRa Shield for use on the AU915 frequency]( {% post_url 2018-07-06-dragino-lorashield-node-configuration-for-AU915 %}) so that the device can be used legally in New Zealand. Specifically, so that the device can operate on the AU915 regional configuration standard. The post linked to one of my GitHub repositories that used a modified version of the original [Arduino-LMIC library](https://github.com/matthijskooijman/arduino-lmic), written by Matthijs Kooijman. However, this library does not support the AU915 frequency out-of-the-box, and my solution was a fork of the original project, followed by quite a _hacky_ fix to define the AU915 frequency range and channel selection. It works, but is not exactly elegant!
 
-It seems that there are so many forks of the same _Arduino-LMIC_ project that finding a reliable and suitable one (for specific devices and frequency requirements) is challenging. I am not complaining about the number of forks, I have a fork of the same library! Well two now... Nevertheless, I discovered a fork authored by the [MCCI Catena Corporation](https://github.com/mcci-catena) on their GitHub site. They had forked it from [The Things Network New York](https://github.com/things-nyc), who forked it from the original Arduino-LMIC library by Matthijs Kooijman. Anyway, the MCCI library appears to be actively developed and provided support for a large number of frequencies (regional configurations), including the standard EU868 and US915, as well as more recent standardization including AU915, AS923, and IN866. Excellent!
+It seems that there are so many forks of the same _Arduino-LMIC_ project that finding a reliable and suitable one (for specific devices and frequency requirements) is challenging. I am not complaining about the number of forks, I have a fork of the same library! Well two now... Nevertheless, I discovered a fork authored by the [MCCI Catena Corporation](https://github.com/mcci-catena) on their GitHub site. They had forked it from [The Things Network New York](https://github.com/things-nyc), who forked it from the original Arduino-LMIC library by Matthijs Kooijman. Anyway, the MCCI library appears to be actively developed and provided support for a large number of frequencies (regional configurations), including the well supported EU868 and US915 standards, as well as more recent standardization including AU915, AS923, and IN866. Excellent!
 
-OK, the interesting part. How can the MCCI _Arduino-LMIC_ code be modified to run on a different regional configuration? It is relatively straight-forward and they do provide documentation. However, it still took me a while to understand the most basic modifications required to get the code to run on the AU915 standard. The following sections outline the modifications required to use the AU915 configuration on a Dragino LoRa Shield. 
+OK, the interesting part. How can the MCCI _Arduino-LMIC_ code be modified to run on a different regional configuration? It is relatively straight-forward and they do provide documentation on how to accomplish this task. However, it still took me a while to understand the most basic modifications required to get the code to run on the AU915 standard. The following sections outline the modifications required to use the AU915 configuration on a Dragino LoRa Shield. 
 
 #### My Arduino-LMIC Library Fork
 
@@ -24,20 +24,24 @@ I have forked the original [MCCI Arduino-LMIC library](https://github.com/mcci-c
 
 - [thomaslaurenson/arduino-lmic](https://github.com/thomaslaurenson/arduino-lmic)
 
-Initially, I didn't want to fork the MCCI Arduino-LMIC library. I feel that there are so many forks, each with changes for: 1) To work on a specific frequency, or 2) To work with a specific device. However, putting all the code in one place seemed like a good solution. The future of my fork will be only to include sketch files, and small changes to make the installation process easier for the end-user. I will try to pull updates from MCCI when necessary to keep the fork updated as well. If there is a major problem or changes with the AU915 code, I would rather submit a pull request to the actual MCCI form of the project - who are doing an excellent job at updating code and fixing community issues. Well done MCCI!
+Initially, I didn't want to fork the MCCI Arduino-LMIC library. I feel that there are so many forks, each with changes for: 1) To work on a specific frequency, or 2) To work with a specific device. However, putting all the code in one place seemed like a good solution. The future of my fork will be only to include new sketch files for specific devices or authentication method, and small changes to make the installation process easier for the end-user. I will try to pull updates from MCCI when necessary to keep the fork updated as well. If there is a major problem or changes with the AU915 code, I would rather submit a pull request to the actual MCCI fork of the project - who are doing an excellent job at updating code and fixing community issues. Well done MCCI!
 
 ## Quickstart
 
-- Make sure you are in the _libraries_ directory of your Arduino IDE installation
-- Clone the Arduino-LMIC library into the _libraries_ folder:
+- Download and install the Arduino IDE
+- Add my fork of the MCCI Arduino-LMIC library to the _libraries_ directory of your Arduino IDE installation
+    - Option 1: Clone the Arduino-LMIC library into the _libraries_ folder:
 
 {% highlight bash %}
 git clone https://github.com/thomaslaurenson/arduino-lmic.git
 {% endhighlight %}
 
+    - Option 2: Download the ZIP of the repository and use the  _Add .ZIP Library..._ functionality in the Arduino IDE
 - Copy the provided sketch for the Dragino LoRa Shield from the `examples` folder into the Arduino Sketchbook folder
 - Open the sketch for your device, change your COM port to the attached device, and _Upload_
 - Check the _Serial Monitor_ on baud `115200` to check the device is functioning
+
+If you require further information, please continue reading for a full explanation. 
 
 ## Arduino Environment Setup
 
@@ -55,7 +59,7 @@ Make sure you have the correct board selected in the Arduino IDE. If you are usi
 
 ## MCCI Arduino-LMIC Library Configuration
 
-The only modification required to the library itself to use a different frequency is changing the defined regional configuration that the library uses. This step is not required if you used my forked version of the MCCI Arduino-LMIC library, however, I have documented it to be thorough.
+The only modification required to the library itself to use a different frequency is changing the defined regional configuration that the library uses. This step is not required if you used my forked version of the MCCI Arduino-LMIC library, however, I have documented the process I used below to be thorough.
 
 The regional configuration is set in the `lmic_project_config.h` file - found in the root folder of the library repository. The default value is `#define CFG_us915 1`. To modify this value, and replace it with another regional configuration we need to find and modify the `lmic_project_config.h` file. Depending on how you install the library in the Arduino IDE, how your Arduino IDE is configured, and what operating system you are using... this location may vary. The best method to find it is to determine the location using the Arduino IDE itself. The following steps will determine the location of the _Arduino-LMIC_ library and change the regional configuration:
 
@@ -102,6 +106,16 @@ This sketch is based on the original sketch named `ttn-abp.ino` which is for use
 - Configured for sub-band 2
 - Modified pin mapping for Dragino LoRa Shield
 - Configured to authenticate using ABP
+
+#### Adding the Example Sketch 
+
+The example sketch I have authored for the Dragino LoRa Shield is provided in the `examples` directory. The sketch is named:
+
+```
+ttn-abp-dragino-lorashield-au915.ino
+```
+
+There are many ways to get this sketch imported into the Arduino IDE. You can simple open the file from where ever you download the repository. The best method is to add it to the Arduino IDE sketchbook. Make sure to put the sketch (`.ino` file) into a folder with the same name.
 
 As it is, the sketch is ready to be compiled and uploaded. However, it is prudent to discuss the changes I made to the original sketch and why they were necessary.
 
