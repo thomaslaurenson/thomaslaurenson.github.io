@@ -36,30 +36,36 @@ The above command to install the required packages does not specify what specifi
 - `php`: `php7.2`
 - `mysql-server`: `mysql-server-5.7`
 
-Now clone the latest version of DVWA from GitHub:
+We are now going to download DVWA from their GitHub repository. You can browse this repository using the following [link](https://github.com/ethicalhack3r/DVWA). First we should make sure we are in the home directory of the current Linux user:
+
+{% highlight bash %}
+cd ~
+{% endhighlight %}
+
+We are going to use the `git` command, to download the DVWA repository. Use the following command to clone the latest version of DVWA from GitHub:
 
 {% highlight bash %}
 git clone --recursive https://github.com/ethicalhack3r/DVWA.git
 {% endhighlight %}
 
-The specific version I used during my install is indicated by the following object name: `e39ff4f`. If you want to clone this specific version, you can use the following commands:
+The command above will download all the required DVWA source code files. Specifically, `git` will create a new directory in your home directory called `DVWA`. This directory will contain all the source code required to setup DVWA.
 
-{% highlight bash %}
-git clone --recursive https://github.com/ethicalhack3r/DVWA.git
-cd DVWA
-git reset --hard e39ff4f
-{% endhighlight %}
+For the sake of complete documentation: the specific version of DVWA I used during my install is indicated by the following git object name: `e39ff4f`. If you want to clone this specific version, you can _reset_ the downloaded git repository, so you get this exact version. This step is not essential. But you can set the downloaded repository to the same version as used in this tutorial using the following command: `git reset --hard e39ff4f`. Note: you must be in the DVWA directory you downloaded to run this command.
 
-Remove the default Apache index page, this will make way for the new index page (`index.php`) provided by DVWA:
+Since we are installing DVWA on the Apache web server, we should remove the default index file (`index.html`) that is created when Apache is installed. Doing this will make way for the new index page (`index.php`) provided by DVWA. Remove the default Apache index page provided by DVWA using the following command.
 
 ```
 sudo rm /var/www/html/index.html
 ```
 
-Copy the entire DVWA directory and content to the `/var/www/html/` directory. Please note, we are not putting DVWA in a folder in the `/var/www/html` directory, only the folder contents. This way, you do not have to use `DVWA` in the URL. Basically, I did this for simplicity.
+Now we want to copy the entire DVWA directory and contents to the `/var/www/html/` directory. This is the directory that Apache uses to _serve_ web pages to users. Anything in this folder will be available from the server. Please note, we are not putting DVWA in a folder in the `/var/www/html` directory, only the `DVWA` folder contents. This way, you do not have to use `DVWA` in the URL. Basically, I did this for simplicity.
+
+The following command assumes you downloaded DVWA (using `git`) into your home directory. I would recommend making sure that DVWA downloaded correctly by checking the contents of this directory; for example, `cd ~/DVWA` and then `ls -la`. You should see all the DVWA source code files.
+
+When you are happy to proceed, copy all the DVWA files that you downloaded to the `/var/www/html/` directory using the following command:
 
 ```
-sudo cp -r DVWA/* /var/www/html/
+sudo cp -r ~/DVWA/* /var/www/html/
 ```
 
 Change to the web server directory:
@@ -68,10 +74,10 @@ Change to the web server directory:
 cd /var/www/html
 ```
 
-It would be prudent to make sure that all the DVWA files are copied across. You can check by listing the `html` directory using `ls -la /var/www/html` and you should see output similar to the listing below:
+It would be prudent to make sure that all the DVWA files have been copied across. You can check by listing the `html` directory using `ls -la /var/www/html` and you should see output similar to the listing below:
 
 {% highlight bash %}
-student@ubuntu:/var/www/html$ ls -la
+student@ubuntu:/var/www/html$ ls -la /var/www/html
 total 148
 drwxr-xr-x  8 root root  4096 Jul 11 12:58 .
 drwxr-xr-x  3 root root  4096 Jul 11 12:54 ..
