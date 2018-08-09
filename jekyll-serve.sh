@@ -1,12 +1,7 @@
 #!/bin/bash
-
 set -e
 
+# Remove the previous build in _site directory
 rm -rf _site
-
-bundle exec jekyll server --future --incremental --host 0.0.0.0
-
-#bundle exec jekyll server --host 0.0.0.0
-#bundle exec jekyll serve --future --host 0.0.0.0
-#bundle exec jekyll serve --incremental --host 0.0.0.0
-#bundle exec jekyll serve --drafts --host 0.0.0.0
+# Execute the Jekyll server
+bundle exec jekyll server JEKYLL_ENV=development jekyll build --future --incremental --host 0.0.0.0
