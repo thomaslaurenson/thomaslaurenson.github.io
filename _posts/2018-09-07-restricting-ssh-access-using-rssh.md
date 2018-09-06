@@ -91,7 +91,7 @@ It might initially seem that you can login with error. The SSH session will star
 
 {% highlight bash %}
 manager@server:~$ ssh student@10.25.1.10
-student@10.25.100.165's password:
+student@10.25.1.10's password:
 ...
 This account is restricted by rssh.
 Allowed commands: scp
@@ -111,7 +111,7 @@ If everything is working correctly, the file should be copied to the remote serv
 
 {% highlight bash %}
 user@server:~$ scp -P 22 kittens.png student@10.25.1.10:"/sharedData"
-student@10.25.100.165's password:
+student@10.25.1.10's password:
 secret.jpg                          100%  107KB 107.0KB/s   00:00
 {% endhighlight %}
 
