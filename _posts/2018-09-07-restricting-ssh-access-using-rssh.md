@@ -13,6 +13,12 @@ This post summarizes a simple method to secure, or lock-down, SSH access using t
 
 This post documents the method I used to configure Restricted SSH on an Ubuntu Linux 18.04 server system, but the general principles can be applied to other Debian-based operating systems.
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Installing RSSH
 
 According to the [Ubuntu Packages documentation for rssh](https://packages.ubuntu.com/bionic/rssh), the `rssh` package is in the _universe_ repository. This specific repository should be enabled by default in Ubuntu server version 18.04, therefore, installation is easy using the following `apt` command:

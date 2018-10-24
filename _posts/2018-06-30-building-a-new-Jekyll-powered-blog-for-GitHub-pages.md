@@ -8,6 +8,14 @@ tags:
 thumbnail_path: blog/thumbs/jekyll.png
 ---
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
 Throughout my life I have started and half-accomplished making a blog on various occasions. I dabbled with WordPress... I didn't like it. I tried Blogger... again, I couldn't really get into it. I built my own static website with a blog and the maintenance was horrific! I guess that should have come as no surprise. There just didn't seem to be a platform that I could really sink my teeth into. This changed when I discovered [Jekyll](https://jekyllrb.com/).  
 
 The Jekyll platform really made sense to me. It was also fun to tinker with! But the best thing was writing in Markdown, a technology that was first [release in 2004](https://daringfireball.net/projects/markdown/), and something I only discovered in 2016-ish. It seemed to take all the hassle out of writing HTML. And it suddenly seemed to be everywhere. I was writing Markdown in GitHub repository README.md files and constantly using it on Slack to format messages for the sanity of everyone. It was so simple and easy, with great formatting to boot. I took the plunge and developed a simple personal website using the Jekyll framework and GitHub pages as a host. It was supposed to be simple, and it was. I selected a default theme, [Midnight](https://github.com/pages-themes/midnight), and performed some basic customization.

@@ -7,7 +7,17 @@ tags:
 thumbnail_path: blog/thumbs/jekyll.png
 ---
 
-This post documents a simple, yet powerful, technique to enable or disable specific website content on Jekyll-powered websites. The main reason I wanted to do this was to disable Google Adsense content when building and developing my Jekyll powered website. Google Analystics has an option to ignore user-specified IP addresses of development systems, but Google Adsense does not. Therefore, I wanted a simple and quick solution to remove the Google Adsense code from my local build, while keeping the code when the website was deployed to GitHub pages. The solution: setting the Jekyll build environment and ignoring specific website content using conditional (if) statements.
+This post documents a simple, yet powerful, technique to enable or disable specific website content on Jekyll-powered websites. 
+
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
+The main reason I wanted to do enable/disable specific content on my Jekyll blog was to disable Google Adsense content when building and developing my Jekyll powered website. Google Analystics has an option to ignore user-specified IP addresses of development systems, but Google Adsense does not. Therefore, I wanted a simple and quick solution to remove the Google Adsense code from my local build, while keeping the code when the website was deployed to GitHub pages. The solution: setting the Jekyll build environment and ignoring specific website content using conditional (if) statements.
 
 According the [Jekyll documentation on Environments](https://jekyllrb.com/docs/configuration/environments/), you can configure the arguments given to the `build` or `serve` commands to include the Jekyll environment. When you build or serve a Jekyll website, you can use conditional statements (`if` statements) to enable or disable specific code depending on the environment. Simply put, you can set the Jekyll _environment_ when building or serving Jekyll to include, or exclude different content in your website. For example, the Jekyll documentation uses the following example:
 

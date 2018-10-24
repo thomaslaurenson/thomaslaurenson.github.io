@@ -9,7 +9,17 @@ tags:
 thumbnail_path: blog/thumbs/padlock-open.png
 ---
 
-This tutorial covers how to install and configure the [Damn Vulnerable Web Application](https://github.com/ethicalhack3r/DVWA), or DVWA. The authors summarize DVWA as:
+This tutorial covers how to install and configure the [Damn Vulnerable Web Application](https://github.com/ethicalhack3r/DVWA), or DVWA. 
+
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
+The authors summarize DVWA as:
 
 >Damn Vulnerable Web Application (DVWA) is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment.
 

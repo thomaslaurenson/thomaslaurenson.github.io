@@ -13,6 +13,12 @@ This post outlines a tutorial and explanation of how to use the Paho MQTT JavaSc
 
 {% include figure.html path="blog/posts/mqtt/styled-web-application.png" alt="The completed web application" %}
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Introduction
 
 MQTT is a machine-to-machine connectivity/communication protocol. So what does this mean? MQTT is used by machines (think computer programs) for the transfer of data (think messages). Although MQTT has serveral uses, it is exceptionally prominent in the _Internet of Things_. The technology suits IoT because it is exceptionally lightweight and provides the functionality to subscribe and publish messages. And, of course, it suits IoT because it is naturally a machine-to-machine network.

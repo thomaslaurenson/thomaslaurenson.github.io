@@ -8,7 +8,17 @@ tags:
 thumbnail_path: blog/thumbs/securemilkcarton.png
 ---
 
-SecureMilkCarton is an intentionally vulnerable Java web application that runs on Apache Tomcat. It seems vulnerable web applications for learning _hacking_ or _penetration testing_ are a dime-a-dozen. SecureMilkCarton is different, it has been specifically designed to learn *how to secure a poorly written web application* and *how to secure a web server*. 
+This post documents a security project I have written, SecureMilkCarton - an intentionally vulnerable Java web application that runs on Apache Tomcat. 
+
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
+It seems vulnerable web applications for learning _hacking_ or _penetration testing_ are a dime-a-dozen. SecureMilkCarton is different, it has been specifically designed to learn *how to secure a poorly written web application* and *how to secure a web server*. 
 
 The web application itself is riddled with security issues, including:
 

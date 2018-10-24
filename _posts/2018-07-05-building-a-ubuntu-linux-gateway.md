@@ -11,6 +11,14 @@ thumbnail_path: blog/thumbs/tux.png
 
 This post documents how to build a Linux gateway using Ubuntu Server 18.04. The gateway connects an internal network to an external network - basically, performing Network Address Translation (NAT) for hosts on the internal network. It is exceptionally similar to what your ISP supplied home router does. To achieve this, a Ubuntu Linux server is configured as a DHCP server and also to provide NAT using `iptables`. 
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
 This tutorial is written when building a blueprint for VMWare vRealize, but the instructions lend to any virtualization, or normal, system. The _gateway_ connects to an external network named _vlan25_Profile_ which provides Internet access, and second network, _InternalNetwork_, which is an isolated network. While _host1_ only connects to the _InternalNetwork_. The vRealize blueprint for the network is displayed below.
 
 {% include figure.html path="blog/posts/linux-gateway/blueprint.png" alt="vRealize blueprint" %}
