@@ -10,6 +10,14 @@ thumbnail_path: blog/thumbs/virtualization.png
 
 I finally found an answer to a problem that had plagued me for months! How to script, or automate, tasks in vRealize; for example, destroying a deployed blueprint. The answer was simpler than I initially thought... It turns out that the _Catalog Service_ REST API provides all that functionality that is required to automated specific tasks such as request a Blueprint to be deployed (built), get the IP address of a VM, or destroy a deployed blueprint.
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
 At my workplace we use vSphere and vRealize to provide virtual machines to students for labs, assignments and exams. Since we are using VMs in this many areas, it means that is a high overhead of managing numerous VMs. Think of having a class of 50 students, with approximately 3-6 VMs per course... resulting in large numbers of VMs to manage! I have PowerCLI scripts to perform many tasks on vSphere, yet had no solution to managing vRealize deployments or blueprints directly. That was until I read [How to script a vRealize Automation 7 REST API request](http://www.vmtocloud.com/how-to-script-a-vrealize-automation-7-rest-api-request/), by Ryan Kelly. His vRealize Automation scripts were written in BASH... However, I wanted to use PowerShell. This is primarily due to my heavy use of the PowerCLI tool to manage vSphere, which is only available on Windows PowerShell.
 
 This post goes into detail about how to write a PowerShell script to automate connection to the vRealize Automation REST API. This post finishes with the most simple task, to list the names of any vRealize deployments that the user has access to. The post has the following prerequisites:

@@ -8,6 +8,14 @@ tags:
 thumbnail_path: blog/thumbs/bash.png
 ---
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
 It is my continual venture to make my job easier. Like my sysadmin roots taught me, try to automate the process, and document thoroughly. In my job as a lecturer I try to automate many aspects of the courses I run. Even though it takes time up front... next semester will be easier!
 
 I learnt a lesson about using VMs for tertiary assessments early on. The more information about what has been performed on a system, the easier (and sometimes faster) it is to assess the tasks performed. For example, in the Linux and Security paper I teach it is very useful to see the complete BASH command history. After my first semester of teaching, I noticed the bash history was somewhat limited in a collection of assignment VMs. It turned out that most of the history was not being retained, due to students having multiple sessions (SSH, TTYs etc.). This needed to be solved. If there is a rich history, it will be better for me (marking) and better for them (reviewing their own command history). The goals:

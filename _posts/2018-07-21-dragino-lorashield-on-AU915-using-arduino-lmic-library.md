@@ -10,6 +10,12 @@ thumbnail_path: blog/thumbs/lorawan.png
 
 This post summarizes an updated tutorial on how to configure the Dragino LoRa Shield device for the Australian/New Zealand (AU915) frequency using my fork of the MCCI Catena version of the Arduino-LMIC library. 
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Background
 
 I recently wrote a post about [Configuring a Dragino LoRa Shield for use on the AU915 frequency]( {% post_url 2018-07-06-dragino-lorashield-node-configuration-for-AU915 %}) so that the device can be used legally in New Zealand. Specifically, so that the device can operate on the AU915 regional configuration standard. The post linked to one of my GitHub repositories that used a modified version of the original [Arduino-LMIC library](https://github.com/matthijskooijman/arduino-lmic), written by Matthijs Kooijman. However, this library does not support the AU915 frequency out-of-the-box, and my solution was a fork of the original project, followed by quite a _hacky_ fix to define the AU915 frequency range and channel selection. It works, but is not exactly elegant!

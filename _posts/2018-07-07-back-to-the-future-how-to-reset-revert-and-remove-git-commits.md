@@ -8,6 +8,14 @@ thumbnail_path: blog/thumbs/git.png
 
 I am exceptionally pedantic about my git commits. However, since I started using git locally, I have become much more relaxed. I put on my headphones, blast some Metallica, get in the zone, and git commit like a mad person! It is a great place to be. Furiously coding and committing at an important juncture. However, this has lead me into bad habits. Reckless is a better word for it. I generally commit with a descriptive message, and push at logical times... but have gotten less precise lately. I have so many accounts and repositories I contribute to that I sometimes enter in the wrong credentials. I have a GitHub account, a GitLab account, and another GitLab account which is for code hosted at my work-place. It gets confusing. And I refuse to use any credential managers (I can hear people screaming in agony at that comment!). Again, this leads to commits that need to be.... _taken 'a back_.
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
 I was asking myself this question: how can I recover from an accidental `git commit` or `git push`? Which is basically summarised as: how to undo commits or pushes in git? After reading a few forum posts, riding the waves of stack overflow answers... I started to get it. I then performed a revert from a git push to my GitHub. The knowledge of how to do it was never achieved, mainly because I barely used this feature. Every time a 
 
 This post will discuss how to undo unfortunate git commits... as well as git pushes. Hopefully, this post is useful to others as it was for me to document.

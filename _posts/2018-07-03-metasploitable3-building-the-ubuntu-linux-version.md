@@ -16,6 +16,14 @@ This post is part of a series on the Ubuntu Linux version of Metasploitable3. Th
 - Part 3: [Pentesting the Ubuntu Linux Version - SQL Injection]( {% post_url 2018-07-08-metasploitable3-pentesting-the-ubuntu-linux-version-part1 %})
 - Part 4: [Pentesting the Ubuntu Linux Version - Attacking Services]( {% post_url 2018-07-09-metasploitable3-pentesting-the-ubuntu-linux-version-part2 %})
 
+## Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Introduction
+
 Metasploitable3 is an intentionally vulnerable machine build for exploit testing (aka. pen testing). Back in November, 2016, [Rapid7](https://blog.rapid7.com/2016/11/15/test-your-might-with-the-shiny-new-metasploitable3/) released Metasploitable3. I had used the previous version, [Metasploitable2](https://metasploit.help.rapid7.com/docs/metasploitable-2), to learn the basics of penetration testing. It was an excellent platform for exploratory testing, and I was sure Metasploitable3 was going to be the same experience... it was!
 
 ## Metasploitable2, Metasploitable3 and InfoSec Assignments
