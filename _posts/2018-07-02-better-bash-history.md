@@ -16,9 +16,9 @@ thumbnail_path: blog/thumbs/bash.png
 
 ## Introduction
 
-It is my continual venture to make my job easier. Like my sysadmin roots taught me, try to automate the process, and document thoroughly. In my job as a lecturer I try to automate many aspects of the courses I run. Even though it takes time up front... next semester will be easier!
+It is my continual venture to make my job easier. Like my sysadmin roots taught me, try to automate the process, and document thoroughly. In my job as a lecturer, I try to automate many aspects of the courses I run. Even though it takes time up front... next semester will be easier!
 
-I learnt a lesson about using VMs for tertiary assessments early on. The more information about what has been performed on a system, the easier (and sometimes faster) it is to assess the tasks performed. For example, in the Linux and Security paper I teach it is very useful to see the complete BASH command history. After my first semester of teaching, I noticed the bash history was somewhat limited in a collection of assignment VMs. It turned out that most of the history was not being retained, due to students having multiple sessions (SSH, TTYs etc.). This needed to be solved. If there is a rich history, it will be better for me (marking) and better for them (reviewing their own command history). The goals:
+I learned a lesson about using VMs for tertiary assessments early on. The more information about what has been performed on a system, the easier (and sometimes faster) it is to assess the tasks performed. For example, in the Linux and Security paper, I teach it is very useful to see the complete BASH command history. After my first semester of teaching, I noticed the bash history was somewhat limited in a collection of assignment VMs. It turned out that most of the history was not being retained, due to students having multiple sessions (SSH, TTYs etc.). This needed to be solved. If there is a rich history, it will be better for me (marking) and better for them (reviewing their own command history). The goals:
 
 - Implement a solution to preserve BASH history in multiple sessions
 - Add a timestamp to each command stored
@@ -30,7 +30,7 @@ thomasl@server:~$ echo $HISTFILE
 /home/thomasl/.bash_history
 ```
 
-Back to the problem: previously entered commands are stored in `$HISTFILE` when the terminal is closed. If you wanted to search for a specific command, for example `iptables`, you would run the following command:
+Back to the problem: previously entered commands are stored in `$HISTFILE` when the terminal is closed. If you wanted to search for a specific command, for example, `iptables`, you would run the following command:
 
 ```
 history | grep iptables
@@ -49,7 +49,7 @@ To prevent loss of command history, it is possible to append to the history file
 shopt -s histappend
 ```
 
-The next configuration specifies that there is an attempt to save each line of a multi-line command in the same history entry. This would add semicolons where necessary to preserve syntactic correctness of the original command. 
+The next configuration specifies that there is an attempt to save each line of a multi-line command in the same history entry. This would add semicolons where necessary to preserve the syntactic correctness of the original command. 
 
 ```
 # Attempt to save all lines of a multiple-line command in the same entry
@@ -69,7 +69,7 @@ A brief summary of the `history` commands:
 - `history -c`: Clear the history (of the current shell)
 - `history -r`: Read the history file and append its contents to the history list
 
-As you can see, these series of command basically append, clear and reload the contents of the `.bash_history` file. It is essential to clear the file, as if this was not performed... there would be duplicate history entries when the shell session was exited!
+As you can see, these series of command basically append, clear and reload the contents of the `.bash_history` file. It is essential to clear the file as if this was not performed... there would be duplicate history entries when the shell session was exited!
 
 The three specified commands and configuration (`histappend`, `cmdhist`, and `PROMPT_COMMAND`) provide the functionality to save all BASH history as soon as it is entered. Excellent!
 
@@ -119,11 +119,11 @@ There are three configuration methods to enhance BASH history:
 - Enter the commands in a user's `.bashrc` file
 - Enter the commands in the system-wide `.bashrc` file
 
-The first option is to execute the specified commands can be executed directly in a shell. However, this approach will only set the configuration until the BASH session is exited. So, if you exit an SSH session, or logout, the configuration would be lost. 
+The first option is to execute the specified commands can be executed directly in a shell. However, this approach will only set the configuration until the BASH session is exited. So, if you exit an SSH session, or log out, the configuration would be lost. 
 
 The second option is to enter the commands into the `.bashrc` file of a specific user. This file present in the home directory of each user on the Linux system. For example, when logged in as `nickfury`, the file will be located at `~/.bashrc` or usually `/home/nickfury/.bashrc`, depending on the type of Linux OS installed.
 
-The third option is to enter the commands into the `/etc/bash.bashrc` file. This is the system-wide file for BASH configuration. This file is a shell script that BASH runs whenever it is started interactively. Therefore, it is run every time a BASH session is created, or whenever a SSH or TTY BASH session is started. 
+The third option is to enter the commands into the `/etc/bash.bashrc` file. This is the system-wide file for BASH configuration. This file is a shell script that BASH runs whenever it is started interactively. Therefore, it is run every time a BASH session is created, or whenever an SSH or TTY BASH session is started. 
 
 ## A BASH Script to Configure Enhanced BASH History
 

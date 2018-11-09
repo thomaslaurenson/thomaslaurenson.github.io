@@ -28,7 +28,7 @@ Metasploitable3 is an intentionally vulnerable machine build for exploit testing
 
 ## Metasploitable2, Metasploitable3 and InfoSec Assignments
 
-In my first semester of teaching Introduction to Information Security in Semester 1, 2017, I used Metasploitable2 for in-class practical lab exercises. I did the same again this year. For the first assignment in the paper, students have to perform an information security audit and document all findings in a security audit report. It is a fun assignment! Last year, I choose Metasploitable3 in the hopes that they wouldn't find out what system they were auditing. I went to great lengths to ensure there was no trace of the phrase _Metasploitable3_ in the system. I am pretty sure it went un-noticed! This year I was looking for something new, and I accidentally stumbled across Metasploitable3... the Linux version! It's an exciting story, but in summary, I was building the Windows Server 2008 version on Linux, and noticed the BASH script was expecting an argument...
+In my first semester of teaching Introduction to Information Security in Semester 1, 2017, I used Metasploitable2 for in-class practical lab exercises. I did the same again this year. For the first assignment in the paper, students have to perform an information security audit and document all findings in a security audit report. It is a fun assignment! Last year, I choose Metasploitable3 in the hopes that they wouldn't find out what system they were auditing. I went to great lengths to ensure there was no trace of the phrase _Metasploitable3_ in the system. I am pretty sure it went un-noticed! This year I was looking for something new, and I accidentally stumbled across Metasploitable3... the Linux version! It's an exciting story, but in summary, I was building the Windows Server 2008 version on Linux and noticed the BASH script was expecting an argument...
 
 {% highlight bash %}
 case "$1" in
@@ -72,7 +72,7 @@ Docker (docker_daemon_privilege_escalation)
 Linux Local CVE-2016-4997
 ```
 
-Very recently, in February, 2018, the user [jbarnett-r7 submitted a push request on GitHub](https://github.com/rapid7/metasploitable3/pull/231) to include the code for the Linux box that was used for the [capture the flag competition hosted by Rapid7](https://blog.rapid7.com/2017/12/11/congrats-to-the-winners-of-our-2017-community-ctf/) in December 2017. This addition was after I built the Metasploitable3 Linux version for my assignment.
+Very recently, in February 2018, the user [jbarnett-r7 submitted a push request on GitHub](https://github.com/rapid7/metasploitable3/pull/231) to include the code for the Linux box that was used for the [capture the flag competition hosted by Rapid7](https://blog.rapid7.com/2017/12/11/congrats-to-the-winners-of-our-2017-community-ctf/) in December 2017. This addition was after I built the Metasploitable3 Linux version for my assignment.
 
 Even with the odds against me, I decided to use the Metapsploitable3 Linux version for my assignment. It was new and interesting, and I needed a challenge. Also, I luckily started planning the classes in advance so had the time to tinker and test!
 
@@ -84,7 +84,7 @@ The [README.md](https://github.com/rapid7/metasploitable3/blob/master/README.md)
 
 - OS capable of running all of the required applications listed below
 - VT-x/AMD-V Supported Processor recommended
-- 65 GB Available space on drive
+- 65 GB Available space on the drive
 - 4.5 GB RAM
 
 In terms of the selected build operating system, the only requirement is that the system can run the applications listed in the next section. Technically, this could be achievable on Microsoft Windows, but building on Linux is much more sensible. This tutorial uses Ubuntu Desktop 18.04 amd64 LTS as the operating system. 
@@ -118,13 +118,13 @@ packer_bin="packer"
 packer_build_path="packer/builds"
 {% endhighlight %}
 
-The above tools were all marked as _minimum_, guessing that these were the minimum versions required to build Metasploitable3. The following instructions specify how I setup my build environment to match the above requirements.
+The above tools were all marked as _minimum_, guessing that these were the minimum versions required to build Metasploitable3. The following instructions specify how I set up my build environment to match the above requirements.
 
 #### Installing Oracle Virtual Box
 
-[VirtualBox](https://www.virtualbox.org/) is an open source (GPLv2) x86/x64 virtualization product that runs on Windows, Linux, OS X and Solaris systems. In this tutorial, it is used to host the virtualized guest operating system (Metasploitable3) while it is being built. 
+[VirtualBox](https://www.virtualbox.org/) is an open source (GPLv2) x86/x64 virtualization product that runs on Windows, Linux, OS X, and Solaris systems. In this tutorial, it is used to host the virtualized guest operating system (Metasploitable3) while it is being built. 
 
-In Ubuntu 18.04, VirtualBox is provided in the default `apt` repositories. This is a decent option to install as the application will be tested with Ubuntu and updates provided when a new stable version is added to the package repository. But you could install from the Debian package provided on the [Download VirtualBox for Linux Hosts](https://www.virtualbox.org/wiki/Linux_Downloads) page. This tutorial use the package repository, which (at time of writing) provides version 5.2.10. You can search the package repository using the following command:
+In Ubuntu 18.04, VirtualBox is provided in the default `apt` repositories. This is a decent option to install as the application will be tested with Ubuntu and updates provided when a new stable version is added to the package repository. But you could install from the Debian package provided on the [Download VirtualBox for Linux Hosts](https://www.virtualbox.org/wiki/Linux_Downloads) page. This tutorial uses the package repository, which (at time of writing) provides version 5.2.10. You can search the package repository using the following command:
 
 {% highlight bash %}
 thomasl@server:~$ apt search virtualbox
@@ -134,7 +134,7 @@ virtualbox/bionic-updates,now 5.2.10-dfsg-6ubuntu18.04.1 amd64
 ...
 {% endhighlight %}
 
-As specified in the Metasploitable3 README, VirtualBox version 5.1.10 or higher is required. You can be install VirtualBox using the following command:
+As specified in the Metasploitable3 README, VirtualBox version 5.1.10 or higher is required. You can install VirtualBox using the following command:
 
 {% highlight bash %}
 thomasl@server:~$ sudo apt install virtualbox
@@ -147,7 +147,7 @@ thomasl@server:~$ virtualbox --help
 Oracle VM VirtualBox Manager 5.2.10_Ubuntu
 {% endhighlight %}
 
-One last step for VirtualBox. The Metasploitable3 project requires the VirtualBox Guest Additions. Again, this can easily be installed from the ubuntu repositories using the `apt` command:
+One last step for VirtualBox. The Metasploitable3 project requires the VirtualBox Guest Additions. Again, this can easily be installed from the Ubuntu repositories using the `apt` command:
 
 {% highlight bash %}
 thomasl@server:~$ sudo apt install virtualbox-guest-additions-iso
@@ -187,7 +187,7 @@ You're running an up-to-date version of Vagrant!
 
 #### Installing Packer
 
-The third requirement for building Metasploitable3 is the [packer](https://www.packer.io/) tool. Again, this tool is produced by HashiCorp, and is used to automates the creation of any type of machine image.
+The third requirement for building Metasploitable3 is the [packer](https://www.packer.io/) tool. Again, this tool is produced by HashiCorp and is used to automates the creation of any type of machine image.
 
 There is only a binary available for packer, distributed in a zip archive. Now, download the Debian package. This tutorial uses Packer version 1.2.4. It would be worth checking if there is an updated version when you are building. Check the [Download Packer website](https://www.packer.io/downloads.html) and use an updated URL if an update is available. Download Packer using the following command:
 
@@ -195,7 +195,7 @@ There is only a binary available for packer, distributed in a zip archive. Now, 
 thomasl@server:/tmp$ wget https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip
 {% endhighlight %}
 
-Unzip the file. Note the `unzip` tool is provided by default in Ubuntu Desktop 18.04, but has not been in the past. If the following command does not work, make sure to install the `unzip` utility using: `sudo apt install unzip`. Not extract the zip archive:
+Unzip the file. Note the `unzip` tool is provided by default in Ubuntu Desktop 18.04 but has not been in the past. If the following command does not work, make sure to install the `unzip` utility using: `sudo apt install unzip`. Not extract the zip archive:
 
 {% highlight bash %}
 thomasl@server:/tmp$ unzip packer_1.2.4_linux_amd64.zip
@@ -218,7 +218,7 @@ Packer v1.2.4
 
 #### Installing Packer Vagrant Reload Plugin
 
-The fourth, and final, requirement is a Vagrant plugin named [vagrant-reload](https://github.com/aidanns/vagrant-reload). This plugin allows a reload during virtual machine provisioning. The Metasploitable3 build requires this plugin, so we must install it. Luckily, the installation is straight forward. Execute the following command:
+The fourth, and final requirement is a Vagrant plugin named [vagrant-reload](https://github.com/aidanns/vagrant-reload). This plugin allows a reload during virtual machine provisioning. The Metasploitable3 build requires this plugin, so we must install it. Luckily, the installation is straightforward. Execute the following command:
 
 {% highlight bash %}
 thomasl@server:/tmp$ vagrant plugin install vagrant-reload
@@ -231,11 +231,11 @@ Done!
 
 ### Building Metasploitable3 Linux Version
 
-In the previous section we install all application requirements including VirtualBox, Vagrant, vagrant-reload, and packer. We are now ready to actually build Metasploitable3! 
+In the previous section, we install all application requirements including VirtualBox, Vagrant, vagrant-reload, and packer. We are now ready to actually build Metasploitable3! 
 
 This tutorial specifies the home directory to download the GitHub repository and build the project. However, you can perform these steps in another location. It shouldn't make a difference, as none of the commands specify a full path.
 
-Go back to your home directory, or somewhere your want to build the project:
+Go back to your home directory, or somewhere you want to build the project:
 
 {% highlight bash %}
 cd ~
@@ -269,7 +269,7 @@ Open the `flags.rb` file, where the configuration for the system flags is perfor
 vim chef/cookbooks/metasploitable/recipes/flags.rb
 {% endhighlight %}
 
-Locate line 38. Basically, we need to change one of the lines which has an error. The specific flag is the `7_of_diamonds`, and the docker image that is build for this flag refers to an incorrect name. In the code it is specified as `7 of diamonds`, while it should be `7_of_diamonds`. The original code is listed below:
+Locate line 38. Basically, we need to change one of the lines which have an error. The specific flag is the `7_of_diamonds`, and the docker image that is built for this flag refers to an incorrect name. In the code, it is specified as `7 of diamonds`, while it should be `7_of_diamonds`. The original code is listed below:
 
 {% highlight bash %}
 bash 'build docker image for 7 of diamonds' do
@@ -299,9 +299,9 @@ OK! We are ready to start the build process. Run the build script using `ubuntu1
 ./build.sh ubuntu1404
 {% endhighlight %}
 
-Get a coffee, do the dishes or find something else to do for the next 30 to 45 minutes. The build process takes quite a while, but due to the automated tools used (Vagrant and Packer) is requires no intervention from the user. 
+Get a coffee, do the dishes or find something else to do for the next 30 to 45 minutes. The build process takes quite a while, but due to the automated tools used (Vagrant and Packer), it requires no intervention from the user. 
 
-When finished you will se output that is similar to the code snippet below. 
+When finished you will see output that is similar to the code snippet below. 
 
 {% highlight bash %}
 ==> Builds finished. The artifacts of successful builds are:
@@ -332,7 +332,7 @@ This will export the `.box` file to VirtualBox. More specifically, we should pro
 vagrant up ub1404
 {% endhighlight %}
 
-The `vagrant up` command looks the the `.Vagrantfile` in the base directory of the Metasploitable3 source code. If we have a look at the code in this file, we can see that running `vagrant up` will try to export both types of virtual machines (Ubuntu Linux and Widnows Server 2008). The Linux-specific part of the `.Vagrantfile` is displayed below:
+The `vagrant up` command looks the `.Vagrantfile` in the base directory of the Metasploitable3 source code. If we have a look at the code in this file, we can see that running `vagrant up` will try to export both types of virtual machines (Ubuntu Linux and Widnows Server 2008). The Linux-specific part of the `.Vagrantfile` is displayed below:
 
 {% highlight bash %}
 Vagrant.configure("2") do |config|
@@ -360,4 +360,4 @@ As you can see, there are two configurations for each type of virtual machine. T
 
 After running `vagrant up` or `vagrant up ub1404`, the virtual machine will be exported and become available in VirtualBox. You can open the VirtualBox application and see that the `Metasploitable3-ub1404` virtual machine is running and available for use. Like previously mentioned, you can now easily customize the virtual machine using the VirtualBox application; for example, modify the network adapter configuration. 
 
-Hopefully this tutorial got a Metasploitable3 Ubuntu Linux version virtual machine up and running. The platform is excellent for testing and learning in a virtualized environment. Stay tuned for my next Metasploitable3 tutorial, customizing Metasploitable3 Ubuntu Linux version, where we will look at how to customize the vulnerabilities, users, and flags for the virtual machine we build today.
+Hopefully, this tutorial got a Metasploitable3 Ubuntu Linux version virtual machine up and running. The platform is excellent for testing and learning in a virtualized environment. Stay tuned for my next Metasploitable3 tutorial, customizing Metasploitable3 Ubuntu Linux version, where we will look at how to customize the vulnerabilities, users, and flags for the virtual machine we build today.
