@@ -21,13 +21,13 @@ This tutorial covers how to install and configure the [Damn Vulnerable Web Appli
 
 The authors summarize DVWA as:
 
->Damn Vulnerable Web Application (DVWA) is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment.
+>Damn Vulnerable Web Application (DVWA) is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled classroom environment.
 
 This tutorial assumes you have a working install of Ubuntu Server version 18.04. This install can be on a physical machine, but most likely you will be using a virtual machine. When I installed and configured DVWA, I was using Ubuntu Server version 18.04 amd64. I also tested the install on Ubuntu Desktop version 18.04 amd64. Both worked using the same set of steps.
 
 ## Initial Steps
 
-Make sure you Ubuntu system is up-to-date by checking and downloading any new packages:
+Make sure your Ubuntu system is up-to-date by checking and downloading any new packages:
 
 ```
 sudo apt update && sudo apt upgrade
@@ -39,14 +39,14 @@ Download the required packages to install DVWA:
 sudo apt install apache2 mysql-server php php-mysqli php-gd libapache2-mod-php git
 ```
 
-When you install MySQL you might be prompted to enter a password for the root account. If you are, use the password: `p@ssw0rd`. This is the password that DVWA is configured for, and it makes life easier to not change the configuration. However, if you are not prompted to enter a password for the root account, it is most likely that you are using MySQL version 5.7 or above. In this case, there is a fix describe further below in this post.
+When you install MySQL you might be prompted to enter a password for the root account. If you are, use the password: `p@ssw0rd`. This is the password that DVWA is configured for, and it makes life easier to not change the configuration. However, if you are not prompted to enter a password for the root account, it is most likely that you are using MySQL version 5.7 or above. In this case, there is a fix described further below in this post.
 
 The above command to install the required packages does not specify what specific versions of the packages to download, so you will end up with the latest PHP and MySQL versions. The specific versions I installed were:
 
 - `php`: `php7.2`
 - `mysql-server`: `mysql-server-5.7`
 
-We are now going to download DVWA from their GitHub repository. You can browse this repository using the following [link](https://github.com/ethicalhack3r/DVWA). First we should make sure we are in the home directory of the current Linux user:
+We are now going to download DVWA from their GitHub repository. You can browse this repository using the following [link](https://github.com/ethicalhack3r/DVWA). First, we should make sure we are in the home directory of the current Linux user:
 
 {% highlight bash %}
 cd ~
@@ -165,7 +165,7 @@ drwxr-xr-x 2 root root 4096 Jul  9 17:41 uploads
 drwxr-xr-x 2 root root 4096 Jul  9 17:41 users
 {% endhighlight %}
 
-I am unsure why DVWA is complaining, because the folder is owner by the root user already and has write permissions. Nevertheless, by specifying the the _other_ value in the permission set is configured for write permissions solves this problem. The current permissions set is: `rwxr-xr-x` or `755`. Simply, allow the _other_ value to have write permission using the following command:
+I am unsure why DVWA is complaining because the folder is owned by the root user already and has write permissions. Nevertheless, by specifying the _other_ value in the permission set is configured for write permissions solves this problem. The current permissions set is: `rwxr-xr-x` or `755`. Simply, allow the _other_ value to have write permission using the following command:
 
 ```
 sudo chmod 757 /var/www/html/hackable/uploads/
@@ -267,7 +267,7 @@ It is recommended to re-check the setup page provided by DVWA again to ensure th
 
 One step we will not configure is to set the _reCAPTCHA key_. This configuration requires that you generate your own reCAPTCHA provided by Google and is beyond the scope of this post. Check the DVWA documentation for more information if you want to configure this setting and make the reCAPTCHA exercise available.
 
-There is one last set to perform, creating the database for DVWA. This step is exceptionally important, as without the database, the DVWA exercises will not function correctly. The database connection can be problematic, and ease of setup depends on the version of MySQL you are using.
+There is one last set to perform, creating the database for DVWA. This step is exceptionally important, as, without the database, the DVWA exercises will not function correctly. The database connection can be problematic, and ease of setup depends on the version of MySQL you are using.
 
 Try to create the database by clicking the **Create / Reset Database** button on the DVWA setup page. You will be presented with output at the bottom of the page that specifies any errors. If you are following this tutorial, and are using MySQL version 5.7, you will get the following error message.
 
@@ -275,13 +275,13 @@ Try to create the database by clicking the **Create / Reset Database** button on
 
 ## Re-configure MySQL root account
 
-Unfortunately, the root account will not work with DVWA due to the way MySQL is built in version 5.7. If you are using a older version than 5.7, this step will not apply. You can test the database install using the following command:
+Unfortunately, the root account will not work with DVWA due to the way MySQL is built in version 5.7. If you are using an older version than 5.7, this step will not apply. You can test the database install using the following command:
 
 ```
 mysql -uroot -p
 ```
 
-If you are able to login with the password: `p@ssw0rd`, everything should be working fine. However, if you cannot, you will need to fix the access for the root account. Apparently, [MySQL 5.7 changed the security model](https://zenidas.wordpress.com/recipes/mysql-5-7-root-login-without-sudo/), so that root login requires sudo. We will fix this issue, and re-create the root account and specify the permissions we desire. The following steps are not recommended for deploying web application, as we should lock down the database and not use the root account. However, we are installing an intentionally vulnerable web application... hopefully, in a testing environment!
+If you are able to login with the password: `p@ssw0rd`, everything should be working fine. However, if you cannot, you will need to fix the access for the root account. Apparently, [MySQL 5.7 changed the security model](https://zenidas.wordpress.com/recipes/mysql-5-7-root-login-without-sudo/), so that root login requires sudo. We will fix this issue, and re-create the root account and specify the permissions we desire. The following steps are not recommended for deploying a web application, as we should lock down the database and not use the root account. However, we are installing an intentionally vulnerable web application... hopefully, in a testing environment!
 
 Start by logging into the MySQL command prompt:
 
@@ -289,7 +289,7 @@ Start by logging into the MySQL command prompt:
 sudo mysql -uroot
 ```
 
-Since there is not password configured by default, you should not be prompted to enter a password. Start by removing the root user from the MySQL table of users:
+Since there is no password configured by default, you should not be prompted to enter a password. Start by removing the root user from the MySQL table of users:
 
 {% highlight sql %}
 mysql> DROP USER 'root'@'localhost';
@@ -334,7 +334,7 @@ Once again, you should have entered the MySQL prompt. Remember, you can leave th
 
 ## Creating the DVWA Database
 
-Head back to you web browser and try to create the database again. This time, we should be successful and see the following output:
+Head back to your web browser and try to create the database again. This time, we should be successful and see the following output:
 
 {% include figure.html path="blog/posts/dvwa/database-working.png" alt="Loading the DVWA database" %}
 

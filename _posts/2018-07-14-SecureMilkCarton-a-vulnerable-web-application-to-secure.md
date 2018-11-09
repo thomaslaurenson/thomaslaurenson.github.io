@@ -37,7 +37,7 @@ To add to the problem, the web server used to host the web application also suff
 
 ## Project Background
 
-SecureMilkCarton is written in Java and deployed on Apache Tomcat. I am by no means a Java expert or a Java fan - not a hater, just have never really written in it... So why write it in Java? Well, the web application is the resultant product of a practical assessment I developed for the _Introduction to Information Security_ course that I teach. This course is situated in the same semester that students are taking the Programming 3 paper in, you guessed it, the Java programming language. It has a MySQL database for user authentication, and web application data storage. Again, SQL was chosen as students are also taking a Databases 2 paper which covers relational databases. So, the applications used seem like a good fit for the degree.
+SecureMilkCarton is written in Java and deployed on Apache Tomcat. I am by no means a Java expert or a Java fan - not a hater, just have never really written in it... So why write it in Java? Well, the web application is the resultant product of a practical assessment I developed for the _Introduction to Information Security_ course that I teach. This course is situated in the same semester that students are taking the Programming 3 paper in, you guessed it, the Java programming language. It has a MySQL database for user authentication and web application data storage. Again, SQL was chosen as students are also taking a Databases 2 paper which covers relational databases. So, the applications used to seem like a good fit for the degree.
 
 Since SecureMilkCarton was specifically designed for my _Introduction to Information Security_ course, it targets the level of the paper. This course is situated in the second year of a Bachelor of Information Technology degree. It is the first security-related paper students have taken, and only have 1 year of experience in the IT field. So it targets that general level. However, students do have a collection of practical labs and worksheets that guide them through the general framework of performing a security audit. Additionally, the assessment could easily be scaled up or down depending on specific requirements.
 
@@ -160,7 +160,7 @@ I find when deploying this assessment for learners, it is beneficial to improve 
 - Preserves history when multiple different connections to a system are established (e.g., multiple SSH or PuTTY sessions)
 - Appends date/time stamps to each history entry
 
-To include better history, execute the following actions to run the script:
+To include a better history, execute the following actions to run the script:
 
 ```
 sudo su
@@ -263,7 +263,7 @@ sudo systemctl restart tomcat
 
 Finished.
 
-An alternative method to the using authbind is to utilize `iptables` to forward traffic from the default HTTP/HTTPS ports to the ports tomcat uses. This method is simple, however, I feel it interfers with any `iptables` firewall configuration that can be used.
+An alternative method to the using authbind is to utilize `iptables` to forward traffic from the default HTTP/HTTPS ports to the ports tomcat uses. This method is simple, however, I feel it interferes with any `iptables` firewall configuration that can be used.
 
 The following two `iptables` rules will forward all traffic from port 80 and 443 to the default tomcat ports of 8080 and 8443. Please note, in the following example, the Internet-facing adapter is named `ens160`, you will need to modify this value for the network interface on your system (e.g., `eth0`).
 
@@ -274,14 +274,14 @@ sudo iptables -t nat -A PREROUTING -i ens160 -p tcp --dport 443 -j REDIRECT --to
 
 ## SecureMilkCarton: Web Server Configuration
 
-An SSH server has been installed using the OpenSSH software. However, no configuration has been performed. You can login to the SSH service on port 22. The login details are any user account that has been created on the virtual machine.
+An SSH server has been installed using the OpenSSH software. However, no configuration has been performed. You can log in to the SSH service on port 22. The login details are any user account that has been created on the virtual machine.
 
 A MySQL database has been installed and partially configured. The credentials for the MySQL database are:
 
 - Username: `root`
 - Password: `passw0rd`
 
-Apache TomCat (a type of web server software) has also been installed on the server. The TomCat service is a Java Servlet Container – basically a web server that allows the creation and sharing (via HTTP) of a web application written with Java on the server-side. Although the web application is very simple (compared to real-world web applications), getting used to the setup can take some practice. Here is some relevant information about the web application configuration:
+Apache TomCat (a type of web server software) has also been installed on the server. The TomCat service is a Java Servlet Container – basically, a web server that allows the creation and sharing (via HTTP) of a web application written with Java on the server-side. Although the web application is very simple (compared to real-world web applications), getting used to the setup can take some practice. Here is some relevant information about the web application configuration:
 
 - The web application is deployed in: `/opt/tomcat/webapps/`
 - The name of the web application is: `securemilkcarton`
@@ -294,7 +294,7 @@ The directory structure of the web application is very important to learn and un
 - `index.jsp`: the HTML code for the login web page
 - `search.jsp`: the HTML code for the employee search web page
 - `noticeboard.jsp`: the HTML code for the noticeboard web page
-- `style.css`: the CSS style sheet for the website
+- `style.css`: the CSS stylesheet for the website
 - `jquery.js`: the JQuery library dependency for the noticeboard web page
 - `securemilkcarton_logo.jpg`: the company logo to make things look pretty
 - `WEB-INF`: a folder containing web application resources
@@ -305,9 +305,9 @@ The directory structure of the web application is very important to learn and un
     - `lib`: a folder containing dependencies
         - `mysql-connector-java-5.1.42-bin.jar`: dependency jar file to connect to local MySQL database
         - Other dependencies can be included in this folder
-- `database`: a collection of file for database creation and re-creation:
+- `database`: a collection of files for database creation and re-creation:
     - `securemilkcarton_db.sql`: an SQL file containing all securemilkcarton database entries
-    - `create_db.sh`: this script uses `securemilkcarton_db.sql` to automate creation the database
+    - `create_db.sh`: this script uses `securemilkcarton_db.sql` to automate creating the database
     - `recreate_db.sh`: this script deletes the old database and recreates the original database using the `securemilkcarton_db.sql` file
     - `passwords.csv`: a comma-separated values (CSV) file containing usernames, passwords and salt values. This file is useful when changing the password hashing algorithm
 - `scripts`: a collection of scripts that make life easier:
@@ -318,9 +318,9 @@ The directory structure of the web application is very important to learn and un
 
 This section documents several common scenarios that you will need to perform including creating the database for the web application, deleting the database, compiling the web application and how to access the web application.
 
-### How to create database
+### How to create the database
 
-The database is essential for the SecureMilkCarton web application to function. Therefore, creating the database is a key step. This process can be automated using the `create_db.sh` script provided in the `securemilkcarton/databases` folder. Simply run the script using the following command (the following instructions assumes for have the repo in your home folder):
+The database is essential for the SecureMilkCarton web application to function. Therefore, creating a database is a key step. This process can be automated using the `create_db.sh` script provided in the `securemilkcarton/databases` folder. Simply run the script using the following command (the following instructions assumes you have the repo in your home folder):
 
 ```
 cd ~/SecureMilkCarton/securemilkcarton/databases
@@ -337,11 +337,11 @@ cat ~/SecureMilkCarton/securemilkcarton/database/securemilkcarton_db.sql | mysql
 
 This line of code prints the contents of `securemilkcarton_db.sql` file containing the database contents, and pipes the content into the `mysql` command which populates the database.
 
-### How to delete and recreate database
+### How to delete and recreate the database
 
 Similar to creating the database, you can also recreate the database using the same `securemilkcarton_db.sql` file. However, be warned... this script drops the entire `securemilkcarton` database and all entries. If you have made any modifications to the database contents, this information will be lost.
 
-Recreating the database can be automated using the `recreate_db.sh` script provided in the `securemilkcarton/databases` folder. Simply run the script using the following command (the following instructions assumes for have the repo in your home folder):
+Recreating the database can be automated using the `recreate_db.sh` script provided in the `securemilkcarton/databases` folder. Simply run the script using the following command (the following instructions assumes you have the repo in your home folder):
 
 ```
 cd ~/SecureMilkCarton/securemilkcarton/databases
@@ -352,7 +352,7 @@ You will be prompted to enter the password for the root user of the database acc
 
 ### How to compile and deploy
 
-This project uses a simple static technique to compile and deploy a Tomcat web application. This process can be automated using the `compile.sh` script provided in the `securemilkcarton/scripts` folder. Simply run the script using the following command (the following instructions assumes for have the repo in your home folder):
+This project uses a simple static technique to compile and deploy a Tomcat web application. This process can be automated using the `compile.sh` script provided in the `securemilkcarton/scripts` folder. Simply run the script using the following command (the following instructions assumes you have the repo in your home folder):
 
 ```
 cd ~/SecureMilkCarton/securemilkcarton/scripts
@@ -392,7 +392,7 @@ If you performed the optional step of changing the default ports you can access 
 - `<server-ip-address>/securemilkcarton/`
 - For example: `192.168.1.10/securemilkcarton/`
 
-Since SecureMilkCarton is a vulnerable, and terribly configured, web application it is not served using HTTPS by default. If you do implement HTTPS certificates, the web application will then be accessible using the following URLs:
+Since SecureMilkCarton is a vulnerable and terribly configured, web application it is not served using HTTPS by default. If you do implement HTTPS certificates, the web application will then be accessible using the following URLs:
 
 - `https://<server-ip-address>:8443/securemilkcarton/` (if using port 8443)
 - For example: `192.168.1.10:8443/securemilkcarton/`
@@ -401,4 +401,4 @@ Since SecureMilkCarton is a vulnerable, and terribly configured, web application
 
 ## Conclusion
 
-The entire point of the SecureMilkCarton project was to share the work. I designed it because I was unable to find any similar (robust) projects for learning how to secure web applications. With that being said, please feel free to contact me or post a comment if you would like to know anything about the project. Like I previously mentioned, also checkout the [SecureMilkCarton repository](https://github.com/thomaslaurenson/SecureMilkCarton) to obtain the source code or review the technical documentation.
+The entire point of the SecureMilkCarton project was to share the work. I designed it because I was unable to find any similar (robust) projects for learning how to secure web applications. With that being said, please feel free to contact me or post a comment if you would like to know anything about the project. Like I previously mentioned, also check out the [SecureMilkCarton repository](https://github.com/thomaslaurenson/SecureMilkCarton) to obtain the source code or review the technical documentation.
