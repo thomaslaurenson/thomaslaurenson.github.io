@@ -21,9 +21,9 @@ This post outlines a tutorial and explanation of how to use the Paho MQTT JavaSc
 
 ## Introduction
 
-MQTT is a machine-to-machine connectivity/communication protocol. So what does this mean? MQTT is used by machines (think computer programs) for the transfer of data (think messages). Although MQTT has serveral uses, it is exceptionally prominent in the _Internet of Things_. The technology suits IoT because it is exceptionally lightweight and provides the functionality to subscribe and publish messages. And, of course, it suits IoT because it is naturally a machine-to-machine network.
+MQTT is a machine-to-machine connectivity/communication protocol. So what does this mean? MQTT is used by machines (think computer programs) for the transfer of data (think messages). Although MQTT has several uses, it is exceptionally prominent in the _Internet of Things_. The technology suits IoT because it is exceptionally lightweight and provides the functionality to subscribe and publish messages. And, of course, it suits IoT because it is naturally a machine-to-machine network.
 
-MQTT is used by [The Things Network](https://www.thethingsnetwork.org/docs/applications/mqtt/), who are building a global IoT network using LoRaWAN. In my job as a lecturer, I am supervising a group of students who are building an open LoRaWAN network in Dunedin City. In this project we have implemented the open source [LoRa Server](https://www.loraserver.io/), which also uses MQTT to [publish and subscribe to IoT data](https://www.loraserver.io/lora-app-server/integrate/sending-receiving/mqtt/).
+MQTT is used by [The Things Network](https://www.thethingsnetwork.org/docs/applications/mqtt/), who are building a global IoT network using LoRaWAN. In my job as a lecturer, I am supervising a group of students who are building an open LoRaWAN network in Dunedin City. In this project, we have implemented the open source [LoRa Server](https://www.loraserver.io/), which also uses MQTT to [publish and subscribe to IoT data](https://www.loraserver.io/lora-app-server/integrate/sending-receiving/mqtt/).
 
 To first understand what MQTT is used for, it is prudent to understand a typical IoT/LoRaWAN network. There are several components in a network:
 
@@ -34,21 +34,21 @@ To first understand what MQTT is used for, it is prudent to understand a typical
 
 I like to be explained things in layman terms. When I first witnessed MQTT I didn't really understand how the technology worked, or how it was used. The technical jargon was intimidating! The important use of MQTT for clients is in the subscription of MQTT data from a server. For example, create a web application or mobile application that retrieves and displays node data. But how does it get the data? Answer: it subscribes to an MQTT topic that the server publishes. 
 
-I like to explain the MQTT protocol similar to FM radio. A client is similar to the radio you have in your car. It can tune frequencies to listen to specific radio stations. The IoT equivalent is subscription to an MQTT topic, where you must tune to the MQTT server. The key aspect, MQTT publications are live - the same way the radio station is live. If you want to save the music that a radio station is playing, you must record it. MQTT subscription is the same! 
+I like to explain the MQTT protocol similar to FM radio. A client is similar to the radio you have in your car. It can tune frequencies to listen to specific radio stations. The IoT equivalent is a subscription to an MQTT topic, where you must tune to the MQTT server. The key aspect, MQTT publications are live - the same way the radio station is live. If you want to save the music that a radio station is playing, you must record it. MQTT subscription is the same! 
 
-This post covers how to write a simple MQTT subscription client for an IoT/LoRaWAN network. In this tutorial the client will be a web application (usable on any modern web browser) that is written in HTML and JavaScript. The web application will subscribe to an MQTT topic from a server and print the information to the web page.
+This post covers how to write a simple MQTT subscription client for an IoT/LoRaWAN network. In this tutorial, the client will be a web application (usable on any modern web browser) that is written in HTML and JavaScript. The web application will subscribe to an MQTT topic from a server and print the information to the web page.
 
 ## The Eclipse Paho MQTT JavaScript Library
 
-The first thing we need is an MQTT library to build our client. Writing an MQTT client is greatly simplified by using a well-documented and thoroughly tested library. I mean, why re-invent the wheel, when a group of talented developers have already designed and excellent wheel!
+The first thing we need is an MQTT library to build our client. Writing an MQTT client is greatly simplified by using a well-documented and thoroughly tested library. I mean, why re-invent the wheel, when a group of talented developers have already designed an excellent wheel!
 
-The [Eclipse Paho project](https://www.eclipse.org/paho/) is an excellent open source MQTT client that is available for a variety of programming languages, including JavaScript. The [Eclipse Paho Downloads](https://www.eclipse.org/paho/downloads.php) page provides a summary of the support for different programming languages and the functionality provided in each. The [Eclipse Paho JavaScript client GitHub](https://github.com/eclipse/paho.mqtt.javascript) page has some good documentation on getting started using the library. However, in this post we will cover each step and explain it along the way.
+The [Eclipse Paho project](https://www.eclipse.org/paho/) is an excellent open source MQTT client that is available for a variety of programming languages, including JavaScript. The [Eclipse Paho Downloads](https://www.eclipse.org/paho/downloads.php) page provides a summary of the support for different programming languages and the functionality provided in each. The [Eclipse Paho JavaScript client GitHub](https://github.com/eclipse/paho.mqtt.javascript) page has some good documentation on getting started using the library. However, in this post, we will cover each step and explain it along the way.
 
 ## MQTT Over Websockets
 
-In order to connect and subscribe to MQTT using JavaScript from within a web browser, MQTT must be configured to operate over websockets. This is not implemented by default in most MQTT brokers; for example, Mosquitto does not enable websockets by default. Make sure the MQTT broker you are attempting to connect to using this tutorial has websockets enabled and that you have the correct websocket port.
+In order to connect and subscribe to MQTT using JavaScript from within a web browser, MQTT must be configured to operate over web sockets. This is not implemented by default in most MQTT brokers; for example, Mosquitto does not enable web sockets by default. Make sure the MQTT broker you are attempting to connect to using this tutorial has web sockets enabled and that you have the correct web socket port.
 
-## Building a MQTT Web Application
+## Building an MQTT Web Application
 
 #### Create a folder structure
 
@@ -102,7 +102,7 @@ The final header should look like the code snippet below:
 
 Next, we will add a simple HTML form to allow input of essential MQTT configuration information. This form will have three boxes to enter in: 1) The hostname or IP address of the MQTT broker; 2) The port number for the MQTT broker; and 3) The topic to subscribe to. In addition, we are going to put in two buttons: 1) To connect to the server and subscribe to a topic; and 2) To disconnect from the server. 
 
-Below is a simple form that will get the job done. Note how default values have been added with the `value="property"` syntax. This information will display by default in the form, but can just be overwritten by new content. The current default values are set to the Mosquitto MQTT test server, which is excellent to test if the MQTT subscription is working. Also note how the default topic is set to a hashtag symbol (`#`) - this is a wildcard and will subscribe to any topic provided by the MQTT broker.
+Below is a simple form that will get the job done. Note how default values have been added with the `value="property"` syntax. This information will display by default in the form, but can just be overwritten by new content. The current default values are set to the Mosquitto MQTT test server, which is excellent to test if the MQTT subscription is working. Also, note how the default topic is set to a hashtag symbol (`#`) - this is a wildcard and will subscribe to any topic provided by the MQTT broker.
 
 {% highlight html %}
 <form id="connection-info-form">
@@ -168,7 +168,7 @@ Currently, our web application has no functionality! When you click either butto
 
 #### JS: Fetching the values from the form
 
-The first step to connecting to an MQTT broker, is to fetch the information supplied by the user in the HTML form. This is easy using the `document.getElementByID` method. Luckily, we have already set the unique ID value in the HTML form, these were: `host`, `port` and `topic`. We can use the simple JavaScript code below to save these values from the form into JavaScript variables with the same naming convention.
+The first step to connecting to an MQTT broker is to fetch the information supplied by the user in the HTML form. This is easy using the `document.getElementByID` method. Luckily, we have already set the unique ID value in the HTML form, these were: `host`, `port` and `topic`. We can use the simple JavaScript code below to save these values from the form into JavaScript variables with the same naming convention.
 
 {% highlight javascript %}
 host = document.getElementById("host").value;
@@ -178,21 +178,21 @@ topic = document.getElementById("topic").value;
 
 #### JS: Writing the `startConnect` function
 
-No that we have the required variables we can begin writing the code for the MQTT subscription. The first thing we should do is generate a _client ID_ value. This can essentially be any string of characters and/or numbers, but **it must be unique**. We can simply leverage the `Math.random` function to generate a random number and concatenate it to a string value of `"clientID_"`. This will result in something like: `clientID-62`.
+Now that we have the required variables we can begin writing the code for the MQTT subscription. The first thing we should do is generate a _client ID_ value. This can essentially be any string of characters and/or numbers but **it must be unique**. We can simply leverage the `Math.random` function to generate a random number and concatenate it to a string value of `"clientID_"`. This will result in something like: `clientID-62`.
 
 {% highlight javascript %}
 // Generate a random client ID
 clientID = "clientID_" + parseInt(Math.random() * 100);
 {% endhighlight %}
 
-We now have all the information required to connect to the MQTT broker: 1) The hostname/IP address; 2) The port number; and 3) The random clientID string. We can call the `Paho.MQTT.Client` method using these three variables. To make sure we are passing and integer as the port number, simple intcast the variable `port` using `Number(port)`.
+We now have all the information required to connect to the MQTT broker: 1) The hostname/IP address; 2) The port number; and 3) The random clientID string. We can call the `Paho.MQTT.Client` method using these three variables. To make sure we are passing an integer as the port number, simple intcast the variable `port` using `Number(port)`.
 
 {% highlight javascript %}
 // Initialize new Paho client connection
 client = new Paho.MQTT.Client(host, Number(port), clientID);
 {% endhighlight %}
 
-After the connection to the MQTT broker has been specified and the `client` object created, we can set the callback handlers for the client. These functions will be called if something goes wrong; for example, if the connection to the MQTT broker is lost, or when a MQTT message has arrived. We will write these functions later.
+After the connection to the MQTT broker has been specified and the `client` object created, we can set the callback handlers for the client. These functions will be called if something goes wrong; for example, if the connection to the MQTT broker is lost, or when an MQTT message has arrived. We will write these functions later.
 
 {% highlight javascript %}
 // Set callback handlers
@@ -212,7 +212,7 @@ client.connect({
 
 One more thing, there is also an `onFailure` action in the `onConnect` function. When the connection fails, the _messages_ div in the webpage will display an error to the user. This is a simple, no jQuery solution. Basically, the `document.getElementById("messages")` will identify the _messages_ div, the `.innerHTML +=` will append text to the div, and `'<span>ERROR: Connection to: ' + host + ' on port: ' + port + ' failed.</span><br/>'` will print an error message which also documents the hostname/IP and port number.
 
-It is very common for error messaging like this to be handled and displayed using the JavaScript `console.log(message)` solution. However, this is only displayed in the web browser console, which some end-users have no knowledge of. So instead, we will display the error message on the actual web page itself.
+It is very common for error messages like this to be handled and displayed using the JavaScript `console.log(message)` solution. However, this is only displayed in the web browser console, which some end-users have no knowledge of. So instead, we will display the error message on the actual web page itself.
 
 The final, completed, `startConnect` function is displayed below. Not how we use the same `innerHTML +=` solution to display the connection information in the full example below. This, again, provides feedback to the end-user.
 
@@ -357,7 +357,7 @@ We have finally got somewhere! With the addition of this JavaScript code we have
 
 As it currently stands, our web application has a nice form and the required functionality to connect, subscribe and display MQTT messages to the end-user. However, we should probably add a little style to make the page look better and make the messages easier to view and review.
 
-The following CSS rules can be places in the `style.css` file. These are just simple CSS rules that will add a little style, and can be modified based on your requirements. The following rules specify the Open Sans font, and sets a `wrapper` div for the page to ensure it is centered and has a suitable width.
+The following CSS rules can be placed in the `style.css` file. These are just simple CSS rules that will add a little style and can be modified based on your requirements. The following rules specify the Open Sans font and set a `wrapper` div for the page to ensure it is centered and has a suitable width.
 
 {% highlight css %}
 body {
@@ -409,7 +409,7 @@ input[type=button]:hover {
 
 #### CSS: Styling the messages div
 
-Finally, the most important part of the web page style is the _messages_ div. Without modification it will print continuously to the bottom of the webpage and is difficult and messy to deal with the MQTT messages. These simple CSS rules will create a fixed sized block to display the messages, complete with a vertical scroll bar. 
+Finally, the most important part of the web page style is the _messages_ div. Without modification, it will print continuously to the bottom of the webpage and is difficult and messy to deal with the MQTT messages. These simple CSS rules will create a fixed sized block to display the messages, complete with a vertical scrollbar. 
 
 {% highlight css %}
 #messages {
@@ -431,7 +431,7 @@ Finally, the most important part of the web page style is the _messages_ div. Wi
 
 #### JS: Writing the `updateScroll` function
 
-In the last section we styled the _messages_ div and made it scrollable. One more nice feature would be if the messages box scrolled when it is full. 
+In the last section, we styled the _messages_ div and made it scrollable. One more nice feature would be if the messages box scrolled when it is full. 
 
 {% highlight javascript %}
 // Updates #messages div to auto-scroll
@@ -453,8 +453,8 @@ The final result is a nicely contained scrollable box for all the MQTT messages.
 
 ## Conclusion
 
-In this tutorial we have built a custom web application capable of MQTT subcription. Basically, this web application can be configured to connect to an MQTT broker, for example The Things Network, and can receive data from LoRaWAN nodes. The final result of this project can be seen below:
+In this tutorial, we have built a custom web application capable of MQTT subscription. Basically, this web application can be configured to connect to an MQTT broker, for example, The Things Network, and can receive data from LoRaWAN nodes. The final result of this project can be seen below:
 
 {% include figure.html path="blog/posts/mqtt/styled-web-application.png" alt="The completed web application" %}
 
-This tutorial barely scratched the surface of building a _robust_ web application for an Internet of Things application. However, we covered the fundamentals. From this knowledge you could implement the same MQTT connection and subscription, but then use the MQTT message data to build a graph or map! As always, feel free to comment if you have any questions or feedback. If you are interested in a further tutorial that covers secure MQTT please leave a comment. Thanks! 
+This tutorial barely scratched the surface of building a _robust_ web application for an Internet of Things application. However, we covered the fundamentals. From this knowledge, you could implement the same MQTT connection and subscription, but then use the MQTT message data to build a graph or map! As always, feel free to comment if you have any questions or feedback. If you are interested in a further tutorial that covers secure MQTT please leave a comment. Thanks! 

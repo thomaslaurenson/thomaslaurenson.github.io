@@ -20,7 +20,7 @@ This post summarizes an updated tutorial on how to configure the Dragino LoRa Sh
 
 I recently wrote a post about [Configuring a Dragino LoRa Shield for use on the AU915 frequency]( {% post_url 2018-07-06-dragino-lorashield-node-configuration-for-AU915 %}) so that the device can be used legally in New Zealand. Specifically, so that the device can operate on the AU915 regional configuration standard. The post linked to one of my GitHub repositories that used a modified version of the original [Arduino-LMIC library](https://github.com/matthijskooijman/arduino-lmic), written by Matthijs Kooijman. However, this library does not support the AU915 frequency out-of-the-box, and my solution was a fork of the original project, followed by quite a _hacky_ fix to define the AU915 frequency range and channel selection. It works, but is not exactly elegant!
 
-It seems that there are so many forks of the same _Arduino-LMIC_ project that finding a reliable and suitable one (for specific devices and frequency requirements) is challenging. I am not complaining about the number of forks, I have a fork of the same library! Well two now... Nevertheless, I discovered a fork authored by the [MCCI Catena Corporation](https://github.com/mcci-catena) on their GitHub site. They had forked it from [The Things Network New York](https://github.com/things-nyc), who forked it from the original Arduino-LMIC library by Matthijs Kooijman. Anyway, the MCCI library appears to be actively developed and provided support for a large number of frequencies (regional configurations), including the well supported EU868 and US915 standards, as well as more recent standardization including AU915, AS923, and IN866. Excellent!
+It seems that there are so many forks of the same _Arduino-LMIC_ project that finding a reliable and suitable one (for specific devices and frequency requirements) is challenging. I am not complaining about the number of forks, I have a fork of the same library! Well, two now... Nevertheless, I discovered a fork authored by the [MCCI Catena Corporation](https://github.com/mcci-catena) on their GitHub site. They had forked it from [The Things Network New York](https://github.com/things-nyc), who forked it from the original Arduino-LMIC library by Matthijs Kooijman. Anyway, the MCCI library appears to be actively developed and provided support for a large number of frequencies (regional configurations), including the well supported EU868 and US915 standards, as well as more recent standardization including AU915, AS923, and IN866. Excellent!
 
 OK, the interesting part. How can the MCCI _Arduino-LMIC_ code be modified to run on a different regional configuration? It is relatively straight-forward and they do provide documentation on how to accomplish this task. However, it still took me a while to understand the most basic modifications required to get the code to run on the AU915 standard. The following sections outline the modifications required to use the AU915 configuration on a Dragino LoRa Shield. 
 
@@ -61,7 +61,7 @@ Now we need to install the Arduino-LMIC library in our Arduino IDE environment. 
 - In the Arduino IDE, navigate to _Sketch_, _Include Library_, _Add .ZIP Library..._
 - Find the ZIP file, and select _Open_
 
-Make sure you have the correct board selected in the Arduino IDE. If you are using the Dragino LoRa Shield, the board needs to be configured as an Arduino Uno (because the it is a Arduino Uno shield). Make sure you select the correct board from the _Tools_, _Board_ menu and select _Arduino Uno_.
+Make sure you have the correct board selected in the Arduino IDE. If you are using the Dragino LoRa Shield, the board needs to be configured as an Arduino Uno (because it is an Arduino Uno shield). Make sure you select the correct board from the _Tools_, _Board_ menu and select _Arduino Uno_.
 
 ## MCCI Arduino-LMIC Library Configuration
 
@@ -88,7 +88,7 @@ The regional configuration is set in the `lmic_project_config.h` file - found in
 //#define CFG_us915 1
 #define CFG_au921 1
 //#define CFG_as923 1
-//#define LMIC_COUNTRY_CODE LMIC_COUNTRY_CODE_JP	/* for as923-JP */
+//#define LMIC_COUNTRY_CODE LMIC_COUNTRY_CODE_JP    /* for as923-JP */
 //#define CFG_in866 1
 #define CFG_sx1276_radio 1
 //#define LMIC_USE_INTERRUPTS
@@ -96,7 +96,7 @@ The regional configuration is set in the `lmic_project_config.h` file - found in
 
 **NOTE:** It is unusual that the MCCI code refers to the AU915 regional configuration as _AU921_. I have never seen the Australian/New Zealand standard referred to using this naming convention. Nevertheless, after reviewing the source code and testing two devices, this is the correct setting for configuring a node for use on the AU915 standard.
 
-All done! Compared to other libraries this is a very easy modification for AU915/AU921 support. The only other configuration can be done in the actual Arduino sketch, where we can specify that we want to use the AU915/AU921 channel plan, and can select a specific sub-band as well. Now, we are ready to modify the default sketch provided in the project.
+All done! Compared to other libraries this is a very easy modification for AU915/AU921 support. The only other configuration can be done in the actual Arduino sketch, where we can specify that we want to use the AU915/AU921 channel plan and can select a specific sub-band as well. Now, we are ready to modify the default sketch provided in the project.
 
 ## Sample Dragino LoRa Shield Sketch
 
@@ -121,13 +121,13 @@ The example sketch I have authored for the Dragino LoRa Shield is provided in th
 ttn-abp-dragino-lorashield-au915.ino
 ```
 
-There are many ways to get this sketch imported into the Arduino IDE. You can simple open the file from where ever you download the repository. The best method is to add it to the Arduino IDE sketchbook. Make sure to put the sketch (`.ino` file) into a folder with the same name.
+There are many ways to get this sketch imported into the Arduino IDE. You can simply open the file from where ever you download the repository. The best method is to add it to the Arduino IDE sketchbook. Make sure to put the sketch (`.ino` file) into a folder with the same name.
 
 As it is, the sketch is ready to be compiled and uploaded. However, it is prudent to discuss the changes I made to the original sketch and why they were necessary.
 
 #### Frequency Operation Definition
 
-After defining the correct frequency configuration in the `lmic_project_config.h` file, it is set by default in the code. This means any sketch that uses the library will use this frequency. Remember, this was the setting that we configured in the `lmic_project_config.h` file. However, some configuration is still required. I added an else if statement to the existing statements in the `setup` function - which had existing configuration for the EU868 and US915 frequency plans. However, there was no additional code for the AU915 frequency. 
+After defining the correct frequency configuration in the `lmic_project_config.h` file, it is set by default in the code. This means any sketch that uses the library will use this frequency. Remember, this was the setting that we configured in the `lmic_project_config.h` file. However, some configuration is still required. I added an else if statement to the existing statements in the `setup` function - which had an existing configuration for the EU868 and US915 frequency plans. However, there was no additional code for the AU915 frequency. 
 
 Specifically, the `setup()` function in the sketch performs a check to see what regional configuration is set in the _Arduino-LMIC_ code and performs additional configuration; for example, setting specific channels.  A snippet from the original example sketch is provided below for reference. You can see that only the EU868 and US915 frequencies are further configured here.
 
@@ -152,7 +152,7 @@ void setup() {
 
 Note how the US915 frequency is configured to only use sub-band 2. This is configured by the line: `LMIC_selectSubBand(1);`. This is a simple function provided by the library to only enable a specific set of channels, called a sub-band. 
 
-So basically, we need to perform additional configuration of the frequency we have chosen. So far I have been discussing AU915 (or AU921 as MCCI called it). The following code addition, forces only the AU915 sub-band 2 to be specified. This means that only the channels in sub-band 2 will be enabled, and all other channels will be disabled.
+So basically, we need to perform additional configuration of the frequency we have chosen. So far I have been discussing AU915 (or AU921 as MCCI called it). The following code addition forces only the AU915 sub-band 2 to be specified. This means that only the channels in sub-band 2 will be enabled, and all other channels will be disabled.
 
 {% highlight bash %}
 // Modifications to operate on AU915 sub-band 2
@@ -161,7 +161,7 @@ Serial.println(F("Loading AU915 Configuration..."));
 LMIC_selectSubBand(1); // Set to AU915 sub-band 2
 {% endhighlight %}
 
-The above code is relatively straight-forward - thanks to MCCI who wrote some nice definitions and methods for the frequency. It is important to note that this function requires the sub-band required to be _one less_ that the actual sub-band required.
+The above code is relatively straightforward - thanks to MCCI who wrote some nice definitions and methods for the frequency. It is important to note that this function requires the sub-band required to be _one less_ that the actual sub-band required.
 
 NOTE: This modification has already been made in the `Dragino_MCCI_ABP_AU915.ino` sketch file, so no changes are required. 
 
@@ -219,10 +219,10 @@ Sending packet on frequency:917200000
 8275202: EV_TXCOMPLETE (includes waiting for RX windows)
 ```
 
-Notice how we are sending packets on the correct AU915 channels including: `917.4`, `917.2` and `916.8`. I confirmed the device was working correctly by checking our LoRaWAN gateway packet forwarder logs. I also checked that the data was getting to the server, but subscribing to the MQTT topic for the node I added, and could see `SGVsbG8sIHdvcmxkIQ==` in the data fields of the JSON, easily decoded from base64 to: `Hello, world!`, as specified in the sketch file code.
+Notice how we are sending packets on the correct AU915 channels including: `917.4`, `917.2` and `916.8`. I confirmed the device was working correctly by checking our LoRaWAN gateway packet forwarder logs. I also checked that the data was getting to the server, but subscribing to the MQTT topic for the node I added and could see `SGVsbG8sIHdvcmxkIQ==` in the data fields of the JSON, easily decoded from base64 to: `Hello, world!`, as specified in the sketch file code.
 
 ## Conclusion
 
-This post covered another method for getting the Dragino LoRa Shield to work with the Australian and New Zealand LoRaWAN frequency using the MCCI Arudino-LMIC library. I think the library is a good solution, and implements the AU915 (what they call AU921) correctly. It is a much more elegant approach than my _hacky_ fix to the original Arduino-LMIC library, and recommend to anyone who wants to configure a LoRaWAN node on an Arduino-based device such as the Dragino LoRa Shield or similar Arduino-based device.
+This post covered another method for getting the Dragino LoRa Shield to work with the Australian and New Zealand LoRaWAN frequency using the MCCI Arudino-LMIC library. I think the library is a good solution and implements the AU915 (what they call AU921) correctly. It is a much more elegant approach than my _hacky_ fix to the original Arduino-LMIC library, and recommend to anyone who wants to configure a LoRaWAN node on an Arduino-based device such as the Dragino LoRa Shield or similar Arduino-based device.
 
 If you have any feedback or questions please post a comment below. Also, if anyone knows any other Arduino-LMIC or LoRaWAN libraries that they like for LoRaWAN nodes, please feel free to share them below in the comments. Thanks!

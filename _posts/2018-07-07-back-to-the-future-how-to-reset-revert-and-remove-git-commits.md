@@ -6,7 +6,7 @@ tags:
 thumbnail_path: blog/thumbs/git.png
 ---
 
-I am exceptionally pedantic about my git commits. However, since I started using git locally, I have become much more relaxed. I put on my headphones, blast some Metallica, get in the zone, and git commit like a mad person! It is a great place to be. Furiously coding and committing at an important juncture. However, this has lead me into bad habits. Reckless is a better word for it. I generally commit with a descriptive message, and push at logical times... but have gotten less precise lately. I have so many accounts and repositories I contribute to that I sometimes enter in the wrong credentials. I have a GitHub account, a GitLab account, and another GitLab account which is for code hosted at my work-place. It gets confusing. And I refuse to use any credential managers (I can hear people screaming in agony at that comment!). Again, this leads to commits that need to be.... _taken 'a back_.
+I am exceptionally pedantic about my git commits. However, since I started using git locally, I have become much more relaxed. I put on my headphones, blast some Metallica, get in the zone, and git commit like a mad person! It is a great place to be. Furiously coding and committing at an important juncture. However, this led me into bad habits. Reckless is a better word for it. I generally commit with a descriptive message, and push at logical times... but have gotten less precise lately. I have so many accounts and repositories I contribute to that I sometimes enter in the wrong credentials. I have a GitHub account, a GitLab account, and another GitLab account which is for code hosted at my work-place. It gets confusing. And I refuse to use any credential managers (I can hear people screaming in agony at that comment!). Again, this leads to commits that need to be.... _taken 'a back_.
 
 ## Contents
 {:.no_toc}
@@ -24,9 +24,9 @@ This post will discuss how to undo unfortunate git commits... as well as git pus
 
 If you want a quick answer, here are the following commands to undo a `git commit`: 
 
-- Undo last commit and do not remove the changes:
+- Undo the last commit and do not remove the changes:
     - `git reset --soft HEAD~1`
-- Undo last commit and remove the changes (from disk):
+- Undo the last commit and remove the changes (from disk):
     - `git reset --hard HEAD~1`
 - Undo a specific commit and do not remove the changes:
     - `git reset --soft <commit-object-name>`
@@ -49,7 +49,7 @@ It should be noted that there are other command arguments that sound like they c
 
 ## Example Scenario
 
-The examples in this post use a simple git repository scenario. There ia a git repository that contains four files: 
+The examples in this post use a simple git repository scenario. There is a git repository that contains four files: 
 
 1. `task1.py` with the commit message: _First commit: task1.py_
 2. `task2.py` with the commit message: _Second commit: task2.py_
@@ -71,7 +71,7 @@ The output from the `git log` command is a summary of what has been committed. E
 1. The commit object name (e.g., `6f81b42` and `385c1d1`). This value is actually 40 characters in length, however, the `git log --oneline` command only displays a partial prefix. We can still use this partial object name and do not require the complete name.
 2. The commit message (e.g., _Fourth commit: task4.py_ and _Third commit: task3.py_)
 
-Please note the the list displayed by the `git log` command is from _most recent_ commit, to the _oldest commit_. 
+Please note the list displayed by the `git log` command is from _most recent_ commit to the _oldest commit_. 
 
 ## Undoing the Last Commit
 
@@ -83,7 +83,7 @@ git reset HEAD~1
 
 The above command is only relevant for undoing the most recent commit. This is very similar to pressing the _Undo_ button in Microsoft Word once. The option `HEAD~1` refers to the parent of the most recent commit. In the scenario example, we can see that the repository `HEAD` is the commit with the object name: `6f81b42` and the commit message: _Fourth commit: task4.py_. Basically, `HEAD~1` moves the `HEAD` value up one, in this case to the third commit.
 
-#### Undo last commit and do not remove the changes
+#### Undo the last commit and do not remove the changes
 
 ```
 git reset --soft HEAD~1
@@ -91,7 +91,7 @@ git reset --soft HEAD~1
 
 The `--soft` option does not remove the changes made. For example, when using `--soft`, the file `task4.py` is not removed from the disk (the file is not deleted), it is just removed from the _git index_.
 
-#### Undo last commit and remove the changes
+#### Undo the last commit and remove the changes
 
 ```
 git reset --hard HEAD~1
@@ -123,7 +123,7 @@ $ git log --oneline
 b9fba9e First commit: task1.py
 ```
 
-The following examples rely on finding the specific _commit object name_ to use as input to the `git reset` command. However, `git log` is not the only method to determine this value. You can also see the full _commit object name_ in you GitHub repository on the web interface - but, in my opinion, this is a more complex method.
+The following examples rely on finding the specific _commit object name_ to use as input to the `git reset` command. However, `git log` is not the only method to determine this value. You can also see the full _commit object name_ in your GitHub repository on the web interface - but, in my opinion, this is a more complex method.
 
 #### Undo a specific commit and do not remove the changes
 
@@ -169,4 +169,4 @@ Please be aware that some of these techniques specified in this post to _undo gi
 
 ## Conclusion
 
-Git is a difficult tool to master. Unfortunately, the best method to understand how it operates is to have a thorough understanding of how the staging, indexing and the remote repository work in conjunction. A fellow work colleague gave me some great advice to learning git. I told her that I had read all these articles and watched videos about how to use git correctly. She said, _"why don't you just create a throw-away repository, and actually try it"_. It was amazing advice, and how I actually learnt git.
+Git is a difficult tool to master. Unfortunately, the best method to understand how it operates is to have a thorough understanding of how the staging, indexing, and the remote repository work in conjunction. A fellow work colleague gave me some great advice about learning git. I told her that I had read all these articles and watched videos about how to use git correctly. She said, _"why don't you just create a throw-away repository, and actually try it"_. It was amazing advice, and how I actually learned git.

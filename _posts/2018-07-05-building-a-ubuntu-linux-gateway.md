@@ -9,7 +9,7 @@ tags:
 thumbnail_path: blog/thumbs/tux.png
 ---
 
-This post documents how to build a Linux gateway using Ubuntu Server 18.04. The gateway connects an internal network to an external network - basically, performing Network Address Translation (NAT) for hosts on the internal network. It is exceptionally similar to what your ISP supplied home router does. To achieve this, a Ubuntu Linux server is configured as a DHCP server and also to provide NAT using `iptables`. 
+This post documents how to build a Linux gateway using Ubuntu Server 18.04. The gateway connects an internal network to an external network - basically, performing Network Address Translation (NAT) for hosts on the internal network. It is exceptionally similar to what your ISP supplied home router does. To achieve this, an Ubuntu Linux server is configured as a DHCP server and also to provide NAT using `iptables`. 
 
 ## Contents
 {:.no_toc}
@@ -19,7 +19,7 @@ This post documents how to build a Linux gateway using Ubuntu Server 18.04. The 
 
 ## Introduction
 
-This tutorial is written when building a blueprint for VMWare vRealize, but the instructions lend to any virtualization, or normal, system. The _gateway_ connects to an external network named _vlan25_Profile_ which provides Internet access, and second network, _InternalNetwork_, which is an isolated network. While _host1_ only connects to the _InternalNetwork_. The vRealize blueprint for the network is displayed below.
+This tutorial is written when building a blueprint for VMWare vRealize, but the instructions lend to any virtualization, or normal, system. The _gateway_ connects to an external network named _vlan25_Profile_ which provides Internet access, and a second network, _InternalNetwork_, which is an isolated network. While _host1_ only connects to the _InternalNetwork_. The vRealize blueprint for the network is displayed below.
 
 {% include figure.html path="blog/posts/linux-gateway/blueprint.png" alt="vRealize blueprint" %}
 
@@ -41,7 +41,7 @@ Now we know the names of the two NICs, we can edit the networking configuration 
 sudo vim /etc/network/interfaces
 {% endhighlight %}
 
-In the following instructions the two NICs that will be configured are `ens160` and `ens192`. The `ens160` NIC is connected to the outside world and will receive a IP address configuration from an external DHCP server. The `ens192` NIC is the internal interface that is connected to the same network that the internal hosts are on. Given the preceding network setup, the following configuration is specified:
+In the following instructions, the two NICs that will be configured are `ens160` and `ens192`. The `ens160` NIC is connected to the outside world and will receive an IP address configuration from an external DHCP server. The `ens192` NIC is the internal interface that is connected to the same network that the internal hosts are on. Given the preceding network setup, the following configuration is specified:
 
 {% highlight bash %}
 auto ens160
@@ -99,9 +99,9 @@ option routers 192.168.100.10;
 }
 {% endhighlight %}
 
-A good resource for DHCP options is the [dhcp-options man page from die.net](https://linux.die.net/man/5/dhcp-options). The first line of the configuration above specify DNS settings. This allows translation of computer-friendly IP addresses to human-friendly domain names; for example: `google.com` corresponds to `172.217.25.142`. If you want, you can specify a `domain-name` option as well, but this is not required. However, make sure to include the `domain-name-servers` option with valid IP addresses from DNS servers. You can use the free Google DNS server using the value `8.8.8.8` or `8.8.8.4`, or use any other DNS server that you wish.
+A good resource for DHCP options is the [dhcp-options man page from die.net](https://linux.die.net/man/5/dhcp-options). The first line of the configuration above specifies DNS settings. This allows translation of computer-friendly IP addresses to human-friendly domain names; for example: `google.com` corresponds to `172.217.25.142`. If you want, you can specify a `domain-name` option as well, but this is not required. However, make sure to include the `domain-name-servers` option with valid IP addresses from DNS servers. You can use the free Google DNS server using the value `8.8.8.8` or `8.8.8.4`, or use any other DNS server that you wish.
 
-The remaining options specified above are for IP address allocation. This configuration is for the IP range `192.168.100.0\24`, or from `192.168.100.0` to `192.168.100.254`. The `range` option specifies the range of addresses to provide for lease, in this case it is limited to 80 addresses, from `192.168.100.20` to `192.168.100.100`. This can be modified to suit. Finally, the `routers` option, specifies the address of the _gateway_ machine, which has a static IP address of `192.168.100.10`. The `routers` option has the IP address of the _gateway_ because this is the machine that forwards traffic from the internal network to external networks.
+The remaining options specified above are for IP address allocation. This configuration is for the IP range `192.168.100.0\24`, or from `192.168.100.0` to `192.168.100.254`. The `range` option specifies the range of addresses to provide for lease, in this case, it is limited to 80 addresses, from `192.168.100.20` to `192.168.100.100`. This can be modified to suit. Finally, the `routers` option, specifies the address of the _gateway_ machine, which has a static IP address of `192.168.100.10`. The `routers` option has the IP address of the _gateway_ because this is the machine that forwards traffic from the internal network to external networks.
 
 Save the file, then restart service:
 
@@ -160,7 +160,7 @@ Add the following line:
 
 ## Configuring Internal Hosts: Linux
 
-With the gateway setup to provide DHCP and NAT services, a Linux host on the internal network can be configured to acquire an IP address from the gateway, and have all traffic routed through the gateway. The only configuration required on a Linux client is to edit the network configuration file, and set the NIC of the client to DHCP.
+With the gateway setup to provide DHCP and NAT services, a Linux host on the internal network can be configured to acquire an IP address from the gateway, and have all traffic routed through the gateway. The only configuration required on a Linux client is to edit the network configuration file and set the NIC of the client to DHCP.
 
 List the NICs that are available on the system:
 
@@ -174,7 +174,7 @@ Open the network interfaces file:
 vim /etc/network/interfaces
 {% endhighlight %}
 
-In the following instructions the NICs on the Linux client is named `ens160`. Configure the NIC to receive an IP address from the gateway:
+In the following instructions, the NICs on the Linux client is named `ens160`. Configure the NIC to receive an IP address from the gateway:
 
 {% highlight bash %}
 auto ens160
@@ -219,7 +219,7 @@ Then ping the IP address of the gateway internal-facing interface:
 ping 192.168.100.10
 {% endhighlight %}
 
-Then finishing it off with pinging any Internet DNS name:
+Then finish it off with pinging any Internet DNS name:
 
 {% highlight bash %}
 ping google.com
