@@ -23,11 +23,11 @@ This post is part of a series on the Ubuntu Linux version of Metasploitable3. Th
 
 ## Introduction
 
-My previous post was a tutorial about [Metasploitable3]( {% post_url 2018-07-03-metasploitable3-building-the-ubuntu-linux-version %}), where I specified the steps required to build the Metasploitable3 Ubuntu Linux version that is not officially finished or documented. In this tutorial, we go a step further and perform some customization of the Metasploitable3 virtual machine. This is performed during the actual build process of the virtual machine and requires editing various configuration files, then rebuilding the virtual machine. In this post I will cover how to customize the vulnerabilities, users, and flags in the Metasploitable3 virtual machine.
+My previous post was a tutorial about [Metasploitable3]( {% post_url 2018-07-03-metasploitable3-building-the-ubuntu-linux-version %}), where I specified the steps required to build the Metasploitable3 Ubuntu Linux version that is not officially finished or documented. In this tutorial, we go a step further and perform some customization of the Metasploitable3 virtual machine. This is performed during the actual build process of the virtual machine and requires editing various configuration files, then rebuilding the virtual machine. In this post, I will cover how to customize the vulnerabilities, users, and flags in the Metasploitable3 virtual machine.
 
 ## Cleaning the Build Environment
 
-If you followed my previous tutorial, you will need to clean the Metasploitable3 build environment. If this is not performed, there will be a variety of errors encountered during the rebuild process. For example, you cannot have two virtual machines in VirtualBox with the same name. Unfortunately, there is no quick clean-up script, so we will have to perform these steps manually. If you have not yet build a version of Metasploitable3, you do not need to perform these tasks.
+If you followed my previous tutorial, you will need to clean the Metasploitable3 build environment. If this is not performed, there will be a variety of errors encountered during the rebuilding process. For example, you cannot have two virtual machines in VirtualBox with the same name. Unfortunately, there is no quick clean-up script, so we will have to perform these steps manually. If you have not yet build a version of Metasploitable3, you do not need to perform these tasks.
 
 ### Remove the Virtual Machine from VirtualBox
 
@@ -88,7 +88,7 @@ packer/templates/pro/windows_2008_r2.json (Pro)
 
 So, there are three Ubuntu Linux templates, that I refer to as: 1) Normal, 2) Pro and 3) CTF. The primary difference between the Normal and Pro templates is that there are no Chef recipes in the Pro template. I have not thoroughly tested, but it appears that no additional software or configuration (apart from installing vmtools) is performed. I think that since the Linux version is still under development, there is not a differentiation yet. When compared to the Windows Server version, the Pro template seems much more secure (from solely looking at the configuration files.)
 
-In this post we are going to discuss and customize the **Normal template** available in: `packer/templates/ubuntu_1404.json`. Listed below is a stripped-down version of the `ubuntu_1404.json`. Obviously, the file format is JSON. There first entry is named `builders` which specify what type of virtual machine platform to target. In the previous post, we build a virtual machine for VirtualBox, it seems that we could instead target VMWare. The next entry, named `provisioners` is very interesting. This entry is an array of objects that defines the provisioners that will be used to install and configure software. 
+In this post, we are going to discuss and customize the **Normal template** available in: `packer/templates/ubuntu_1404.json`. Listed below is a stripped-down version of the `ubuntu_1404.json`. Obviously, the file format is JSON. The first entry is named `builders` which specify what type of virtual machine platform to target. In the previous post, we build a virtual machine for VirtualBox, it seems that we could instead target VMWare. The next entry, named `provisioners` is very interesting. This entry is an array of objects that define the provisioners that will be used to install and configure software. 
 
 {% highlight json %}
 {
@@ -141,11 +141,11 @@ When I built my Metasploitable3 Ubuntu Linux system for my Security course I com
 - `flags`: I wanted to put in my own flags, that were simpler (and more fun!)
 - `cups`: I had no real reason for taking this out!
 
-Looking back, I would have probably removed the `iptables` _recipe_ as well. In the end, I removed all the `iptables` rules manually, as implementation of the firewall would make the assessment far too difficult for the level of the paper. The following subsections discuss some more interesting customizations I have performed.
+Looking back, I would have probably removed the `iptables` _recipe_ as well. In the end, I removed all the `iptables` rules manually, as the implementation of the firewall would make the assessment far too difficult for the level of the paper. The following subsections discuss some more interesting customizations I have performed.
 
 ### User Customization
 
-The user _recipe_ file for user configuration (`recipes/users.rb`) points to another file that has the actual configuration properties of the users (`attributes/users.rb`). The user attribute file can be modified to specify different user names, passwords and other configuration. An example of the file structure is below:
+The user _recipe_ file for user configuration (`recipes/users.rb`) points to another file that has the actual configuration properties of the users (`attributes/users.rb`). The user attribute file can be modified to specify different usernames, passwords and other configuration. An example of the file structure is below:
 
 {% highlight bash %}
 default[:users][:leia_organa] = { 
@@ -193,14 +193,14 @@ default[:users][:darth_vader] = {
     salary: '10000'}
 {% endhighlight %}
 
-The only tricky part of this modification was to generate a password for the user. Since the password had changed for `darth_vader`, from `Dark_syD3` to `daddy_issues2277` a new hash is essential. Otherwise the new password would not match the password stored in the Linux encrypted password file (`/etc/shadow`). I have never done this before, but a couple of Google searches found a simple solution using OpenSSL:
+The only tricky part of this modification was to generate a password for the user. Since the password had changed for `darth_vader`, from `Dark_syD3` to `daddy_issues2277` a new hash is essential. Otherwise, the new password would not match the password stored in the Linux encrypted password file (`/etc/shadow`). I have never done this before, but a couple of Google searches found a simple solution using OpenSSL:
 
 {% highlight bash %}
 thomasl@server:~$ openssl passwd -1 "daddy_issues2277"
 $1$dqkERFiQ$oMihN1usY.gnbemCa48Pk1
 {% endhighlight %}
 
-As you can see from the command and output above, the `openssl` tool can generate a MD5 hashed password, and generate a unique salt value... and format the output to adhere to the `md5crypt` syntax that is used many Linux distribution password files. This is the same format used in Ubuntu 14.04 that Metasploitable3 is build on. Once this value is calculated, it can be easily copy/pasted into the user configuration file.
+As you can see from the command and output above, the `openssl` tool can generate an MD5 hashed password, and generate a unique salt value... and format the output to adhere to the `md5crypt` syntax that is used many Linux distribution password files. This is the same format used in Ubuntu 14.04 that Metasploitable3 is built on. Once this value is calculated, it is easily copied/pasted into the user configuration file.
 
 I specifically choose MD5 as the passwords would be easier (read: faster) to crack. Unfortunately, the `openssl` tools does not support the SHA-512 algorithm so another solution is necessary. Here is a simple Python 3 snippet that will generate the correct hash syntax for the `/etc/shadow` file:
 
@@ -208,15 +208,15 @@ I specifically choose MD5 as the passwords would be easier (read: faster) to cra
 python3 -c 'import crypt; print(crypt.crypt("daddy_issues2277", crypt.mksalt(crypt.METHOD_SHA512)))'
 {% endhighlight %}
 
-In addition to user names, passwords and password hashes, there are other configurations in the users file. The `admin` setting specifies whether a user should have `sudo` access. This is an important choice, as modification of this can greatly hinder (or help) pentests. Finally, the `salary` value is used in the `payroll_app` _recipe_ which is used to display wages of specific users. From my experience, it is more for fun than anything else.
+In addition to usernames, passwords, and password hashes, there are other configurations in the users' file. The `admin` setting specifies whether a user should have `sudo` access. This is an important choice, as a modification of this can greatly hinder (or help) pentests. Finally, the `salary` value is used in the `payroll_app` _recipe_ which is used to display the wages of specific users. From my experience, it is more for fun than anything else.
 
 ### Live Customization
 
-So far, we have only customized of the build process. It is very easy to customize some parts of the Metasploitable3 system in a live environment; for example, when running the built virtual machine in VirtualBox. If you are like me and are not an expert using Vagrant, Packer and Chef, this is a highly suitable solution.
+So far, we have only customized of the build process. It is very easy to customize some parts of the Metasploitable3 system in a live environment; for example, when running the built virtual machine in VirtualBox. If you are like me and are not an expert using Vagrant, Packer, and Chef, this is a highly suitable solution.
 
 #### Changing the vagrant password
 
-By default, Metasploitable3 is configured with a user named: `vagrant` who is used to build the virtual machine. To keep things simple, the password for the account is also `vagrant`. However, the virtual machine cannot be deployed with these default credentials, as it is too easy to break. I have even witnessed other vagrant builds that use the same credentials and could log in without knowing anything about the system (these were not deployed, only in testing environments... but still!). The `vagrant` user configuration can be changed in the build process by editing the following files:
+By default, Metasploitable3 is configured with a user named: `vagrant` that is used to build the virtual machine. To keep things simple, the password for the account is also `vagrant`. However, the virtual machine cannot be deployed with these default credentials, as it is too easy to break. I have even witnessed other vagrant builds that use the same credentials and could log in without knowing anything about the system (these were not deployed, only in testing environments... but still!). The `vagrant` user configuration can be changed in the build process by editing the following files:
 
 - `packer/http/preseed.cfg` on the following lines:
 
@@ -249,7 +249,7 @@ sudo passwd vagrant
 
 #### Changing the hostname
 
-The hostname (or computername) is a similar situation. It can, of course, be changed in both the live system and the build process. The only location I could discover that specifies the hostname configuration is in the `Vagrantfile` on the following line:
+The hostname (or computer name) is a similar situation. It can, of course, be changed in both the live system and the build process. The only location I could discover that specifies the hostname configuration is in the `Vagrantfile` on the following line:
 
 {% highlight bash %}
 ub1404.vm.hostname = "metasploitable3-ub1404"
@@ -264,7 +264,7 @@ Again, it would be simpler to modify this property in the live system by editing
 
 #### Uninstalling VirtualBox Guest Additions
 
-I only used VirtualBox for the build process. After that I export the virtual machine, and import it into the VMWare vSphere platform. I know this sounds crazy. I don't have a license for VMWare Workstation for Linux. Additionally, I noted that in the `vmtools.rb` _recipe_ there is not option for VMWare. Not sure if this would be problematic during the building process. Anyway, another good configuration to perform on a live system in removal of the VBoxGuestAdditions package. The following commands will achieve uninstallation of this package.
+I only used VirtualBox for the build process. After that, I export the virtual machine and import it into the VMWare vSphere platform. I know this sounds crazy. I don't have a license for VMWare Workstation for Linux. Additionally, I noted that in the `vmtools.rb` _recipe_ there is no option for VMWare. Not sure if this would be problematic during the building process. Anyway, another good configuration to perform on a live system in removal of the VBoxGuestAdditions package. The following commands will achieve uninstallation of this package.
 Uninstall VBox tools
 
 {% highlight bash %}
@@ -285,7 +285,7 @@ sudo iptables -F
 
 #### Changing the flags
 
-One of the most exciting aspects of Metasploitable3 are the flags. Nested in the capture the flag tournaments, flags offer the chance to find and extract information. They add something fun into the mix. In an assessment, the flags are thoroughly enjoyed by students. Instead of writing a Chef _recipe_ to build custom flags, I simply disable the _recipe_ and manually add them. In my assessment the flags are much easer. For example, in the home directory of `boba_fett` I added a text file to help students find a user account with `sudo` access, and provide them a password at the same time.
+One of the most exciting aspects of Metasploitable3 are the flags. Nested in the capture the flag tournaments, flags offer the chance to find and extract information. They add something fun into the mix. In an assessment, the flags are thoroughly enjoyed by students. Instead of writing a Chef _recipe_ to build custom flags, I simply disable the _recipe_ and manually add them. In my assessment, the flags are much easier. For example, in the home directory of `boba_fett` I added a text file to help students find a user account with `sudo` access, and provide them a password at the same time.
 
 ```
 Darth Vader always forgets his password, so I was told to keep a backup.
@@ -298,6 +298,6 @@ I mean, for someone so powerful with the force, he is kinda forgetful.
 
 ## Conclusion
 
-Hopefully this tutorial gave you some guidance and hints about customizing Metasploitable3 Ubuntu Linux version. These changes can be exceptionally useful if you want to have a custom virtual machine that targets different levels of difficulty, or uses different user credentials. Stay tuned for my next Metasploitable3 tutorial, a summary of some vulnerabilities and exploits for the Metasploitable3 Ubuntu Linux version.
+Hopefully, this tutorial gave you some guidance and hints about customizing Metasploitable3 Ubuntu Linux version. These changes can be exceptionally useful if you want to have a custom virtual machine that targets different levels of difficulty or uses different user credentials. Stay tuned for my next Metasploitable3 tutorial, a summary of some vulnerabilities and exploits for the Metasploitable3 Ubuntu Linux version.
 
 If you are interested in the steps/method I used to configure Metasploitable3 Windows Server 2008 version, please leave a comment. I have the notes for 2017, and would happy re-visit and re-build the machine while making notes if anyone is interested! Also, if you have any feedback, ideas or questions, please leave a comment below.
