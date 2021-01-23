@@ -5,7 +5,7 @@ tags: ["Git"]
 thumbnail: git.png
 date: 2018-07-07
 redirect_from:
-  - blog/2018/07/07/back-to-the-future-how-to-reset-revert-and-remove-git-commits/
+  - /blog/2018/07/07/back-to-the-future-how-to-reset-revert-and-remove-git-commits/
 ---
 
 I am exceptionally pedantic about my git commits. However, since I started using git locally, I have become much more relaxed. I put on my headphones, blast some Metallica, get in the zone, and git commit like a mad person! It is a great place to be. Furiously coding and committing at an important juncture. However, this led me into bad habits. Reckless is a better word for it. I generally commit with a descriptive message, and push at logical times... but have gotten less precise lately. I have so many accounts and repositories I contribute to that I sometimes enter in the wrong credentials. I have a GitHub account, a GitLab account, and another GitLab account which is for code hosted at my work-place. It gets confusing. And I refuse to use any credential managers (I can hear people screaming in agony at that comment!). Again, this leads to commits that need to be.... _taken 'a back_.

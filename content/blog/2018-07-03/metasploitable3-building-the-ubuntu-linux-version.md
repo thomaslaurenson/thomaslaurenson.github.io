@@ -5,7 +5,7 @@ tags: ["Metasploitable3", "Pentesting", "Linux"]
 thumbnail: metasploitable3.png
 date: 2018-07-03
 redirect_from:
-  - blog/2018/07/03/metasploitable3-building-the-ubuntu-linux-version/
+  - /blog/2018/07/03/metasploitable3-building-the-ubuntu-linux-version/
 ---
 
 This post is part of a series on the Ubuntu Linux version of Metasploitable3. The following posts are part of the series:

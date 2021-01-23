@@ -5,7 +5,7 @@ tags: ["vRealize", "vSphere", "PowerShell"]
 thumbnail: virtualization.png
 date: 2018-07-18
 redirect_from:
-  - blog/2018/07/18/scripting-vrealize-automation-using-powershell/
+  - /blog/2018/07/18/scripting-vrealize-automation-using-powershell/
 ---
 
 I finally found an answer to a problem that had plagued me for months! How to script, or automate, tasks in vRealize; for example, destroying a deployed blueprint. The answer was simpler than I initially thought... It turns out that the _Catalog Service_ REST API provides all that functionality that is required to automate specific tasks such as request a Blueprint to be deployed (built), get the IP address of a VM, or destroy a deployed blueprint.

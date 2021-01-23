@@ -5,7 +5,7 @@ tags: ["Blog", "Jekyll", "Tutorial"]
 thumbnail: jekyll.png
 date: 2018-06-30
 redirect_from:
-  - blog/2018/06/30/building-a-new-Jekyll-powered-blog-for-GitHub-pages/
+  - /blog/2018/06/30/building-a-new-Jekyll-powered-blog-for-GitHub-pages/
 ---
 
 ## Contents

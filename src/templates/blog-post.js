@@ -118,7 +118,7 @@ const BlogPostTemplate = ({ data }) => {
                 <Box display="flex" width={"100%"} justifyContent="flex-start">
                   {previous && (
                     <Link
-                      to={`/blog${previous.fields.slug}`}
+                      to={previous.fields.slug}
                       rel="prev"
                       className={classes.styledLink}
                     >
@@ -133,7 +133,7 @@ const BlogPostTemplate = ({ data }) => {
                 <Box display="flex" width={"100%"} justifyContent="flex-end">
                   {next && (
                     <Link
-                      to={`/blog${next.fields.slug}`}
+                      to={next.fields.slug}
                       rel="next"
                       className={classes.styledLink}
                     >

@@ -5,7 +5,7 @@ tags: ["Jekyll", "Blog"]
 thumbnail: jekyll.png
 date: 2018-09-14
 redirect_from:
-  - blog/2018/09/14/disabling-adsense-analytics-and-disqus-on-local-jekyll-builds/
+  - /blog/2018/09/14/disabling-adsense-analytics-and-disqus-on-local-jekyll-builds/
 ---
 
 This post documents a simple, yet powerful, technique to enable or disable specific website content on Jekyll-powered websites. 

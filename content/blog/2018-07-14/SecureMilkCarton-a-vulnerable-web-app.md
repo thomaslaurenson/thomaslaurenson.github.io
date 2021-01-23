@@ -5,7 +5,7 @@ tags: ["Teaching", "Security", "OWASP"]
 thumbnail: securemilkcarton.png
 date: 2018-07-12
 redirect_from:
-  - blog/2018/07/12/SecureMilkCarton-a-vulnerable-web-application-to-secure/
+  - /blog/2018/07/12/SecureMilkCarton-a-vulnerable-web-application-to-secure/
 ---
 
 This post documents a security project I have written, SecureMilkCarton - an intentionally vulnerable Java web application that runs on Apache Tomcat. 

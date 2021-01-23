@@ -5,7 +5,7 @@ tags: ["Linux", "Bash", "History"]
 thumbnail: bash.png
 date: 2018-07-02
 redirect_from:
-  - blog/2018/07/02/better-bash-history/
+  - /blog/2018/07/02/better-bash-history/
 ---
 
 ## Contents
