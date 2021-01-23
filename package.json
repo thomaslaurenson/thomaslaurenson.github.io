@@ -1,0 +1,70 @@
+{
+  "name": "thomaslaurenson.github.io",
+  "private": true,
+  "description": "Personal portfolio and blog for Thomas Laurenson.",
+  "version": "1.0.0",
+  "author": "Thomas Laurenson <thomas@thomaslaurenson.com>",
+  "bugs": {
+    "url": "https://github.com/thomaslaurenson/thomaslaurenson.github.io/issues"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@material-ui/core": "^4.11.2",
+    "gatsby": "^2.31.1",
+    "gatsby-image": "^2.10.0",
+    "gatsby-plugin-feed": "^2.12.0",
+    "gatsby-plugin-fontawesome-css": "^1.0.0",
+    "gatsby-plugin-google-analytics": "^2.10.0",
+    "gatsby-plugin-manifest": "^2.11.0",
+    "gatsby-plugin-material-ui": "^2.1.10",
+    "gatsby-plugin-meta-redirect": "^1.1.1",
+    "gatsby-plugin-offline": "^3.9.0",
+    "gatsby-plugin-react-helmet": "^3.9.0",
+    "gatsby-plugin-sharp": "^2.13.1",
+    "gatsby-redirect-from": "^0.2.4",
+    "gatsby-remark-autolink-headers": "^2.10.0",
+    "gatsby-remark-copy-linked-files": "^2.9.0",
+    "gatsby-remark-images": "^3.10.0",
+    "gatsby-remark-prismjs": "^3.12.0",
+    "gatsby-remark-responsive-iframe": "^2.10.0",
+    "gatsby-remark-smartypants": "^2.9.0",
+    "gatsby-remark-table-of-contents": "^1.0.0",
+    "gatsby-source-filesystem": "^2.10.0",
+    "gatsby-transformer-remark": "^2.15.0",
+    "gatsby-transformer-sharp": "^2.11.0",
+    "prismjs": "^1.23.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-helmet": "^5.2.1",
+    "react-minimal-pie-chart": "^8.1.0",
+    "typeface-merriweather": "0.0.72",
+    "typeface-montserrat": "0.0.75"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "homepage": "https://github.com/thomaslaurenson/thomaslaurenson.github.io",
+  "keywords": [
+    "thomaslaurenson",
+    "portfolio",
+    "react",
+    "gatsby"
+  ],
+  "license": "gpl-3.0",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomaslaurenson/thomaslaurenson.github.io.git"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  }
+}

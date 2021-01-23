@@ -1,0 +1,21 @@
+content:
+  - item:
+    title: part coder
+    list:
+      [
+        "Full stack developer",
+        "DevOps mindset",
+        "Python enthusiast",
+        "Hobby data engineer",
+        "Rubber duck discusser",
+      ]
+  - item:
+    title: part academic
+    list:
+      [
+        "Passionate teacher",
+        "Lecturer of the year",
+        "PhD in Digital Forensics",
+        "Academic paper writer",
+        "Making learning fun!",
+      ]
