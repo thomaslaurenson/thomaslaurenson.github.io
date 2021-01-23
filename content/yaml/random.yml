@@ -1,0 +1,21 @@
+content:
+  - item:
+    title: tech
+    list:
+      [
+        "Open source supporter",
+        "Data cruncher",
+        "Lover of old RPGs",
+        "CVE browser",
+        "Hardware tinkerer",
+      ]
+  - item:
+    title: life
+    list:
+      [
+        "Avid coffee drinker",
+        "Professed beer aficionado",
+        "Fiery amatuer chef",
+        "Slight clean freak",
+        "Beginner birder",
+      ]

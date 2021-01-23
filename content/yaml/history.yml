@@ -1,0 +1,22 @@
+title: A brief history
+content:
+  - item:
+    company: Xero
+    position: Senior Crybersecurity Education Analyst
+    avatar: xero.png
+    dates: 2020 - Present
+  - item:
+    company: Otago Polytechnic
+    position: Lecturer
+    avatar: op.png
+    dates: 2017 - 2019
+  - item:
+    company: University of Otago
+    position: PhD Candidate / Lab Demonstrator
+    avatar: uoo.png
+    dates: 2013 - 2017
+  - item:
+    company: AUT
+    position: Masters / Teaching Assistant
+    avatar: aut.png
+    dates: 2010 - 2013

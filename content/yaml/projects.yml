@@ -1,0 +1,50 @@
+content:
+  - item:
+    name: thomaslaurenson.com
+    description: A personal website with a portfolio and blog built using a modern JavaScript stack including React, Gatsby, Material UI, and FontAwesome.
+    img: thomaslaurenson.com.png
+    github: https://github.com/thomaslaurenson/thomaslaurenson.github.io
+    url: https://www.thomaslaurenson.com
+    tech: ["javascript", "react", "gatsby"]
+  - item:
+    name: osrsbox-db
+    description: A complete and up-to-date database of Old School Runescape (OSRS) items, monsters and prayers. Available as a Python PyPi package, or static JSON API.
+    img: osrsbox-db.png
+    github: https://github.com/osrsbox/osrsbox-db
+    url: https://www.osrsbox.com/projects/osrsbox-db/
+    tech: ["python", "bash"]
+  - item:
+    name: osrsbox-api
+    description: An open, free, complete and up-to-date RESTful API for Old School RuneScape (OSRS) items, monsters and prayer data. Available as a RESTful API.
+    img: osrsbox-api.png
+    github: https://github.com/osrsbox/osrsbox-db
+    url: https://api.osrsbox.com/
+    tech: ["python", "mongo", "docker", "nginx"]
+  - item:
+    name: osrsbox
+    description: A website for Old School RuneScape (OSRS) enthusiasts including various unique and custom tools, documentation, and a technical blog.
+    img: osrsbox.png
+    github: https://github.com/osrsbox/osrsbox.github.io
+    url: https://www.osrsbox.com/
+    tech: ["jekyll", "javascript"]
+  - item:
+    name: SecureMilkCarton
+    description: An intentionally vulnerable web application... the difference from others is this application is designed to be secured not exploited. Great for learning!
+    img: securemilkcarton.png
+    github: https://github.com/thomaslaurenson/SecureMilkCarton
+    url: null
+    tech: ["docker", "java", "mysql", "bash"]
+  - item:
+    name: startrek-payroll
+    description:  A simple SQL injection vulnerable web application for teaching injection basics. Powered by PHP and MySQL and deployed easily using Docker.
+    img: startrek_payroll.png
+    github: https://github.com/thomaslaurenson/startrek_payroll
+    url: null
+    tech: ["docker", "php", "mysql", "bash"]
+  - item:
+    name: LiveDiff
+    description:  LiveDiff is fork of the popular RegShot tool - a portable, system-level differencing tool for Windows - with added forensic functionality.
+    img: livediff.png
+    github: https://github.com/thomaslaurenson/LiveDiff
+    url: null
+    tech: ["c"]

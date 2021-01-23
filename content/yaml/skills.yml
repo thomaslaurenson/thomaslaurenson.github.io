@@ -1,0 +1,13 @@
+content:
+  - item:
+    name: Languages
+    list: ["python", "java", "c#", "c++", "bash", "powershell"]
+  - item:
+    name: DevOps
+    list: ["docker", "git", "travis", "nagios", "puppet", "salt"]
+  - item:
+    name: Frontend
+    list: ["javascript", "react", "html", "sass", "css", "npm"]
+  - item:
+    name: Backend
+    list: ["linux", "nginx", "apache", "mysql", "mongodb", "postgres"]
