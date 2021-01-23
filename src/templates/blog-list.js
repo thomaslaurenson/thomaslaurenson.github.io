@@ -7,7 +7,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BlogCard from "../templates/blog-card"
+import BlogCard from "./blog-card"
 
 const useStyles = makeStyles(theme => ({
   root: {

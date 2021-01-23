@@ -5,7 +5,7 @@ tags: ["Networking", "Ubuntu", "Linux", "Tutorial"]
 thumbnail: ubuntu.png
 date: 2018-07-05
 redirect_from:
-  - blog/2018/07/05/building-a-ubuntu-linux-gateway/
+  - /blog/2018/07/05/building-a-ubuntu-linux-gateway/
 ---
 
 This post documents how to build a Linux gateway using Ubuntu Server 18.04. The gateway connects an internal network to an external network - basically, performing Network Address Translation (NAT) for hosts on the internal network. It is exceptionally similar to what your ISP supplied home router does. To achieve this, an Ubuntu Linux server is configured as a DHCP server and also to provide NAT using `iptables`. 

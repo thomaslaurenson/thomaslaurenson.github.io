@@ -5,7 +5,7 @@ tags: ["Security", "Linux", "Ubuntu", "SSH"]
 thumbnail: ssh.png
 date: 2018-09-07
 redirect_from:
-  - blog/2018/09/07/restricting-ssh-access-using-rssh/
+  - /blog/2018/09/07/restricting-ssh-access-using-rssh/
 ---
 
 This post summarizes a simple method to secure, or lock-down, SSH access using the _Restricted SSH_ (`rssh`) package. The basic premise, you can create a user with a restricted shell and allow only specific protocols such as SCP or SFTP. There are many reasons to restrict SSH access or restrict SSH access to specific accounts. I used `rssh` on an assessment server in one of the papers I teach. I wanted students to be able to submit an assessment using a simple bash script, that SCP transferred a single file to a server. But, I did not want students to be able to log into the machine remotely - as they would be able to see assessment submissions from other students. 

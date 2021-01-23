@@ -5,7 +5,7 @@ tags: ["IoT", "LoRaWAN", "AU915"]
 thumbnail: lorawan.png
 date: 2018-07-06
 redirect_from:
-  - blog/2018/07/06/back-to-the-future-how-to-reset-revert-and-remove-git-commits/
+  - /blog/2018/07/06/back-to-the-future-how-to-reset-revert-and-remove-git-commits/
 ---
 
 **Update: This tutorial is now considered out-of-date. I have written a new tutorial which uses a more recent version of the _Arduino-LMIC_ library** modified by MCCI which has much better support for the AU915 frequency. Please view the updated [Dragino LoRa Shield Node Configuration for AU915 (Updated)](/2018-07-21/dragino-lorashield-on-AU915/) post for more information.

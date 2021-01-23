@@ -52,7 +52,7 @@ const BlogCard = ({ post }) => {
             disableTypography
             title={
               <Link
-                to={`/blog${post.fields.slug}`}
+                to={post.fields.slug}
                 itemProp="url"
                 className={classes.titleText}
               >

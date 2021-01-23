@@ -5,7 +5,7 @@ tags: ["DVWA", "Web Security", "Hacking", "Ubuntu"]
 thumbnail: dvwa.png
 date: 2018-07-12
 redirect_from:
-  - blog/2018/07/12/installing-and-configuring-damn-vulnerable-web-application/
+  - /blog/2018/07/12/installing-and-configuring-damn-vulnerable-web-application/
 ---
 
 This tutorial covers how to install and configure the [Damn Vulnerable Web Application](https://github.com/ethicalhack3r/DVWA), or DVWA. 

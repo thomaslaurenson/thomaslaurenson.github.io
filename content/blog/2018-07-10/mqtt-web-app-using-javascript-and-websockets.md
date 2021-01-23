@@ -5,7 +5,7 @@ tags: ["IoT", "LoRaWAN", "MQTT", "JavaScript"]
 thumbnail: lorawan.png
 date: 2018-07-10
 redirect_from:
-  - blog/2018/07/10/mqtt-web-application-using-javascript-and-websockets/
+  - /blog/2018/07/10/mqtt-web-application-using-javascript-and-websockets/
 ---
 
 This post outlines a tutorial and explanation of how to use the Paho MQTT JavaScript library to build a basic web application to subscribe to MQTT messages from a broker. The resultant source code is available from the following repository: [js-mtt-websockets-demo](https://github.com/thomaslaurenson/MQTT-Subscription-Examples). Please feel free to use it as a base in your project. The final web application is simple, yet functional.

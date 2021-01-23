@@ -5,7 +5,7 @@ tags: ["IoT", "LoRaWAN", "AU915"]
 thumbnail: lorawan.png
 date: 2018-07-21
 redirect_from:
-  - blog/2018/07/21/dragino-lorashield-on-AU915-using-arduino-lmic-library/
+  - /blog/2018/07/21/dragino-lorashield-on-AU915-using-arduino-lmic-library/
 ---
 
 This post summarizes an updated tutorial on how to configure the Dragino LoRa Shield device for the Australian/New Zealand (AU915) frequency using my fork of the MCCI Catena version of the Arduino-LMIC library. 
