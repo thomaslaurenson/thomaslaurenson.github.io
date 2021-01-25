@@ -68,7 +68,7 @@ const HomeHeader = () => {
 
               <Grid item xs={4}>
                 <Box display="flex" justifyContent="flex-start" pl={2} pb={1}>
-                  <Typography variant="h4">{"academic"}</Typography>
+                  <Typography variant="h4">{"educator"}</Typography>
                 </Box>
                 <Hidden smDown>
                   <Box display="flex" justifyContent="flex-start" pl={2}>
