@@ -20,6 +20,13 @@ const useStyles = makeStyles(theme => ({
   socialIcon: {
     color: "black",
   },
+  styledLink: {
+    textDecoration: "none",
+    color: "black",
+    "&:hover": {
+      color: "#666666",
+    },
+  },
 }))
 
 const PortfolioProject = ({ project }) => {
@@ -28,14 +35,22 @@ const PortfolioProject = ({ project }) => {
   return (
     <Grid item xs={12} sm={6}>
       <Card variant="outlined">
-        <ImageCard alt={project.img} filename={project.img} />
+        <a href={project.primarylink} aria-label="Project Link via Image">
+          <ImageCard alt={project.img} filename={project.img} />
+        </a>
         <Divider />
         <CardHeader
           disableTypography
           title={
             <Typography variant="h5" color="textPrimary">
               <Box fontWeight="fontWeightBold" pb={2}>
-                {project.name}
+                <a
+                  href={project.primarylink}
+                  aria-label="Project Link"
+                  className={classes.styledLink}
+                >
+                  {project.name}
+                </a>
               </Box>
             </Typography>
           }

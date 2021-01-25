@@ -2,8 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 
 export default function HTML(props) {
-  let { isProduction } = process.env.NODE_ENV === "production"
-
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -14,21 +12,17 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
-        {isProduction && (
-          <script
-            async
-            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
-        )}
-        {isProduction && (
-          <script>
-            {`(adsbygoogle = window.adsbygoogle || []).push({
+        <script
+          async
+          src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
+        <script>
+          {`(adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-3654916361894071",
     enable_page_level_ads: true
   });
   `}
-          </script>
-        )}
+        </script>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

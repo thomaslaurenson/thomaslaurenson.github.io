@@ -15,13 +15,13 @@ import { PieChart } from "react-minimal-pie-chart"
 const HomeAbout = () => {
   const pieChartData = [
     { title: "coder", value: 60, color: "#a4a5a5" },
-    { title: "academic", value: 40, color: "#303030" },
+    { title: "educator", value: 40, color: "#303030" },
   ]
 
   const shiftSize = 3
 
   const coder = HomeAboutData.content[0]
-  const academic = HomeAboutData.content[1]
+  const educator = HomeAboutData.content[1]
 
   return (
     <div>
@@ -74,12 +74,12 @@ const HomeAbout = () => {
 
             <Grid item xs={12} sm={4}>
               <Typography variant="h5" align="center">
-                <Box fontWeight="fontWeightBold">{academic.title}</Box>
+                <Box fontWeight="fontWeightBold">{educator.title}</Box>
               </Typography>
               <List>
                 <ListItem>
                   <ListItemText>
-                    {academic.list.map((item, index) => (
+                    {educator.list.map((item, index) => (
                       <Typography
                         variant="h6"
                         color="textSecondary"

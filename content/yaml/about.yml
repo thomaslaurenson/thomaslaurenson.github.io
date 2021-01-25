@@ -3,14 +3,14 @@ content:
     title: part coder
     list:
       [
+        "Cybersecurity specialist",
         "Full stack developer",
         "DevOps mindset",
         "Python enthusiast",
-        "Hobby data engineer",
         "Rubber duck discusser",
       ]
   - item:
-    title: part academic
+    title: part educator
     list:
       [
         "Passionate teacher",
