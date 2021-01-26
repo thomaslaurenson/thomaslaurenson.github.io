@@ -10,10 +10,10 @@ redirect_from:
 
 This post is part of a series on the Ubuntu Linux version of Metasploitable3. The following posts are part of the series:
 
-- Part 1: [Building the Ubuntu Linux Version](/2018-07-03/metasploitable3-building-the-ubuntu-linux-version/) (You are here!)
-- Part 2: [Customizing the Ubuntu Linux Version](/2018-07-04-metasploitable3-customizing-the-ubuntu-linux-version)
-- Part 3: [Pentesting the Ubuntu Linux Version - SQL Injection](/2018-07-08/metasploitable3-pentesting-the-ubuntu-linux-version-part1)
-- Part 4: [Pentesting the Ubuntu Linux Version - Attacking Services](/2018-07-09/metasploitable3-pentesting-the-ubuntu-linux-version-part2)
+- Part 1: [Building the Ubuntu Linux Version](/blog/2018-07-03/metasploitable3-building-the-ubuntu-linux-version/) (You are here!)
+- Part 2: [Customizing the Ubuntu Linux Version](/blog/2018-07-04-metasploitable3-customizing-the-ubuntu-linux-version)
+- Part 3: [Pentesting the Ubuntu Linux Version - SQL Injection](/blog/2018-07-08/metasploitable3-pentesting-the-ubuntu-linux-version-part1)
+- Part 4: [Pentesting the Ubuntu Linux Version - Attacking Services](/blog/2018-07-09/metasploitable3-pentesting-the-ubuntu-linux-version-part2)
 
 ## Contents
 
