@@ -69,7 +69,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 630,
-              showCaptions: ['title'],              markdownCaptions: true
+              showCaptions: ['title'],
+              markdownCaptions: true
             },
           },
           {
@@ -110,10 +111,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Thomas Laurenson Personal Website`,
+        short_name: `Thomas Laurenson`,
         start_url: `/`,
         background_color: `#ffffff`,
+        theme_color_in_head: false,
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/images/t.svg`,
