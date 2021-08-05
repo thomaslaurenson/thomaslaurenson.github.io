@@ -47,8 +47,7 @@ const HomeHeader = () => {
                       align="right"
                       color="textSecondary"
                     >
-                      Full stack developer with a security-centric approach and
-                      DevOps mindset
+                      Security consultant and full stack developer with a DevOps mindset
                     </Typography>
                   </Box>
                 </Hidden>
