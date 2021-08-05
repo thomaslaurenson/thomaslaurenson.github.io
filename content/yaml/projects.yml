@@ -1,5 +1,13 @@
 content:
   - item:
+    name: trophy_room
+    description: Collection of my walkthroughs, hints, notes, code snippets, tool logs, and resources for vulnerable CTF-style boxes, while preparing for the OSCP certification.
+    img: trophy_room.png
+    github: https://github.com/thomaslaurenson/trophy_room
+    url: null
+    primarylink: https://github.com/thomaslaurenson/trophy_room
+    tech: ["python", "php", "go", "ps", "bash"]
+  - item:
     name: SecureMilkCarton
     description: An intentionally vulnerable web application... the difference from others is this application is designed to be secured not exploited. Great for learning!
     img: securemilkcarton.png
@@ -55,4 +63,11 @@ content:
     url: https://www.osrsbox.com/
     primarylink: https://www.osrsbox.com/
     tech: ["jekyll", "javascript"]
-
+  - item:
+    name: squirrel
+    description: Like the humble squirrel, this is a humble tool. Designed to extract some useful, interesting data from the Old School RuneScape (OSRS) cache.
+    img: squirrel.png
+    github: https://github.com/osrsbox/squirrel
+    url: null
+    primarylink: https://github.com/osrsbox/squirrel
+    tech: ["java"]
