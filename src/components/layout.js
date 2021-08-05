@@ -1,7 +1,7 @@
 import React from "react"
 import {
   makeStyles,
-  createMuiTheme,
+  createTheme,
   ThemeProvider,
 } from "@material-ui/core/styles"
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const theme = createMuiTheme()
+const theme = createTheme()
 theme.typography.h3 = {
   fontFamily: "Montserrat",
 }
