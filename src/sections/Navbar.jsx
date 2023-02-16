@@ -14,12 +14,15 @@ import {
   Divider,
   Link,
 } from '@mui/material';
+import {useTheme} from '@emotion/react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = () => {
+  const theme = useTheme();
+
   const social = {
     email: `mailto:thomas@thomaslaurenson.com`,
     linkedin: `https://www.linkedin.com/in/thomaslaurenson`,
@@ -38,6 +41,8 @@ const Navbar = () => {
       onClick={handleDrawerToggle}
       onKeyDown={handleDrawerToggle}
     >
+      {/* Toolbar to add top-padding */}
+      <Toolbar />
       <List>
         <Link href='#history'>
           <ListItem style={{display: 'flex', justifyContent: 'center'}}>
@@ -145,54 +150,51 @@ const Navbar = () => {
   );
 
   return (
-    <div>
-      <AppBar position='relative' css={css`z-index: 1400;`}>
-        {/* md, lg only */}
-        <Box sx={{display: {xs: 'none', sm: 'none', md: 'block'}}}>
-          <Toolbar>
-            <Container maxWidth='lg'>
-              <Box display='flex' alignItems='center'>
-                {appBarTitle()}
-                {appBarList()}
-                {appBarListSocial()}
-              </Box>
-            </Container>
-          </Toolbar>
-        </Box>
+    <AppBar position='relative' css={css`z-index: ${theme.zIndex.drawer + 1};`}>
+      {/* md, lg only */}
+      <Box sx={{display: {xs: 'none', sm: 'none', md: 'block'}}}>
+        <Toolbar>
+          <Container maxWidth='lg'>
+            <Box display='flex' alignItems='center'>
+              {appBarTitle()}
+              {appBarList()}
+              {appBarListSocial()}
+            </Box>
+          </Container>
+        </Toolbar>
+      </Box>
 
-        {/* sm only */}
-        <Box sx={{display: {xs: 'none', sm: 'block', md: 'none'}}}>
-          <Toolbar>
-            {appBarTitle()}
-            {appBarList()}
-          </Toolbar>
-        </Box>
+      {/* sm only */}
+      <Box sx={{display: {xs: 'none', sm: 'block', md: 'none'}}}>
+        <Toolbar>
+          {appBarTitle()}
+          {appBarList()}
+        </Toolbar>
+      </Box>
 
-        {/* xs only */}
-        <Box sx={{display: {xs: 'block', sm: 'none'}}}>
-          <Toolbar>
-            {appBarTitle()}
-            <IconButton
-              edge='start'
-              color='inherit'
-              aria-label='menu'
-              onClick={handleDrawerToggle}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              variant='temporary'
-              anchor='top'
-              open={open}
-              onClose={handleDrawerToggle}
-            // classes={{paper: `css=overflow: 'auto';`}}
-            >
-              {dropDownMenuList()}
-            </Drawer>
-          </Toolbar>
-        </Box>
-      </AppBar>
-    </div>
+      {/* xs only */}
+      <Box sx={{display: {xs: 'block', sm: 'none'}}}>
+        <Toolbar>
+          {appBarTitle()}
+          <IconButton
+            edge='start'
+            color='inherit'
+            aria-label='menu'
+            onClick={handleDrawerToggle}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Drawer
+            variant='temporary'
+            anchor='top'
+            open={open}
+            onClose={handleDrawerToggle}
+          >
+            {dropDownMenuList()}
+          </Drawer>
+        </Toolbar>
+      </Box>
+    </AppBar>
   );
 };
 
