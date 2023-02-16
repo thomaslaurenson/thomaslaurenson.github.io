@@ -25,7 +25,7 @@ const PortfolioCard = ({project}) => {
             component='img'
             alt={project.name}
             height='100%'
-            image={project.img}
+            image={`projects/${project.img}.jpg`}
           /></Link>
 
         <Divider />
