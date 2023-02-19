@@ -18,7 +18,7 @@ const HistoryCard = ({data}) => {
             <Avatar variant='square' alt={data.company} src={data.avatar} />
           }
           title={
-            <Typography variant='h6' color='textPrimary'>
+            <Typography variant='h5' color='textPrimary'>
               {data.position}
             </Typography>
           }

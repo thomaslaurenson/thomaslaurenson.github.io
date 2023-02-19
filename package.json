@@ -11,8 +11,8 @@
     "lint_fix": "eslint src --ext .js,.jsx --fix"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fontsource/montserrat": "^4.5.14",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.9",
@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.10",
+    "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "eslint": "^8.34.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.32.2",
-    "vite": "^4.1.1"
+    "vite": "^4.1.2"
   }
 }

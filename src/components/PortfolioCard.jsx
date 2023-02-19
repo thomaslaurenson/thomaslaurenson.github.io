@@ -64,14 +64,14 @@ const PortfolioCard = ({project}) => {
         <CardActions disableSpacing>
           {project.github != null && (
             <Link href={project.github} aria-label='Project GitHub Link'>
-              <IconButton>
-                <GitHubIcon />
+              <IconButton aria-label="project github link">
+                <GitHubIcon/>
               </IconButton>
             </Link>
           )}
           {project.url != null && (
             <Link href={project.url} aria-label='Project Website Link'>
-              <IconButton>
+              <IconButton aria-label="project website link">
                 <LinkIcon />
               </IconButton>
             </Link>
