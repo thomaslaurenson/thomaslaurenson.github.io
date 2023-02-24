@@ -59,16 +59,6 @@ const Portfolio = () => {
       'tech': ['c'],
     },
     {
-      'name': 'thomaslaurenson.com',
-      // eslint-disable-next-line max-len
-      'description': 'A personal website with a portfolio built using a modern JavaScript stack including React, Vite, and Material UI.',
-      'img': 'thomaslaurenson.com',
-      'github': 'https://github.com/thomaslaurenson/thomaslaurenson.github.io/',
-      'url': null,
-      'primarylink': 'https://github.com/thomaslaurenson/thomaslaurenson.github.io/',
-      'tech': ['javascript', 'react', 'vite'],
-    },
-    {
       'name': 'GMAdminMax',
       // eslint-disable-next-line max-len
       'description': 'An addon for WoW Vanilla (1.12) private servers to help teleport to common locations, spawn BiS item sets, and make it easier to run some common GM commands.',
