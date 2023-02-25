@@ -7,52 +7,12 @@ import {
   Typography,
   Link,
 } from '@mui/material';
-import {css} from '@emotion/react';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const Footer = () => {
-  const scrollUpStyle = css({
-    width: '100px',
-    height: '50px',
-    marginBottom: '-10px',
-    borderRadius: '150px 150px 0 0',
-    borderBottom: 'none',
-    transitionProperty: 'all',
-    transitionDuration: '0.3s',
-    transitionTimingFunction: 'ease',
-    transitionDelay: '0s',
-    '&:hover': {
-      MozTransform: 'translateY(-9px)',
-      MsTransform: 'translateY(-9px)',
-      OTransform: 'translateY(-9px)',
-      WebkitTransform: 'translateY(-9px)',
-      transform: 'translateY(-9px)',
-    },
-  });
-
-  const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  };
-
   return (
     <Box id='footer'>
-      <Box
-        display='flex'
-        justifyContent='center'
-      >
-        <Box
-          className="footerScrollUpButton"
-          css={scrollUpStyle}
-          display='flex'
-          alignItems='center'
-          justifyContent='center'
-          onClick={scrollToTop}
-        >
-          <ExpandLessIcon />
-        </Box>
-      </Box>
       <Divider />
       <footer>
         <Grid container className='footerContainer'>
