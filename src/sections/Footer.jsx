@@ -28,9 +28,9 @@ const Footer = () => {
               <Typography variant='body2' display='flex'>
                 Built with
                 <FavoriteIcon fontSize='small' />
-                love and
+                and
                 <CoffeeIcon fontSize='small' />
-                coffee using
+                using
                 <Link
                   href='https://vitejs.dev/' pl={0.5} pr={0.5}>
                   Vite
