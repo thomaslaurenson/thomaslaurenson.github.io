@@ -4,6 +4,9 @@ run:
 build:
 	npm run build
 
+preview:
+	npm run preview
+
 update:
 	npx npm-check -u
 

@@ -15,7 +15,13 @@ const HistoryCard = ({data}) => {
         <CardHeader
           disableTypography
           avatar={
-            <Avatar variant='square' alt={data.company} src={data.avatar} />
+            <Avatar
+              variant='square'
+              alt={data.company}
+              srcSet={`employeers/${data.avatar}.webp,
+                       employeers/${data.avatar}.jpg`}
+              src={`employeers/${data.avatar}.webp`}
+            />
           }
           title={
             <Typography variant='h5' color='textPrimary'>

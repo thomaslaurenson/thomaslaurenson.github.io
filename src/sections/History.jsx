@@ -11,37 +11,37 @@ const History = () => {
     {
       'company': 'Cogo',
       'position': 'Senior Security Engineer',
-      'avatar': 'employeers/cogo.jpg',
+      'avatar': 'cogo',
       'dates': '2022 - Present',
     },
     {
       'company': 'Quantum Security',
       'position': 'Senior Security Consultant (Pentester)',
-      'avatar': 'employeers/quantum.png',
+      'avatar': 'quantum',
       'dates': '2021 - 2022',
     },
     {
       'company': 'Xero',
       'position': 'Senior Cybersecurity Education Analyst',
-      'avatar': 'employeers/xero.png',
+      'avatar': 'xero',
       'dates': '2020 - 2021',
     },
     {
       'company': 'Otago Polytechnic',
       'position': 'Lecturer',
-      'avatar': 'employeers/op.png',
+      'avatar': 'op',
       'dates': '2017 - 2019',
     },
     {
       'company': 'University of Otago',
       'position': 'PhD Candidate/Lab Demonstrator',
-      'avatar': 'employeers/uoo.png',
+      'avatar': 'uoo',
       'dates': '2013 - 2017',
     },
     {
       'company': 'Auckland University of Technology',
       'position': 'Masters Candidate/Teaching Assistant',
-      'avatar': 'employeers/aut.png',
+      'avatar': 'aut',
       'dates': '2010 - 2013',
     }];
 
