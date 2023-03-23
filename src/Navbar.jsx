@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {css} from '@emotion/react';
 import {
   Container,
@@ -19,8 +20,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
+import LightMode from '@mui/icons-material/LightMode';
+import DarkMode from '@mui/icons-material/DarkMode';
 
-const Navbar = () => {
+const Navbar = ({changeTheme, isDarkTheme}) => {
   const theme = useTheme();
 
   const social = {
@@ -144,6 +147,20 @@ const Navbar = () => {
         <Link href='/'>
           Thomas Laurenson
         </Link>
+        <Box display='inline' pl={2}>
+          {isDarkTheme ? (
+            <LightMode
+              fontSize='small'
+              onClick={() => changeTheme()}
+            />
+          ) : (
+            <DarkMode
+              fontSize='small'
+              onClick={() => changeTheme()}
+            />
+          )
+          }
+        </Box>
       </Typography>
     </Box>
 
@@ -196,6 +213,11 @@ const Navbar = () => {
       </Box>
     </AppBar>
   );
+};
+
+Navbar.propTypes = {
+  changeTheme: PropTypes.func,
+  isDarkTheme: PropTypes.bool,
 };
 
 export default Navbar;

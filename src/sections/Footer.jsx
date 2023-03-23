@@ -3,7 +3,6 @@
 import {
   Grid,
   Box,
-  Divider,
   Typography,
   Link,
 } from '@mui/material';
@@ -13,7 +12,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 const Footer = () => {
   return (
     <Box id='footer'>
-      <Divider />
       <footer>
         <Grid container className='footerContainer'>
           <Grid item xs={12}>

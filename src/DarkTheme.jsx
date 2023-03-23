@@ -3,13 +3,13 @@ import '@fontsource/montserrat';
 import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/700.css';
 
-let theme = createTheme({
+let DarkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
 });
 
-theme = createTheme(theme, {
+DarkTheme = createTheme(DarkTheme, {
   typography: {
     h4: {
       fontWeight: 700,
@@ -47,25 +47,24 @@ theme = createTheme(theme, {
         },
       },
     },
-    MuiCssBaseline: {
+    MuiSvgIcon: {
       styleOverrides: {
-        // Fix for footer scroll up button
-        '.footerScrollUpButton': {
-          'backgroundColor': '#121212',
-          'border': '2px solid #FFFFFF1E',
+        root: {
           '&:hover': {
-            'color': '#FFFFFF1E',
+            color: '#4f5969',
           },
         },
-        '.footerContainer': {
-          'backgroundColor': '#121212',
-        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
         '.footer': {
-          'backgroundColor': '#121212',
+          // eslint-disable-next-line max-len
+          'backgroundImage': 'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))',
         },
       },
     },
   },
 });
 
-export default theme;
+export default DarkTheme;

@@ -1,11 +1,13 @@
+import React, {useState} from 'react';
 import {Container, Paper, Box, Fade, Fab} from '@mui/material';
 import {ThemeProvider, CssBaseline} from '@mui/material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PropTypes from 'prop-types';
 
-import theme from './theme';
-import Navbar from './sections/Navbar';
+import LightTheme from './LightTheme';
+import DarkTheme from './DarkTheme';
+import Navbar from './Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import History from './sections/History';
@@ -40,10 +42,16 @@ ScrollTop.propTypes = {
 };
 
 function App(props) {
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+  const changeTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
       <CssBaseline />
-      <Navbar />
+      <Navbar changeTheme={changeTheme} isDarkTheme={isDarkTheme} />
       <Paper>
         <Box id="scroll-up-anchor">
           <Container maxWidth="md">
