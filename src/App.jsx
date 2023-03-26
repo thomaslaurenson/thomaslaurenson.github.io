@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Paper, Box, Fade, Fab} from '@mui/material';
 import {ThemeProvider, CssBaseline} from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PropTypes from 'prop-types';
@@ -42,7 +43,24 @@ ScrollTop.propTypes = {
 };
 
 function App(props) {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  // Set theme to system default
+  // This useMediaQuery returns true if dark mode set
+  const [
+    isDarkTheme,
+    setIsDarkTheme,
+  ] = useState(useMediaQuery('(prefers-color-scheme: dark)'));
+
+  useEffect(() => {
+    // When system theme is updated, event triggers for theme change
+    window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (event) => {
+          if (event.matches) {
+            setIsDarkTheme(true);
+          } else {
+            setIsDarkTheme(false);
+          }
+        });
+  }, []);
 
   const changeTheme = () => {
     setIsDarkTheme(!isDarkTheme);
