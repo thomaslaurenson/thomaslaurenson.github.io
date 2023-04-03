@@ -31,6 +31,7 @@ LightTheme = createTheme(LightTheme, {
       styleOverrides: {
         root: {
           boxShadow: 'none',
+          backgroundColor: 'white',
         },
       },
     },
@@ -42,7 +43,7 @@ LightTheme = createTheme(LightTheme, {
           // eslint-disable-next-line quote-props
           textDecoration: 'none',
           '&:hover': {
-            color: '#87ceeb',
+            color: 'rgba(0, 0, 0, 0.6)',
           },
         },
       },
@@ -50,8 +51,9 @@ LightTheme = createTheme(LightTheme, {
     MuiSvgIcon: {
       styleOverrides: {
         root: {
+          'color': 'black',
           '&:hover': {
-            color: '#87ceeb',
+            color: 'rgba(0, 0, 0, 0.6)',
           },
         },
       },
