@@ -63,9 +63,9 @@ const Portfolio = () => {
       // eslint-disable-next-line max-len
       'description': 'An addon for WoW Vanilla (1.12) private servers to help teleport to common locations, spawn BiS items, and run some common GM commands.',
       'img': 'gmadminmax',
-      'github': 'https://github.com/thomaslaurenson/GMAdminMax',
+      'github': 'https://github.com/thomaslaurenson/wow-GMAdminMax',
       'url': null,
-      'primarylink': 'https://github.com/thomaslaurenson/GMAdminMax',
+      'primarylink': 'https://github.com/thomaslaurenson/wow-GMAdminMax',
       'tech': ['lua'],
     },
     {
