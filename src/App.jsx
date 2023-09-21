@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Paper, Box, Fade, Fab} from '@mui/material';
-import {ThemeProvider, CssBaseline} from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
+import {
+  Container,
+  Paper,
+  Box,
+  Fade,
+  Fab,
+  ThemeProvider,
+  CssBaseline,
+  useMediaQuery,
+  useScrollTrigger,
+} from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PropTypes from 'prop-types';
 
