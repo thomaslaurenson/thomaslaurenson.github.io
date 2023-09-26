@@ -12,7 +12,7 @@ const History = () => {
       'company': 'Cogo',
       'position': 'Senior Security Engineer',
       'avatar': 'cogo',
-      'dates': '2022 - Present',
+      'dates': '2022 - 2023',
     },
     {
       'company': 'Quantum Security',

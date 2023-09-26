@@ -27,9 +27,9 @@ const About = () => {
   const educator = [
     'Passionate teacher',
     'Lecturer of the year',
+    'Vulnerability researcher',
     'PhD in InfoSec',
     'Academic paper writer',
-    'Making learning fun!',
   ];
 
   return (

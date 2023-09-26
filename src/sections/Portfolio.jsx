@@ -11,7 +11,7 @@ const Portfolio = () => {
     {
       'name': 'trophy_room',
       // eslint-disable-next-line max-len
-      'description': 'Collection of my walkthroughs, hints, notes, code snippets, tool logs, and resources for vulnerable CTF-style boxes, while preparing for the OSCP certification.',
+      'description': 'Collection of my walkthroughs, hints, notes, code snippets, tool logs, and resources for vulnerable CTF-style boxes, while preparing for the OSCP certification',
       'img': 'trophy_room',
       'github': 'https://github.com/thomaslaurenson/trophy_room',
       'url': null,
@@ -21,12 +21,22 @@ const Portfolio = () => {
     {
       'name': 'PickTheBox',
       // eslint-disable-next-line max-len
-      'description': 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance.',
+      'description': 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance',
       'img': 'pickthebox',
       'github': 'https://github.com/thomaslaurenson/pickthebox',
       'url': 'https://www.thomaslaurenson.com/pickthebox/',
       'primarylink': 'https://www.thomaslaurenson.com/pickthebox/',
       'tech': ['javascript', 'react', 'vite'],
+    },
+    {
+      'name': 'startrek-payroll',
+      // eslint-disable-next-line max-len
+      'description': 'A simple SQL injection vulnerable web application for teaching injection basics, powered by PHP and MySQL and deployed easily using Docker',
+      'img': 'startrek_payroll',
+      'github': 'https://github.com/thomaslaurenson/startrek_payroll',
+      'url': null,
+      'primarylink': 'https://github.com/thomaslaurenson/startrek_payroll',
+      'tech': ['docker', 'php', 'mysql', 'bash'],
     },
     {
       'name': 'SecureMilkCarton',
@@ -39,19 +49,9 @@ const Portfolio = () => {
       'tech': ['docker', 'java', 'mysql', 'bash'],
     },
     {
-      'name': 'startrek-payroll',
-      // eslint-disable-next-line max-len
-      'description': 'A simple SQL injection vulnerable web application for teaching injection basics. Powered by PHP and MySQL and deployed easily using Docker.',
-      'img': 'startrek_payroll',
-      'github': 'https://github.com/thomaslaurenson/startrek_payroll',
-      'url': null,
-      'primarylink': 'https://github.com/thomaslaurenson/startrek_payroll',
-      'tech': ['docker', 'php', 'mysql', 'bash'],
-    },
-    {
       'name': 'LiveDiff',
       // eslint-disable-next-line max-len
-      'description': 'LiveDiff is fork of the popular RegShot tool - a portable, system-level differencing tool for Windows - with added forensic functionality.',
+      'description': 'LiveDiff is fork of the popular RegShot tool - a portable, system-level differencing tool for Windows - with added forensic functionality',
       'img': 'livediff',
       'github': 'https://github.com/thomaslaurenson/LiveDiff',
       'url': null,
@@ -59,19 +59,59 @@ const Portfolio = () => {
       'tech': ['c'],
     },
     {
-      'name': 'GMAdminMax',
+      'name': 'IRDNumberScanner',
       // eslint-disable-next-line max-len
-      'description': 'An addon for WoW Vanilla (1.12) private servers to help teleport to common locations, spawn BiS items, and run some common GM commands.',
-      'img': 'gmadminmax',
-      'github': 'https://github.com/thomaslaurenson/wow-GMAdminMax',
+      'description': 'Co-author of a bulk_extractor scanner plug-in to detect and validate New Zealand Inland Revenue (IR) numbers',
+      'img': 'irdnumberscanner',
+      'github': 'https://github.com/thomaslaurenson/IRDNumberScanner',
       'url': null,
-      'primarylink': 'https://github.com/thomaslaurenson/wow-GMAdminMax',
-      'tech': ['lua'],
+      'primarylink': 'https://github.com/thomaslaurenson/IRDNumberScanner',
+      'tech': ['C++', 'Flex', 'Python'],
+    },
+    {
+      'name': 'dot_kali',
+      // eslint-disable-next-line max-len
+      'description': 'A minimalist Bash script to bootstrap a fresh Kali Linux install adding aliases, useful packages, Docker, and Visual Studio Code',
+      'img': 'dot_kali',
+      'github': 'https://github.com/thomaslaurenson/dot_kali',
+      'url': null,
+      'primarylink': 'https://github.com/thomaslaurenson/dot_kali',
+      'tech': ['Bash'],
+    },
+    {
+      'name': 'The Gray Dot',
+      // eslint-disable-next-line max-len
+      'description': 'Tutorials, opinions and ramblings about major geekiness including comic books, star wars, and vintage games',
+      'img': 'thegraydot',
+      'github': 'https://github.com/TheGrayDot',
+      'url': 'https://thegraydot.io',
+      'primarylink': 'https://thegraydot.io',
+      'tech': ['JavaScript', 'GatsbyJS'],
+    },
+    {
+      'name': 'gcd_docker',
+      // eslint-disable-next-line max-len
+      'description': ' A simple Docker environment for the Grand Comic Database (GCD) with some Python scripts for interacting with the database',
+      'img': 'gcd_docker',
+      'github': 'https://github.com/TheGrayDot/gcd_docker',
+      'url': null,
+      'primarylink': 'https://github.com/TheGrayDot/gcd_docker',
+      'tech': ['Docker', 'Python', 'MySQL'],
+    },
+    {
+      'name': 'wow-vmangos-docker',
+      // eslint-disable-next-line max-len
+      'description': 'A Docker Compose environment for running the vmangos/core World of Warcraft Vanilla (patch 1.12) server',
+      'img': 'wow_vmangos_docker',
+      'github': 'https://github.com/TheGrayDot/wow-vmangos-docker',
+      'url': null,
+      'primarylink': 'https://github.com/TheGrayDot/wow-vmangos-docker',
+      'tech': ['Docker', 'Python', 'MySQL', 'Bash'],
     },
     {
       'name': 'barcomic_server',
       // eslint-disable-next-line max-len
-      'description': 'An HTTP API written in Go for receiving comic book barcodes from the Barcomic Android application and either logging the barcode or sending barcode as keystrokes.',
+      'description': 'An HTTP API written in Go for receiving comic book barcodes from the Barcomic Android app and either logging or sending barcode as keystrokes',
       'img': 'barcomic_server',
       'github': 'https://github.com/TheGrayDot/barcomic_server',
       'url': null,

@@ -17,7 +17,7 @@ const Hero = () => {
             <Box sx={{display: {sm: 'none', md: 'block'}}}>
               <Box display="flex" pr={2}>
                 <Typography variant="h5" align="right" color="textSecondary">
-                  Security consultant with a DevOps mindset
+                  Security engineer with a DevOps mindset
                 </Typography>
               </Box>
             </Box>
