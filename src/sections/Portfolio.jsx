@@ -9,13 +9,13 @@ import PortfolioCard from '../components/PortfolioCard';
 const Portfolio = () => {
   const projects = [
     {
-      'name': 'trophy_room',
+      'name': 'trophyroom',
       // eslint-disable-next-line max-len
       'description': 'Collection of my walkthroughs, hints, notes, code snippets, tool logs, and resources for vulnerable CTF-style boxes, while preparing for the OSCP certification',
-      'img': 'trophy_room',
-      'github': 'https://github.com/thomaslaurenson/trophy_room',
-      'url': null,
-      'primarylink': 'https://github.com/thomaslaurenson/trophy_room',
+      'img': 'trophyroom',
+      'github': 'https://github.com/thomaslaurenson/trophyroom',
+      'url': 'https://trophyroom.thomaslaurenson.com',
+      'primarylink': 'https://trophyroom.thomaslaurenson.com',
       'tech': ['python', 'php', 'ps', 'bash'],
     },
     {
@@ -24,8 +24,8 @@ const Portfolio = () => {
       'description': 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance',
       'img': 'pickthebox',
       'github': 'https://github.com/thomaslaurenson/pickthebox',
-      'url': 'https://www.thomaslaurenson.com/pickthebox/',
-      'primarylink': 'https://www.thomaslaurenson.com/pickthebox/',
+      'url': 'https://pickthebox.thomaslaurenson.com/',
+      'primarylink': 'https://pickthebox.thomaslaurenson.com/',
       'tech': ['javascript', 'react', 'vite'],
     },
     {
