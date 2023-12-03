@@ -19,7 +19,7 @@ const PortfolioCard = ({project}) => {
   return (
     <Grid item sm={12} md={6}>
       <Card elevation={0} variant="outlined">
-        <Link href={project.primarylink} aria-label="Project Link via Image">
+        <Link href={project.primarylink} aria-label={project.name}>
           <CardMedia component="picture">
             <source
               srcSet={`projects/${project.img}.webp,
@@ -39,7 +39,7 @@ const PortfolioCard = ({project}) => {
           title={
             <Typography variant="h5" color="textPrimary">
               <Box fontWeight="fontWeightBold" pb={2}>
-                <Link href={project.primarylink} aria-label="Project Link">
+                <Link href={project.primarylink} aria-label={project.name}>
                   {project.name}
                 </Link>
               </Box>
