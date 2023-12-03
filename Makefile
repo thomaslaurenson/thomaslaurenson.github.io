@@ -1,3 +1,6 @@
+install:
+	npm install
+
 run:
 	npm run dev
 
@@ -6,6 +9,9 @@ build:
 
 preview:
 	npm run preview
+
+build_and_preview:
+	npm run build && npm run preview
 
 update:
 	npx npm-check -u
