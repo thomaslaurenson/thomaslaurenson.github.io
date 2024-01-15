@@ -9,6 +9,12 @@ import HistoryCard from '../components/HistoryCard';
 const History = () => {
   const employeers = [
     {
+      'company': 'University of Auckland',
+      'position': 'Senior Security Engineer',
+      'avatar': 'uoa',
+      'dates': '2024 - present',
+    },
+    {
       'company': 'Cogo',
       'position': 'Senior Security Engineer',
       'avatar': 'cogo',
