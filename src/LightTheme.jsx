@@ -38,9 +38,7 @@ LightTheme = createTheme(LightTheme, {
     MuiLink: {
       styleOverrides: {
         root: {
-          // eslint-disable-next-line quote-props
           color: 'black',
-          // eslint-disable-next-line quote-props
           textDecoration: 'none',
           '&:hover': {
             color: 'rgba(0, 0, 0, 0.6)',

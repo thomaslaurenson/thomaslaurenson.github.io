@@ -37,9 +37,7 @@ DarkTheme = createTheme(DarkTheme, {
     MuiLink: {
       styleOverrides: {
         root: {
-          // eslint-disable-next-line quote-props
           color: 'white',
-          // eslint-disable-next-line quote-props
           textDecoration: 'none',
           '&:hover': {
             color: '#4f5969',
@@ -59,7 +57,6 @@ DarkTheme = createTheme(DarkTheme, {
     MuiCssBaseline: {
       styleOverrides: {
         '.footer': {
-          // eslint-disable-next-line max-len
           'backgroundImage': 'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))',
         },
       },

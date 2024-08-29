@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import React from 'react';
 import {css} from '@emotion/react';
 import {Box, Typography, Grid} from '@mui/material';
 
@@ -10,7 +11,6 @@ const Hero = () => {
         <Grid container direction="row" justify="center" alignItems="center">
           <Grid item xs={4}>
             <Box display="flex" pr={2} pb={1} justifyContent="flex-end">
-              {/* eslint-disable-next-line quotes */}
               <Typography variant="h4">{"< coder >"}</Typography>
             </Box>
             {/* For md screens only and above */}

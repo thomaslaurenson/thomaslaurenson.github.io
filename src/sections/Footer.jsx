@@ -1,5 +1,5 @@
-/* eslint-disable quote-props */
 /** @jsxImportSource @emotion/react */
+import React from 'react';
 import {
   Grid,
   Box,
