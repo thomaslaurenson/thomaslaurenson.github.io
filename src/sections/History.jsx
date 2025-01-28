@@ -7,7 +7,7 @@ import {
 import HistoryCard from '../components/HistoryCard';
 
 const History = () => {
-  const employeers = [
+  const employers = [
     {
       'company': 'University of Auckland',
       'position': 'Senior Security Engineer',
@@ -65,8 +65,8 @@ const History = () => {
         alignItems='center'
         spacing={3}
       >
-        {employeers.map((employeer, index) => {
-          return <HistoryCard data={employeer} key={index} />;
+        {employers.map((employer, index) => {
+          return <HistoryCard data={employer} key={index} />;
         })}
       </Grid>
     </Box>

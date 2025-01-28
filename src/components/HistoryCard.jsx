@@ -18,9 +18,9 @@ const HistoryCard = ({data}) => {
             <Avatar
               variant='square'
               alt={data.company}
-              srcSet={`employeers/${data.avatar}.webp,
-                       employeers/${data.avatar}.jpg`}
-              src={`employeers/${data.avatar}.webp`}
+              srcSet={`employers/${data.avatar}.webp,
+                       employers/${data.avatar}.jpg`}
+              src={`employers/${data.avatar}.webp`}
             />
           }
           title={
