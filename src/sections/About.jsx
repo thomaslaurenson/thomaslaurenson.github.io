@@ -42,7 +42,7 @@ const About = () => {
       >
 
         {/* coder */}
-        <Grid item sm={12} md={4}>
+        <Grid size={{ sm: 12 , md: 4 }}>
           <Typography variant='h5' align='center'>
             <Box fontWeight='fontWeightBold'>part coder</Box>
           </Typography>
@@ -66,14 +66,14 @@ const About = () => {
         </Grid>
 
         {/* pie chart */}
-        <Grid item sm={12} md={4}>
+        <Grid size={{ sm: 12 , md: 4 }}>
           <Grid
             container
             direction="column"
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <PieChart
                 animate={true}
                 animationDuration={2000}
@@ -97,7 +97,7 @@ const About = () => {
         </Grid>
 
         {/* educator */}
-        <Grid item sm={12} md={4}>
+        <Grid size={{ sm: 12 , md: 4 }}>
           <Typography variant='h5' align='center'>
             <Box fontWeight='fontWeightBold'>part educator</Box>
           </Typography>

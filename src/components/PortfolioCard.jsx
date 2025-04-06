@@ -17,7 +17,7 @@ import LinkIcon from '@mui/icons-material/Link';
 
 const PortfolioCard = ({project}) => {
   return (
-    <Grid item sm={12} md={6}>
+    <Grid size={{ sm: 12 , md: 6 }}>
       <Card elevation={0} variant="outlined">
         <Link href={project.primarylink} aria-label={project.name}>
           <CardMedia component="picture">
