@@ -10,7 +10,7 @@ import {
 
 const HistoryCard = ({data}) => {
   return (
-    <Grid item xs={12}>
+    <Grid size={{ xs: 12 }}>
       <Card elevation={0} variant='outlined'>
         <CardHeader
           disableTypography
@@ -30,12 +30,12 @@ const HistoryCard = ({data}) => {
           }
           subheader={
             <Grid container justify='space-between'>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12 , sm: 6 }}>
                 <Typography variant='subtitle2' color='textSecondary'>
                   {data.company}
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12 , sm: 6 }}>
                 <Typography
                   variant='subtitle2'
                   color='textSecondary'

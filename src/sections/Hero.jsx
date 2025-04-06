@@ -9,7 +9,7 @@ const Hero = () => {
       {/* For sm screens only and above */}
       <Box sx={{display: {xs: 'none', sm: 'block'}}}>
         <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <Box display="flex" pr={2} pb={1} justifyContent="flex-end">
               <Typography variant="h4">{"< coder >"}</Typography>
             </Box>
@@ -23,7 +23,7 @@ const Hero = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <Box pb={2}>
               <picture>
                 <source srcSet="profile.webp, profile.jpg" />
@@ -43,7 +43,7 @@ const Hero = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <Box display="flex" justifyContent="flex-start" pl={2} pb={1}>
               <Typography variant="h4">{'educator'}</Typography>
             </Box>
@@ -60,7 +60,7 @@ const Hero = () => {
 
       {/* For xs screens only */}
       <Box sx={{display: {xs: 'block', sm: 'none'}}}>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <Box pb={2} pl={3} pr={3}>
             <picture>
               <source srcSet="profile.webp, profile.jpg" />

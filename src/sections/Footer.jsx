@@ -13,14 +13,14 @@ const Footer = () => {
   return (
     <footer>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <Box display='flex' justifyContent='center' pt={2} pb={2}>
             <Typography variant='body2'>
               © {new Date().getFullYear()}, Thomas Laurenson
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <Box display='flex' justifyContent='center' pb={2} pr={1} pl={1}>
             <Typography variant='body2' display='flex'>
               Built with
