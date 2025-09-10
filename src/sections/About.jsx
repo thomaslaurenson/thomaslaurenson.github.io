@@ -8,29 +8,10 @@ import {
   Grid,
 } from '@mui/material';
 import {PieChart, pieChartDefaultProps} from 'react-minimal-pie-chart';
+import { aboutData } from '../data/constants';
 
 const About = () => {
-  const pieChartData = [
-    {title: 'coder', value: 60, color: '#a4a5a5'},
-    {title: 'educator', value: 40, color: '#303030'},
-  ];
-
   const shiftSize = 3;
-
-  const coder = [
-    'Security engineer',
-    'Full stack developer',
-    'Python enthusiast',
-    'Open source supporter',
-    'Rubber duck discusser',
-  ];
-  const educator = [
-    'Passionate teacher',
-    'Lecturer of the year',
-    'Vulnerability researcher',
-    'PhD in InfoSec',
-    'Academic paper writer',
-  ];
 
   return (
     <Box pt={6} pb={4} id='about'>
@@ -49,7 +30,7 @@ const About = () => {
           <List>
             <ListItem>
               <ListItemText>
-                {coder.map((item, index) => (
+                {aboutData.coder.map((item, index) => (
                   <Typography
                     variant='h6'
                     color='textSecondary'
@@ -81,7 +62,7 @@ const About = () => {
                 paddingAngle={0}
                 radius={pieChartDefaultProps.radius - shiftSize}
                 segmentsShift={(index) => (index === 0 ? shiftSize : 0.5)}
-                data={pieChartData}
+                data={aboutData.pieChartData}
                 label={(data) => data.dataEntry.title}
                 labelPosition={50}
                 labelStyle={{
@@ -104,7 +85,7 @@ const About = () => {
           <List>
             <ListItem>
               <ListItemText>
-                {educator.map((item, index) => (
+                {aboutData.educator.map((item, index) => (
                   <Typography
                     variant='h6'
                     color='textSecondary'

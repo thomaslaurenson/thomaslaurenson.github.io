@@ -53,7 +53,12 @@ const HistoryCard = ({data}) => {
 };
 
 HistoryCard.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    company: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    dates: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default HistoryCard;

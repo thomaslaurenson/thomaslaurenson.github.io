@@ -26,12 +26,13 @@ const Hero = () => {
           <Grid size={{ xs: 4 }}>
             <Box pb={2}>
               <picture>
-                <source srcSet="profile.webp, profile.jpg" />
+                <source srcSet="profile.webp" type="image/webp" />
                 <img
                   alt="Thomas Laurenson - <coder> and educator"
-                  src="profile.webp"
+                  src="profile.jpg"
                   width="100%"
                   height="100%"
+                  loading="eager"
                   // eslint-disable-next-line react/no-unknown-property
                   css={css`
                     border-radius: 50%;
@@ -63,12 +64,13 @@ const Hero = () => {
         <Grid size={{ xs: 12 }}>
           <Box pb={2} pl={3} pr={3}>
             <picture>
-              <source srcSet="profile.webp, profile.jpg" />
+              <source srcSet="profile.webp" type="image/webp" />
               <img
                 alt="Thomas Laurenson - <coder> and educator"
-                src="profile.webp"
+                src="profile.jpg"
                 width="100%"
                 height="100%"
+                loading="eager"
                 // eslint-disable-next-line react/no-unknown-property
                 css={css`
                   border-radius: 50%;

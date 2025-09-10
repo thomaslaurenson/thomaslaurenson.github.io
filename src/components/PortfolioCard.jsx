@@ -22,14 +22,15 @@ const PortfolioCard = ({project}) => {
         <Link href={project.primarylink} aria-label={project.name}>
           <CardMedia component="picture">
             <source
-              srcSet={`projects/${project.img}.webp,
-                       projects/${project.img}.jpg`}
+              srcSet={`projects/${project.img}.webp`}
+              type="image/webp"
             />
             <img
-              src={`projects/${project.img}.webp`}
+              src={`projects/${project.img}.jpg`}
               alt={project.name}
               height="100%"
               width="100%"
+              loading="lazy"
             />
           </CardMedia>
         </Link>
@@ -84,7 +85,15 @@ const PortfolioCard = ({project}) => {
 };
 
 PortfolioCard.propTypes = {
-  project: PropTypes.object,
+  project: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    primarylink: PropTypes.string.isRequired,
+    tech: PropTypes.arrayOf(PropTypes.string).isRequired,
+    github: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };
 
 export default PortfolioCard;
