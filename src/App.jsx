@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   Container,
   Paper,
@@ -7,8 +7,6 @@ import {
   Fab,
   ThemeProvider,
   CssBaseline,
-  useMediaQuery,
-  useScrollTrigger,
 } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PropTypes from 'prop-types';
@@ -21,16 +19,12 @@ import About from './sections/About';
 import History from './sections/History';
 import Portfolio from './sections/Portfolio';
 import Footer from './sections/Footer';
+import { useThemeMode } from './hooks/useThemeMode';
+import { useScrollToTop } from './hooks/useScrollToTop';
 
 function ScrollTop(props) {
   const {children} = props;
-  const trigger = useScrollTrigger({
-    threshold: 100,
-  });
-
-  const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  };
+  const { trigger, scrollToTop } = useScrollToTop();
 
   return (
     <Fade in={trigger}>
@@ -50,33 +44,12 @@ ScrollTop.propTypes = {
 };
 
 function App(props) {
-  // Set theme to system default
-  // This useMediaQuery returns true if dark mode set
-  const [
-    isDarkTheme,
-    setIsDarkTheme,
-  ] = useState(useMediaQuery('(prefers-color-scheme: dark)'));
-
-  useEffect(() => {
-    // When system theme is updated, event triggers for theme change
-    window.matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', (event) => {
-          if (event.matches) {
-            setIsDarkTheme(true);
-          } else {
-            setIsDarkTheme(false);
-          }
-        });
-  }, []);
-
-  const changeTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+  const { isDarkTheme, toggleTheme } = useThemeMode();
 
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
       <CssBaseline />
-      <Navbar changeTheme={changeTheme} isDarkTheme={isDarkTheme} />
+      <Navbar changeTheme={toggleTheme} isDarkTheme={isDarkTheme} />
       <Paper>
         <Box id="scroll-up-anchor">
           <Container maxWidth="md">
