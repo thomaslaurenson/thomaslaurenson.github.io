@@ -22,15 +22,10 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 import LightMode from '@mui/icons-material/LightMode';
 import DarkMode from '@mui/icons-material/DarkMode';
+import { socialLinks } from './data/constants';
 
 const Navbar = ({changeTheme, isDarkTheme}) => {
   const theme = useTheme();
-
-  const social = {
-    email: `mailto:thomas@thomaslaurenson.com`,
-    linkedin: `https://www.linkedin.com/in/thomaslaurenson`,
-    github: `https://github.com/thomaslaurenson`,
-  };
 
   const [open, setOpen] = React.useState(false);
 
@@ -80,17 +75,17 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
         pb={1}
       >
         <Box p={2} display='inline'>
-          <Link href={social?.email} aria-label='Email Link'>
+          <Link href={socialLinks.email} aria-label='Email Link'>
             <EmailIcon fontSize='small' />
           </Link>
         </Box>
         <Box p={2} display='inline'>
-          <Link href={social?.github} aria-label='GitHub Link'>
+          <Link href={socialLinks.github} aria-label='GitHub Link'>
             <GitHubIcon fontSize='small' />
           </Link>
         </Box>
         <Box p={2} display='inline'>
-          <Link href={social?.linkedin} aria-label='LinkenIn Link'>
+          <Link href={socialLinks.linkedin} aria-label='LinkedIn Link'>
             <LinkedInIcon />
           </Link>
         </Box>
@@ -124,17 +119,17 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
   const appBarListSocial = () => (
     <div>
       <Box pl={4} p={1} display='inline'>
-        <Link href={social?.email} aria-label='Email Link'>
+        <Link href={socialLinks.email} aria-label='Email Link'>
           <EmailIcon fontSize='large' />
         </Link>
       </Box>
       <Box p={1} display='inline'>
-        <Link href={social?.github} aria-label='GitHub Link'>
+        <Link href={socialLinks.github} aria-label='GitHub Link'>
           <GitHubIcon fontSize='large' />
         </Link>
       </Box>
       <Box p={1} display='inline'>
-        <Link href={social?.linkedin} aria-label='LinkedIn Link'>
+        <Link href={socialLinks.linkedin} aria-label='LinkedIn Link'>
           <LinkedInIcon fontSize='large' />
         </Link>
       </Box>
@@ -216,8 +211,8 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
 };
 
 Navbar.propTypes = {
-  changeTheme: PropTypes.func,
-  isDarkTheme: PropTypes.bool,
+  changeTheme: PropTypes.func.isRequired,
+  isDarkTheme: PropTypes.bool.isRequired,
 };
 
 export default Navbar;
