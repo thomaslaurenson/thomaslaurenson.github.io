@@ -79,15 +79,7 @@ export const projects = [
     url: 'https://trophyroom.thomaslaurenson.com',
     primarylink: 'https://trophyroom.thomaslaurenson.com',
     tech: ['python', 'php', 'ps', 'bash'],
-  },
-  {
-    name: 'PickTheBox',
-    description: 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance',
-    img: 'pickthebox',
-    github: 'https://github.com/thomaslaurenson/pickthebox',
-    url: 'https://pickthebox.thomaslaurenson.com/',
-    primarylink: 'https://pickthebox.thomaslaurenson.com/',
-    tech: ['javascript', 'react', 'vite'],
+    archived: false,
   },
   {
     name: 'startrek-payroll',
@@ -97,6 +89,17 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/thomaslaurenson/startrek_payroll',
     tech: ['docker', 'php', 'mysql', 'bash'],
+    archived: false,
+  },
+  {
+    name: 'PickTheBox',
+    description: 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance',
+    img: 'pickthebox',
+    github: 'https://github.com/thomaslaurenson/pickthebox',
+    url: null,
+    primarylink: 'https://github.com/thomaslaurenson/pickthebox',
+    tech: ['javascript', 'react', 'vite'],
+    archived: true,
   },
   {
     name: 'SecureMilkCarton',
@@ -106,6 +109,7 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/thomaslaurenson/SecureMilkCarton',
     tech: ['docker', 'java', 'mysql', 'bash'],
+    archived: true,
   },
   {
     name: 'LiveDiff',
@@ -115,6 +119,7 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/thomaslaurenson/LiveDiff',
     tech: ['c'],
+    archived: true,
   },
   {
     name: 'IRDNumberScanner',
@@ -124,7 +129,11 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/thomaslaurenson/IRDNumberScanner',
     tech: ['C++', 'Flex', 'Python'],
+    archived: true,
   },
+];
+
+export const projects_hobbies = [
   {
     name: 'mpqcli',
     description: ' A command line tool to create, add, remove, list, extract, read, and verify MPQ archives using the StormLib library ',
@@ -133,6 +142,7 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/TheGrayDot/mpqcli',
     tech: ['c++', 'cmake', 'docker'],
+    archived: false,
   },
   {
     name: 'gcd_docker',
@@ -142,6 +152,7 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/TheGrayDot/gcd_docker',
     tech: ['Docker', 'Python', 'MySQL'],
+    archived: false,
   },
   {
     name: 'wow-vmangos-docker',
@@ -151,6 +162,7 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/TheGrayDot/wow-vmangos-docker',
     tech: ['Docker', 'Python', 'MySQL', 'Bash'],
+    archived: false,
   },
   {
     name: 'barcomic_server',
@@ -160,5 +172,6 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/TheGrayDot/barcomic_server',
     tech: ['go'],
+    archived: false,
   },
 ];
