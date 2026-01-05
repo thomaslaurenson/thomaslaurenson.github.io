@@ -92,6 +92,16 @@ export const projects = [
     archived: false,
   },
   {
+    name: 'PickTheBox',
+    description: 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance',
+    img: 'pickthebox',
+    github: 'https://github.com/thomaslaurenson/pickthebox',
+    url: null,
+    primarylink: 'https://github.com/thomaslaurenson/pickthebox',
+    tech: ['javascript', 'react', 'vite'],
+    archived: true,
+  },
+  {
     name: 'SecureMilkCarton',
     description: 'An intentionally vulnerable web application... the difference from others is this application is designed to be secured not exploited. Great for learning!',
     img: 'securemilkcarton',
@@ -99,16 +109,6 @@ export const projects = [
     url: null,
     primarylink: 'https://github.com/thomaslaurenson/SecureMilkCarton',
     tech: ['docker', 'java', 'mysql', 'bash'],
-    archived: false,
-  },
-  {
-    name: 'PickTheBox',
-    description: 'A simple web application to help you pick a Hack The Box machine based on properties such as difficulty, operating system type, and OSCP relevance',
-    img: 'pickthebox',
-    github: 'https://github.com/thomaslaurenson/pickthebox',
-    url: 'https://pickthebox.thomaslaurenson.com/',
-    primarylink: 'https://pickthebox.thomaslaurenson.com/',
-    tech: ['javascript', 'react', 'vite'],
     archived: true,
   },
   {

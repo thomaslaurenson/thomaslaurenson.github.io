@@ -10,7 +10,7 @@ import { projects_hobbies } from '../data/constants';
 
 const Portfolio = () => {
   return (
-    <Box pt={6} pb={4} id='portfolio-section'>
+    <Box pt={6} pb={4} id='portfolio'>
       <Box pb={4}>
         <Typography variant='h4' align='center'>
           <Box fontWeight='fontWeightBold'>Security Projects</Box>
