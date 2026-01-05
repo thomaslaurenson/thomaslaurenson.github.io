@@ -14,11 +14,22 @@ import {
 } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkIcon from '@mui/icons-material/Link';
+import ArchivedRibbon from './ArchivedRibbon';
 
 const PortfolioCard = ({project}) => {
   return (
     <Grid size={{ sm: 12 , md: 6 }}>
-      <Card elevation={0} variant="outlined">
+      <Card 
+        elevation={0}
+        variant="outlined"
+        sx={{
+          position: "relative",
+          opacity: project.archived ? 0.65 : 1,
+          filter: project.archived ? "saturate(0.5)" : "none",
+          transition: "opacity 200ms ease, filter 200ms ease",
+        }}
+      >
+        {project.archived && <ArchivedRibbon />}
         <Link href={project.primarylink} aria-label={project.name}>
           <CardMedia component="picture">
             <source
