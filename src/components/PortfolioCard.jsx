@@ -104,6 +104,7 @@ PortfolioCard.propTypes = {
     tech: PropTypes.arrayOf(PropTypes.string).isRequired,
     github: PropTypes.string,
     url: PropTypes.string,
+    archived: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
