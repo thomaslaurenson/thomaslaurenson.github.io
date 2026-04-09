@@ -30,7 +30,7 @@ const PortfolioCard = ({project}) => {
         }}
       >
         {project.archived && <ArchivedRibbon />}
-        <Link href={project.primarylink} aria-label={project.name}>
+        <Link href={project.primarylink} aria-label={project.name} target="_blank" rel="noopener noreferrer">
           <CardMedia component="picture">
             <source
               srcSet={`projects/${project.img}.webp`}
@@ -49,24 +49,22 @@ const PortfolioCard = ({project}) => {
         <CardHeader
           disableTypography
           title={
-            <Typography variant="h5" color="textPrimary">
-              <Box fontWeight="fontWeightBold" pb={2}>
-                <Link href={project.primarylink} aria-label={project.name}>
-                  {project.name}
-                </Link>
-              </Box>
+            <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700, pb: 2 }}>
+              <Link href={project.primarylink} aria-label={project.name} target="_blank" rel="noopener noreferrer">
+                {project.name}
+              </Link>
             </Typography>
           }
           subheader={
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" color="text.secondary">
               {project.description}
             </Typography>
           }
         />
 
-        <Box pl={1} pr={1}>
+        <Box sx={{ pl: 1, pr: 1 }}>
           {project.tech.map((tag, i) => [
-            <Box pl={0.5} pr={0.5} pb={1} display="inline-block" key={i}>
+            <Box sx={{ pl: 0.5, pr: 0.5, pb: 1, display: 'inline-block' }} key={i}>
               <Button variant="outlined" disableElevation disabled>
                 {tag}
               </Button>
@@ -76,18 +74,26 @@ const PortfolioCard = ({project}) => {
 
         <CardActions disableSpacing>
           {project.github != null && (
-            <Link href={project.github} aria-label="Project GitHub Link">
-              <IconButton aria-label="project github link">
-                <GitHubIcon />
-              </IconButton>
-            </Link>
+            <IconButton
+              component="a"
+              href={project.github}
+              aria-label="Project GitHub Link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon />
+            </IconButton>
           )}
           {project.url != null && (
-            <Link href={project.url} aria-label="Project Website Link">
-              <IconButton aria-label="project website link">
-                <LinkIcon />
-              </IconButton>
-            </Link>
+            <IconButton
+              component="a"
+              href={project.url}
+              aria-label="Project Website Link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkIcon />
+            </IconButton>
           )}
         </CardActions>
       </Card>

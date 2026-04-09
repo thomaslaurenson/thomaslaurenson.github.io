@@ -5,21 +5,20 @@ import {
   Typography,
 } from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
-import { projects } from '../data/constants';
-import { projects_hobbies } from '../data/constants';
+import { projects, projectsHobbies } from '../data/constants';
 
 const Portfolio = () => {
   return (
-    <Box pt={6} pb={4} id='portfolio'>
-      <Box pb={4}>
-        <Typography variant='h4' align='center'>
-          <Box fontWeight='fontWeightBold'>Security Projects</Box>
+    <Box sx={{ pt: 6, pb: 4 }} id='portfolio'>
+      <Box sx={{ pb: 4 }}>
+        <Typography variant='h4' align='center' sx={{ fontWeight: 700 }}>
+          Security Projects
         </Typography>
       </Box>
       <Grid
         container
         direction='row'
-        justify='center'
+        justifyContent='center'
         alignItems='center'
         spacing={3}
       >
@@ -27,19 +26,19 @@ const Portfolio = () => {
           return <PortfolioCard project={project} key={index} />;
         })}
       </Grid>
-      <Box pt={6} pb={4}>
-        <Typography variant='h4' align='center'>
-          <Box fontWeight='fontWeightBold'>Hobby Projects</Box>
+      <Box sx={{ pt: 6, pb: 4 }}>
+        <Typography variant='h4' align='center' sx={{ fontWeight: 700 }}>
+          Hobby Projects
         </Typography>
       </Box>
       <Grid
         container
         direction='row'
-        justify='center'
+        justifyContent='center'
         alignItems='center'
         spacing={3}
       >
-        {projects_hobbies.map((project, index) => {
+        {projectsHobbies.map((project, index) => {
           return <PortfolioCard project={project} key={index} />;
         })}
       </Grid>

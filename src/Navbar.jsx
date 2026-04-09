@@ -15,7 +15,7 @@ import {
   Divider,
   Link,
 } from '@mui/material';
-import {useTheme} from '@emotion/react';
+import {useTheme} from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -44,12 +44,9 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
       <List>
         <Link href='#history'>
           <ListItem style={{display: 'flex', justifyContent: 'center'}}>
-            <Box fontWeight='fontWeightBold'>
-              {' '}
-              <Typography variant='h6'>
-                history
-              </Typography>
-            </Box>
+            <Typography variant='h6' sx={{ fontWeight: 700 }}>
+              history
+            </Typography>
           </ListItem>
         </Link>
       </List>
@@ -57,35 +54,26 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
       <List>
         <Link href='#portfolio'>
           <ListItem style={{display: 'flex', justifyContent: 'center'}}>
-            <Box fontWeight='fontWeightBold'>
-              {' '}
-              <Typography variant='h6'>
-                portfolio
-              </Typography>
-            </Box>
+            <Typography variant='h6' sx={{ fontWeight: 700 }}>
+              portfolio
+            </Typography>
           </ListItem>
         </Link>
       </List>
       <Divider />
-      <Box
-        display='flex'
-        justifyContent='center'
-        justifyItems='center'
-        pt={1}
-        pb={1}
-      >
-        <Box p={2} display='inline'>
+      <Box sx={{ display: 'flex', justifyContent: 'center', pt: 1, pb: 1 }}>
+        <Box sx={{ p: 2, display: 'inline' }}>
           <Link href={socialLinks.email} aria-label='Email Link'>
             <EmailIcon fontSize='small' />
           </Link>
         </Box>
-        <Box p={2} display='inline'>
-          <Link href={socialLinks.github} aria-label='GitHub Link'>
+        <Box sx={{ p: 2, display: 'inline' }}>
+          <Link href={socialLinks.github} aria-label='GitHub Link' target='_blank' rel='noopener noreferrer'>
             <GitHubIcon fontSize='small' />
           </Link>
         </Box>
-        <Box p={2} display='inline'>
-          <Link href={socialLinks.linkedin} aria-label='LinkedIn Link'>
+        <Box sx={{ p: 2, display: 'inline' }}>
+          <Link href={socialLinks.linkedin} aria-label='LinkedIn Link' target='_blank' rel='noopener noreferrer'>
             <LinkedInIcon />
           </Link>
         </Box>
@@ -95,19 +83,15 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
 
   const appBarList = () => (
     <div>
-      <Box display='inline-block' p={1} fontWeight='fontWeightBold'>
-        <Typography variant='h6'>
+      <Box sx={{ display: 'inline-block', p: 1 }}>
+        <Typography variant='h6' sx={{ fontWeight: 700 }}>
           <Link href='#history'>
             history
           </Link>
         </Typography>
       </Box>
-      <Box
-        display='inline-block'
-        p={1}
-        fontWeight='fontWeightBold'
-      >
-        <Typography variant='h6'>
+      <Box sx={{ display: 'inline-block', p: 1 }}>
+        <Typography variant='h6' sx={{ fontWeight: 700 }}>
           <Link href='#portfolio'>
             portfolio
           </Link>
@@ -118,18 +102,18 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
 
   const appBarListSocial = () => (
     <div>
-      <Box pl={4} p={1} display='inline'>
+      <Box sx={{ p: 1, pl: 4, display: 'inline' }}>
         <Link href={socialLinks.email} aria-label='Email Link'>
           <EmailIcon fontSize='large' />
         </Link>
       </Box>
-      <Box p={1} display='inline'>
-        <Link href={socialLinks.github} aria-label='GitHub Link'>
+      <Box sx={{ p: 1, display: 'inline' }}>
+        <Link href={socialLinks.github} aria-label='GitHub Link' target='_blank' rel='noopener noreferrer'>
           <GitHubIcon fontSize='large' />
         </Link>
       </Box>
-      <Box p={1} display='inline'>
-        <Link href={socialLinks.linkedin} aria-label='LinkedIn Link'>
+      <Box sx={{ p: 1, display: 'inline' }}>
+        <Link href={socialLinks.linkedin} aria-label='LinkedIn Link' target='_blank' rel='noopener noreferrer'>
           <LinkedInIcon fontSize='large' />
         </Link>
       </Box>
@@ -142,7 +126,7 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
         <Link href='/'>
           Thomas Laurenson
         </Link>
-        <Box display='inline' pl={2}>
+        <Box sx={{ display: 'inline', pl: 2 }}>
           {isDarkTheme ? (
             <LightMode
               fontSize='small'
@@ -167,7 +151,7 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
       <Box sx={{display: {xs: 'none', sm: 'none', md: 'block'}}}>
         <Toolbar>
           <Container maxWidth='lg'>
-            <Box display='flex' alignItems='center'>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {appBarTitle()}
               {appBarList()}
               {appBarListSocial()}

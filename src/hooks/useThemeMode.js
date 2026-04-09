@@ -3,23 +3,17 @@ import { useMediaQuery } from '@mui/material';
 
 export const useThemeMode = () => {
   const systemPrefersDark = useMediaQuery('(prefers-color-scheme: dark)');
+  const [userHasToggled, setUserHasToggled] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(systemPrefersDark);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (event) => {
-      setIsDarkTheme(event.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-    };
-  }, []);
+    if (userHasToggled) return;
+    setIsDarkTheme(systemPrefersDark);
+  }, [systemPrefersDark, userHasToggled]);
 
   const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+    setUserHasToggled(true);
+    setIsDarkTheme((prev) => !prev);
   };
 
   return { isDarkTheme, toggleTheme };

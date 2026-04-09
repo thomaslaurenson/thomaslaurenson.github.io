@@ -14,7 +14,7 @@ const About = () => {
   const shiftSize = 3;
 
   return (
-    <Box pt={6} pb={4} id='about'>
+    <Box sx={{ pt: 6, pb: 4 }} id='about'>
       <Grid
         container
         direction='row'
@@ -24,8 +24,8 @@ const About = () => {
 
         {/* coder */}
         <Grid size={{ sm: 12 , md: 4 }}>
-          <Typography variant='h5' align='center'>
-            <Box fontWeight='fontWeightBold'>part coder</Box>
+          <Typography variant='h5' align='center' sx={{ fontWeight: 700 }}>
+            part coder
           </Typography>
           <List>
             <ListItem>
@@ -33,10 +33,10 @@ const About = () => {
                 {aboutData.coder.map((item, index) => (
                   <Typography
                     variant='h6'
-                    color='textSecondary'
+                    color='text.secondary'
                     key={index}
                   >
-                    <Box display='flex' justifyContent='center' pb={1}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', pb: 1 }}>
                       {item}
                     </Box>
                   </Typography>
@@ -79,8 +79,8 @@ const About = () => {
 
         {/* educator */}
         <Grid size={{ sm: 12 , md: 4 }}>
-          <Typography variant='h5' align='center'>
-            <Box fontWeight='fontWeightBold'>part educator</Box>
+          <Typography variant='h5' align='center' sx={{ fontWeight: 700 }}>
+            part educator
           </Typography>
           <List>
             <ListItem>
@@ -88,10 +88,10 @@ const About = () => {
                 {aboutData.educator.map((item, index) => (
                   <Typography
                     variant='h6'
-                    color='textSecondary'
+                    color='text.secondary'
                     key={index}
                   >
-                    <Box display='flex' justifyContent='center' pb={1}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', pb: 1 }}>
                       {item}
                     </Box>
                   </Typography>

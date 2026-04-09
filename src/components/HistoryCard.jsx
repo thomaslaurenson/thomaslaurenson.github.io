@@ -29,7 +29,7 @@ const HistoryCard = ({data}) => {
             </Typography>
           }
           subheader={
-            <Grid container justify='space-between'>
+            <Grid container justifyContent='space-between'>
               <Grid size={{ xs: 12 , sm: 6 }}>
                 <Typography variant='subtitle2' color='textSecondary'>
                   {data.company}

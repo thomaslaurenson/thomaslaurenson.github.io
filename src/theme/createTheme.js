@@ -13,6 +13,7 @@ const createCustomTheme = (mode) => {
   // Shared configuration
   const sharedConfig = {
     typography: {
+      fontFamily: 'Montserrat, sans-serif',
       h4: {
         fontWeight: 700,
       },
@@ -24,11 +25,6 @@ const createCustomTheme = (mode) => {
       },
     },
     components: {
-      MuiTypography: {
-        defaultProps: {
-          fontFamily: 'Montserrat',
-        },
-      },
       MuiAppBar: {
         styleOverrides: {
           root: {

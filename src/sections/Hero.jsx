@@ -5,18 +5,18 @@ import {Box, Typography, Grid} from '@mui/material';
 
 const Hero = () => {
   return (
-    <Box pt={6} pb={4} id="hero">
+    <Box sx={{ pt: 6, pb: 4 }} id="hero">
       {/* For sm screens only and above */}
       <Box sx={{display: {xs: 'none', sm: 'block'}}}>
-        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid container direction="row" justifyContent="center" alignItems="center">
           <Grid size={{ xs: 4 }}>
-            <Box display="flex" pr={2} pb={1} justifyContent="flex-end">
+            <Box sx={{ display: "flex", pr: 2, pb: 1, justifyContent: "flex-end" }}>
               <Typography variant="h4">{"< coder >"}</Typography>
             </Box>
             {/* For md screens only and above */}
             <Box sx={{display: {sm: 'none', md: 'block'}}}>
-              <Box display="flex" pr={2}>
-                <Typography variant="h5" align="right" color="textSecondary">
+              <Box sx={{ display: "flex", pr: 2 }}>
+                <Typography variant="h5" align="right" color="text.secondary">
                   Security engineer with a DevOps mindset
                 </Typography>
               </Box>
@@ -24,7 +24,7 @@ const Hero = () => {
           </Grid>
 
           <Grid size={{ xs: 4 }}>
-            <Box pb={2}>
+            <Box sx={{ pb: 2 }}>
               <picture>
                 <source srcSet="profile.webp" type="image/webp" />
                 <img
@@ -45,12 +45,12 @@ const Hero = () => {
           </Grid>
 
           <Grid size={{ xs: 4 }}>
-            <Box display="flex" justifyContent="flex-start" pl={2} pb={1}>
+            <Box sx={{ display: "flex", justifyContent: "flex-start", pl: 2, pb: 1 }}>
               <Typography variant="h4">{'educator'}</Typography>
             </Box>
             <Box sx={{display: {sm: 'none', md: 'block'}}}>
-              <Box display="flex" justifyContent="flex-start" pl={2}>
-                <Typography variant="h5" color="textSecondary">
+              <Box sx={{ display: "flex", justifyContent: "flex-start", pl: 2 }}>
+                <Typography variant="h5" color="text.secondary">
                   Passionate InfoSec teacher and researcher
                 </Typography>
               </Box>
@@ -62,7 +62,7 @@ const Hero = () => {
       {/* For xs screens only */}
       <Box sx={{display: {xs: 'block', sm: 'none'}}}>
         <Grid size={{ xs: 12 }}>
-          <Box pb={2} pl={3} pr={3}>
+          <Box sx={{ pb: 2, pl: 3, pr: 3 }}>
             <picture>
               <source srcSet="profile.webp" type="image/webp" />
               <img

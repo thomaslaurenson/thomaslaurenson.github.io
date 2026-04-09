@@ -9,10 +9,10 @@ import { employers } from '../data/constants';
 
 const History = () => {
   return (
-    <Box pt={6} pb={4} id='history'>
-      <Box pb={6}>
-        <Typography variant='h4' align='center'>
-          <Box fontWeight='fontWeightBold'>History</Box>
+    <Box sx={{ pt: 6, pb: 4 }} id='history'>
+      <Box sx={{ pb: 6 }}>
+        <Typography variant='h4' align='center' sx={{ fontWeight: 700 }}>
+          History
         </Typography>
       </Box>
       <Grid

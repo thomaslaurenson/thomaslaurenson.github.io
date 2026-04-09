@@ -133,7 +133,7 @@ export const projects = [
   },
 ];
 
-export const projects_hobbies = [
+export const projectsHobbies = [
   {
     name: 'mpqcli',
     description: ' A command line tool to create, add, remove, list, extract, read, and verify MPQ archives using the StormLib library ',
