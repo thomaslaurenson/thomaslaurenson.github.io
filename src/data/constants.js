@@ -4,26 +4,38 @@ export const socialLinks = {
   github: 'https://github.com/thomaslaurenson',
 };
 
-export const aboutData = {
-  coder: [
-    'Security engineer',
-    'Full stack developer',
-    'Python enthusiast',
-    'Open source supporter',
-    'Rubber duck discusser',
-  ],
-  educator: [
-    'Passionate teacher',
-    'Lecturer of the year',
-    'Vulnerability researcher',
-    'PhD in InfoSec',
-    'Academic paper writer',
-  ],
-  pieChartData: [
-    { title: 'coder', value: 60, color: '#a4a5a5' },
-    { title: 'educator', value: 40, color: '#303030' },
-  ],
+export const intro = {
+  name: 'Thomas Laurenson',
+  tagline: 'Security engineer and InfoSec researcher from New Zealand',
 };
+
+// The two halves shown side by side at the top of the page
+export const roles = [
+  {
+    key: 'engineer',
+    title: 'Engineer',
+    summary: 'Security engineer with a DevOps mindset',
+    highlights: [
+      'Security engineer',
+      'Full stack developer',
+      'Python enthusiast',
+      'Open source supporter',
+      'Rubber duck discusser',
+    ],
+  },
+  {
+    key: 'researcher',
+    title: 'Researcher',
+    summary: 'Passionate InfoSec teacher and researcher',
+    highlights: [
+      'Passionate teacher',
+      'Lecturer of the year',
+      'Vulnerability researcher',
+      'PhD in InfoSec',
+      'Academic paper writer',
+    ],
+  },
+];
 
 export const employers = [
   {
