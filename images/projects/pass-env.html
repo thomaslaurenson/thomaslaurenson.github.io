@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  pass-env: pick .env entries from the password store with fzf.
+
+  Copied cell for cell from fzf 0.60 running in a 76x30 tmux pane with the
+  arguments pass-env passes it (_pass_env_fzf_select_entry in src/env.bash):
+
+    fzf --multi --height=40% --layout=reverse --border \
+        --prompt="Pass entry: " \
+        --header="ENTER: select one  |  TAB+ENTER: select multiple  |  ESC: cancel"
+
+  captured after Down, Tab, Down, Tab, so two entries are marked. The colours
+  are fzf's default scheme mapped to the theme roles. Columns below are
+  terminal columns, counted from 0 at the left border. fzf needs 16 rows,
+  so the rows are closer together than in shared/terminal.css.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+<style>
+  :root {
+    --row: 17px;
+  }
+
+  .screen {
+    padding: 18px 28px 0;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: var(--row);
+  }
+
+  .line {
+    height: var(--row);
+    white-space: pre;
+  }
+  /* Flex would drop the plain spaces between spans, so only rows made of
+     cells use it. */
+  .info,
+  .list .line {
+    display: flex;
+  }
+
+  /* The border runs through the middle of columns 0 and 75 and of the rows
+     above and below the picker, as the box-drawing characters do. That puts
+     the content in columns 2 to 74. */
+  .picker {
+    box-sizing: border-box;
+    width: 75ch;
+    margin: calc(var(--row) / 2) 0 0 0.5ch;
+    padding: calc(var(--row) / 2 - 1px) calc(0.5ch - 1px) calc(var(--row) / 2 - 1px) calc(1.5ch - 1px);
+    border: 1px solid var(--outline-variant);
+    border-radius: 6px;
+  }
+
+  .query {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .info,
+  .header {
+    padding-left: 2ch;
+  }
+  .info {
+    color: var(--secondary);
+  }
+  .separator {
+    flex: 1;
+    margin: 0 1ch;
+    border-top: 1px solid var(--outline-variant);
+    align-self: center;
+  }
+  .header {
+    color: var(--on-surface-variant);
+  }
+
+  .list {
+    position: relative;
+  }
+  .gutter,
+  .marker {
+    width: 1ch;
+  }
+  .gutter {
+    background: var(--surface-container-high);
+  }
+  .marker {
+    color: var(--tertiary);
+  }
+  .entry {
+    color: var(--on-surface-variant);
+  }
+
+  /* The pointer is a left half block in the gutter */
+  .current .gutter {
+    background: linear-gradient(to right, var(--tertiary) 50%, var(--surface-container-high) 50%);
+  }
+  .current .marker,
+  .current .entry {
+    background: var(--surface-container-high);
+  }
+  .current .entry {
+    color: var(--on-surface);
+    font-weight: bold;
+  }
+
+  /* Column 74, against the right border */
+  .scrollbar {
+    position: absolute;
+    top: 0;
+    right: calc(0.5ch - 0.5px);
+    width: 1px;
+    background: var(--outline-variant);
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="line"><span class="prompt">$</span> <span class="command">passenv set</span></div>
+  <div class="picker">
+    <div class="line"><span class="query">Pass entry:</span> <span class="cursor"> </span></div>
+    <div class="line info"><span id="count"></span><span class="separator"></span></div>
+    <div class="line header">ENTER: select one  |  TAB+ENTER: select multiple  |  ESC: cancel</div>
+    <div class="list" id="list"></div>
+  </div>
+</div>
+<script>
+  // The whole store; fzf has room for the first 10
+  const entries = [
+    'env/aws/dev.env',
+    'env/aws/prod.env',
+    'env/cloudflare/dns.env',
+    'env/db/postgres_prod.env',
+    'env/db/postgres_staging.env',
+    'env/github/actions.env',
+    'env/grafana/admin.env',
+    'env/openstack/dev.env',
+    'env/openstack/prod.env',
+    'env/sentry/release.env',
+    'env/slack/webhook.env',
+    'env/stripe/test.env',
+    'env/tenable/api.env',
+    'env/vault/token.env',
+  ];
+  const visible = 10;
+  const marked = ['env/aws/prod.env', 'env/db/postgres_prod.env'];
+  const current = 'env/db/postgres_staging.env';
+  // The scrollbar covers the first 7 rows, as fzf draws it
+  const scrollbarRows = 7;
+
+  document.getElementById('count').textContent =
+    `${entries.length}/${entries.length} (${marked.length})`;
+
+  const span = (className, text = '') => {
+    const el = document.createElement('span');
+    el.className = className;
+    el.textContent = text;
+    return el;
+  };
+
+  const list = document.getElementById('list');
+  for (const entry of entries.slice(0, visible)) {
+    const row = document.createElement('div');
+    row.className = entry === current ? 'line current' : 'line';
+    row.append(
+      span('gutter'),
+      span('marker', marked.includes(entry) ? '\u2503' : ' '),
+      span('entry', entry),
+    );
+    list.appendChild(row);
+  }
+  const scrollbar = span('scrollbar');
+  scrollbar.style.height = `calc(var(--row) * ${scrollbarRows})`;
+  list.appendChild(scrollbar);
+
+  document.fonts.ready.then(() => {
+    document.body.dataset.ready = '';
+  });
+</script>
+</body>
+</html>

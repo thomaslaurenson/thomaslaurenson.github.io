@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  smount: pick a host from the ssh config and mount a path from it.
+
+  The host list and the mount summary are real smount 0.6.1 output, run in a
+  scratch home against an example ssh config, with ssh pointed at that config
+  too, so no real host or setting shows. The hosts use documentation
+  addresses (192.0.2.0/24 and 203.0.113.0/24): web01 is deploy@192.0.2.10.
+
+  Nothing was mounted. The lines after the summary are the prompts and
+  messages in cmd/mount.go and internal/ui, with Enter pressed at each
+  prompt, which takes the default: mount, and do not save a favourite.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: '$',
+    blocks: [
+      {
+        command: 'smount hosts --short',
+        output: ['bastion', 'db01', 'web01'],
+      },
+      {
+        command: 'smount web01:/var/log',
+        output: [
+          '[*] Mount summary:',
+          '      Source:      web01:/var/log',
+          '      Mount point: ~/smount/web01-var-log',
+          '      Resolves to: deploy@192.0.2.10',
+          '[?] Proceed with mount? [Y/n]:',
+          '[*] mounted web01:/var/log at ~/smount/web01-var-log',
+          '[?] Save this as a favourite? [y/N]:',
+        ],
+        highlight: '[*]',
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+</body>
+</html>

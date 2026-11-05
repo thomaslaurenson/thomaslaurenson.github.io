@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  prongs: sweep a network for low-hanging fruit.
+
+  The command is the --output pretty example from the prongs README. Nothing
+  was scanned to make this: the hosts and findings are an invented home
+  network, written in the formats prongs prints them in.
+
+  - Findings are "[!] IP:port - scanner" (writeResult in
+    internal/engine/engine.go), on the ports each scanner probes:
+    password-ssh 22, accessible-db 3306 or 5432, insecure-http 80.
+  - The last line is the closing count, which overwrites the progress line.
+    A /24 expands to 254 hosts and --all runs the three default scanners,
+    so 762 probes.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: '$',
+    blocks: [
+      {
+        command: 'prongs scan --all --target 192.168.0.0/24 --output pretty',
+        output: [
+          '[!] 192.168.0.1:80 - insecure-http',
+          '[!] 192.168.0.12:22 - password-ssh',
+          '[!] 192.168.0.12:5432 - accessible-db',
+          '[!] 192.168.0.31:80 - insecure-http',
+          '[!] 192.168.0.40:22 - password-ssh',
+          '[!] 192.168.0.40:3306 - accessible-db',
+          '[!] 192.168.0.57:80 - insecure-http',
+          '[!] 192.168.0.64:22 - password-ssh',
+          '[!] 192.168.0.88:5432 - accessible-db',
+          '[*] Probed 762 of 762, hosts 254, findings 9',
+        ],
+        highlight: '[!]',
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+</body>
+</html>

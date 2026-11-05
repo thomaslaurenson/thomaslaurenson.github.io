@@ -1,3 +1,5 @@
+.PHONY: install run build preview build_and_preview update lint lint_fix images thumbnails
+
 install:
 	npm install
 
@@ -21,3 +23,9 @@ lint:
 
 lint_fix:
 	npm run lint_fix
+
+images:
+	npm run images
+
+thumbnails:
+	npm run thumbnails

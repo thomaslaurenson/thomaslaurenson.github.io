@@ -50,7 +50,7 @@ function App(props) {
     <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
       <CssBaseline />
       <Navbar changeTheme={toggleTheme} isDarkTheme={isDarkTheme} />
-      <Paper>
+      <Paper elevation={0} square>
         <Box id="scroll-up-anchor">
           <Container maxWidth="md">
             <Hero />

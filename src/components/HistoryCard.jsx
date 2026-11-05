@@ -4,7 +4,7 @@ import {
   Grid,
   Card,
   CardHeader,
-  Avatar,
+  Box,
   Typography,
 } from '@mui/material';
 
@@ -15,16 +15,22 @@ const HistoryCard = ({data}) => {
         <CardHeader
           disableTypography
           avatar={
-            <Avatar
-              variant='square'
-              alt={data.company}
-              srcSet={`employers/${data.avatar}.webp,
-                       employers/${data.avatar}.jpg`}
-              src={`employers/${data.avatar}.webp`}
-            />
+            <Box component='picture' sx={{ display: 'block', width: 40, height: 40 }}>
+              <source srcSet={`employers/${data.avatar}.avif`} type='image/avif' />
+              <source srcSet={`employers/${data.avatar}.webp`} type='image/webp' />
+              <Box
+                component='img'
+                src={`employers/${data.avatar}.jpg`}
+                alt={data.company}
+                width={40}
+                height={40}
+                loading='lazy'
+                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </Box>
           }
           title={
-            <Typography variant='h5' color='textPrimary'>
+            <Typography variant='h6' color='textPrimary'>
               {data.position}
             </Typography>
           }

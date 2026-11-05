@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- gpipe: built binaries go in, release installers come out -->
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    position: relative;
+  }
+
+  .column {
+    width: 196px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .label {
+    margin-bottom: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+    background: var(--surface-container-high);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .chip .icon { color: var(--on-surface-variant); }
+  .chip .signed { margin-left: auto; width: 18px; height: 18px; color: var(--primary); }
+
+  .node {
+    position: relative;
+    z-index: 1;
+    width: 128px;
+    height: 76px;
+    border-radius: 16px;
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .node .name { font-size: 24px; font-weight: 700; }
+  .node .config { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; }
+
+  #wires { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  #wires path { fill: none; stroke: var(--outline); stroke-width: 1.5; }
+  #wires circle { fill: var(--outline); }
+</style>
+</head>
+<body>
+  <!-- Icons from @mui/icons-material: MemoryOutlined, DescriptionOutlined, Verified -->
+  <svg width="0" height="0" style="position: absolute">
+    <symbol id="binary" viewBox="0 0 24 24"><path d="M15 9H9v6h6zm-2 4h-2v-2h2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2zm-4 6H7V7h10z"/></symbol>
+    <symbol id="file" viewBox="0 0 24 24"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"/></symbol>
+    <symbol id="signed" viewBox="0 0 24 24"><path d="m23 12-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69zm-12.91 4.72-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48z"/></symbol>
+  </svg>
+
+  <svg id="wires"></svg>
+
+  <div class="column" id="in">
+    <div class="label">Build</div>
+    <div class="chip"><svg class="icon"><use href="#binary"/></svg>linux_amd64</div>
+    <div class="chip"><svg class="icon"><use href="#binary"/></svg>darwin_arm64</div>
+    <div class="chip"><svg class="icon"><use href="#binary"/></svg>windows_amd64</div>
+  </div>
+
+  <div class="node" id="node">
+    <div class="name">gpipe</div>
+    <div class="config">.gpipe.yml</div>
+  </div>
+
+  <div class="column" id="out">
+    <div class="label">Release</div>
+    <div class="chip"><svg class="icon"><use href="#file"/></svg>install.sh</div>
+    <div class="chip"><svg class="icon"><use href="#file"/></svg>install.ps1</div>
+    <div class="chip"><svg class="icon"><use href="#file"/></svg>checksums.txt<svg class="icon signed"><use href="#signed"/></svg></div>
+  </div>
+
+<script>
+  // Layout depends on the font, so wait for it before measuring
+  document.fonts.ready.then(() => {
+    const node = document.getElementById('node');
+
+    // Line the node up with the middle build chip, as the columns sit below their labels
+    const middle = document.querySelectorAll('#in .chip')[1].getBoundingClientRect();
+    const before = node.getBoundingClientRect();
+    const shift = (middle.top + middle.height / 2) - (before.top + before.height / 2);
+    node.style.transform = `translateY(${shift}px)`;
+
+    const box = node.getBoundingClientRect();
+    const midY = box.top + box.height / 2;
+    const wires = document.getElementById('wires');
+    const add = (tag, attrs) => {
+      const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, value);
+      wires.appendChild(el);
+    };
+    const wire = (x1, y1, x2, y2) => {
+      const dx = (x2 - x1) / 2;
+      add('path', { d: `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}` });
+    };
+
+    for (const chip of document.querySelectorAll('#in .chip')) {
+      const r = chip.getBoundingClientRect();
+      const y = r.top + r.height / 2;
+      wire(r.right, y, box.left, midY);
+      add('circle', { cx: r.right, cy: y, r: 3 });
+    }
+    for (const chip of document.querySelectorAll('#out .chip')) {
+      const r = chip.getBoundingClientRect();
+      const y = r.top + r.height / 2;
+      wire(box.right, midY, r.left, y);
+      add('circle', { cx: r.left, cy: y, r: 3 });
+    }
+
+    document.body.dataset.ready = '';
+  });
+</script>
+</body>
+</html>

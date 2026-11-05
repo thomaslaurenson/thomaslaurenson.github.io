@@ -9,14 +9,20 @@ import {
   IconButton,
   Typography,
   Box,
-  Button,
+  Chip,
   Link,
+  useTheme,
 } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkIcon from '@mui/icons-material/Link';
 import ArchivedRibbon from './ArchivedRibbon';
+import MediaPlaceholder from './MediaPlaceholder';
 
 const PortfolioCard = ({project}) => {
+  const theme = useTheme();
+  // Themed images come in light and dark versions from scripts/thumbnails.mjs
+  const img = project.themed ? `${project.img}-${theme.palette.mode}` : project.img;
+
   return (
     <Grid size={{ sm: 12 , md: 6 }}>
       <Card 
@@ -31,26 +37,34 @@ const PortfolioCard = ({project}) => {
       >
         {project.archived && <ArchivedRibbon />}
         <Link href={project.primarylink} aria-label={project.name} target="_blank" rel="noopener noreferrer">
-          <CardMedia component="picture">
-            <source
-              srcSet={`projects/${project.img}.webp`}
-              type="image/webp"
-            />
-            <img
-              src={`projects/${project.img}.jpg`}
-              alt={project.name}
-              height="100%"
-              width="100%"
-              loading="lazy"
-            />
-          </CardMedia>
+          {project.img ? (
+            <CardMedia component="picture">
+              <source
+                srcSet={`projects/${img}.avif`}
+                type="image/avif"
+              />
+              <source
+                srcSet={`projects/${img}.webp`}
+                type="image/webp"
+              />
+              <img
+                src={`projects/${img}.jpg`}
+                alt={project.name}
+                height="100%"
+                width="100%"
+                loading="lazy"
+              />
+            </CardMedia>
+          ) : (
+            <MediaPlaceholder name={project.name} />
+          )}
         </Link>
 
         <CardHeader
           disableTypography
           title={
-            <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700, pb: 2 }}>
-              <Link href={project.primarylink} aria-label={project.name} target="_blank" rel="noopener noreferrer">
+            <Typography variant="h5" color="text.primary" sx={{ pb: 1 }}>
+              <Link href={project.primarylink} color="inherit" target="_blank" rel="noopener noreferrer">
                 {project.name}
               </Link>
             </Typography>
@@ -62,14 +76,16 @@ const PortfolioCard = ({project}) => {
           }
         />
 
-        <Box sx={{ pl: 1, pr: 1 }}>
-          {project.tech.map((tag, i) => [
-            <Box sx={{ pl: 0.5, pr: 0.5, pb: 1, display: 'inline-block' }} key={i}>
-              <Button variant="outlined" disableElevation disabled>
-                {tag}
-              </Button>
-            </Box>,
-          ])}
+        <Box
+          component="ul"
+          aria-label="Technologies"
+          sx={{ listStyle: 'none', m: 0, px: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}
+        >
+          {project.tech.map((tag) => (
+            <li key={tag}>
+              <Chip label={tag.toLowerCase()} variant="outlined" />
+            </li>
+          ))}
         </Box>
 
         <CardActions disableSpacing>
@@ -105,7 +121,8 @@ PortfolioCard.propTypes = {
   project: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    themed: PropTypes.bool.isRequired,
     primarylink: PropTypes.string.isRequired,
     tech: PropTypes.arrayOf(PropTypes.string).isRequired,
     github: PropTypes.string,

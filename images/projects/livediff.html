@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  LiveDiff: the help screen, with its banner.
+
+  The output is what LiveDiff.exe -h prints: the printf strings in
+  LiveDiff/livediff.c, unescaped. Lines that end in spaces are trimmed, and
+  the blank line printed before the banner is left out, so the banner sits
+  right under the command. The help is about 40 lines, so the image shows
+  the top of it, down to the end of the description. The lines are as close
+  together as in a Windows console, and the session starts at the top rather
+  than being centred, so the rest runs off the bottom.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+<style>
+  body {
+    justify-content: flex-start;
+  }
+
+  .terminal {
+    padding-top: 14px;
+    line-height: 17px;
+  }
+</style>
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: 'C:\\>',
+    blocks: [
+      {
+        command: 'LiveDiff.exe -h',
+        output: [
+          { text: '.____    .__               ________  .__  _____  _____', accent: true },
+          { text: '|    |   |__|__  __ ____   \\_____  \\ |__|/ ____\\/ ____\\', accent: true },
+          { text: '|    |   |  \\  \\/ // __ \\   |   |   \\|  \\   __\\\\   __\\\\', accent: true },
+          { text: '|    |___|  |\\   /\\  ___/   |   `    \\  ||  |   |  |', accent: true },
+          { text: '|_______ \\__| \\_/  \\___  > /_________/__||__|   |__|', accent: true },
+          { text: '        \\/             \\/', accent: true },
+          '                                 By Thomas Laurenson',
+          '                                 thomaslaurenson.com',
+          '',
+          '',
+          'Description: LiveDiff.exe is a differential analysis tool that captures a',
+          '             snapshot of the file system and Windows Registry before and',
+          '             after a system change (e.g., installing an application). The',
+          '             snapshots are compared and system changes reported using the',
+          '             DFXML forensic data abstraction.',
+          '',
+          '      Usage: LiveDiff.exe [mode] [options]',
+          '',
+          '       Mode: Operational mode for LiveDiff [default --profile]',
+          '             --profile         Profile mode, generate APXML profile',
+          '             --profile-reboot  Profile mode after system reboot',
+          '             --load            Load one, or two snapshot files',
+          '',
+          '    Options: -d Use dynamic blacklists [default FALSE]',
+          '             -f Specify a static blacklist',
+          '             -p Specify a precision level [default 1]',
+          '                  -p 1 = new/deleted entries',
+          '                  -p 2 = new/deleted/modified entries',
+          '                  -p 3 = new/deleted/modified/changed entries;',
+          '             -c Select hash algorithm [default NONE]',
+          '                  -c md5, -c sha1, -c md5,sha1',
+          '             -b Perform MD5 bloack hashing [default FALSE]',
+          '',
+          '   Examples: LiveDiff.exe -c sha1 -p 2',
+          '             LiveDiff.exe -d -f static_blacklist.txt -c md5',
+          '             LiveDiff.exe -c md5,sha1',
+          '             LiveDiff.exe -c md5 -p 1 -b 4096',
+          '             LiveDiff.exe -c md5,sha1 -b 512 -d',
+          '             LiveDiff.exe -f static_blacklist.txt',
+          '',
+        ],
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+</body>
+</html>

