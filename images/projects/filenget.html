@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  filenget: fetch the files behind a Filen share link, then fetch nothing
+  the second time.
+
+  The files are mpqcli's integration test data, which its Makefile fetches
+  with filenget from a Filen folder link; the link, with its key, is too long
+  for one line, so it sits in $INTEGRATION_LINK. The names and sizes are
+  those files as filenget saved them, which match mpqcli's
+  test/integration_data.sha256, and the ls -lh output is real.
+
+  The [*] lines are filenget's progress messages, from fetchOne in
+  internal/filen/fetch.go; each chunk count is the size over its 1 MiB
+  chunk size, rounded up. The files are listed by name.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: '$',
+    blocks: [
+      {
+        command: 'filenget test/data/integration "$INTEGRATION_LINK"',
+        output: [
+          '[*] v1_weak_signature_patch.mpq: fetching 1798918 bytes in 2 chunk(s)',
+          '[*] v2_strong_signature_patch.mpq: fetching 8720536 bytes in 9 chunk(s)',
+        ],
+        highlight: '[*]',
+      },
+      {
+        command: 'filenget test/data/integration "$INTEGRATION_LINK"',
+        output: [
+          '[*] v1_weak_signature_patch.mpq: already present',
+          '[*] v2_strong_signature_patch.mpq: already present',
+        ],
+        highlight: '[*]',
+      },
+      {
+        command: 'ls -lh test/data/integration',
+        output: [
+          'total 11M',
+          '-rw-rw-r-- 1 thomas thomas 1.8M Oct 27 19:03 v1_weak_signature_patch.mpq',
+          '-rw-rw-r-- 1 thomas thomas 8.4M Oct 27 19:03 v2_strong_signature_patch.mpq',
+        ],
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+</body>
+</html>
