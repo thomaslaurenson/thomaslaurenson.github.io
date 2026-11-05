@@ -19,6 +19,12 @@ export default [
       globals: globals.browser
     }
   },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: globals.node
+    }
+  },
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
 ];
