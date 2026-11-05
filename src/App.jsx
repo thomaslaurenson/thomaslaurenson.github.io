@@ -15,7 +15,6 @@ import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Navbar from './Navbar';
 import Hero from './sections/Hero';
-import About from './sections/About';
 import History from './sections/History';
 import Portfolio from './sections/Portfolio';
 import Footer from './sections/Footer';
@@ -54,7 +53,6 @@ function App(props) {
         <Box id="scroll-up-anchor">
           <Container maxWidth="md">
             <Hero />
-            <About />
             <History />
             <Portfolio />
           </Container>
