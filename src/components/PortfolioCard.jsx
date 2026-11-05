@@ -9,7 +9,7 @@ import {
   IconButton,
   Typography,
   Box,
-  Button,
+  Chip,
   Link,
 } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -49,8 +49,8 @@ const PortfolioCard = ({project}) => {
         <CardHeader
           disableTypography
           title={
-            <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700, pb: 2 }}>
-              <Link href={project.primarylink} aria-label={project.name} target="_blank" rel="noopener noreferrer">
+            <Typography variant="h5" color="text.primary" sx={{ pb: 1 }}>
+              <Link href={project.primarylink} color="inherit" target="_blank" rel="noopener noreferrer">
                 {project.name}
               </Link>
             </Typography>
@@ -62,14 +62,16 @@ const PortfolioCard = ({project}) => {
           }
         />
 
-        <Box sx={{ pl: 1, pr: 1 }}>
-          {project.tech.map((tag, i) => [
-            <Box sx={{ pl: 0.5, pr: 0.5, pb: 1, display: 'inline-block' }} key={i}>
-              <Button variant="outlined" disableElevation disabled>
-                {tag}
-              </Button>
-            </Box>,
-          ])}
+        <Box
+          component="ul"
+          aria-label="Technologies"
+          sx={{ listStyle: 'none', m: 0, px: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}
+        >
+          {project.tech.map((tag) => (
+            <li key={tag}>
+              <Chip label={tag.toLowerCase()} variant="outlined" />
+            </li>
+          ))}
         </Box>
 
         <CardActions disableSpacing>

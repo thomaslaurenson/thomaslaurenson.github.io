@@ -14,6 +14,7 @@ import {
   IconButton,
   Divider,
   Link,
+  Button,
 } from '@mui/material';
 import {useTheme} from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -42,9 +43,9 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
       {/* Toolbar to add top-padding */}
       <Toolbar />
       <List>
-        <Link href='#history'>
+        <Link href='#history' color='inherit' underline='none'>
           <ListItem style={{display: 'flex', justifyContent: 'center'}}>
-            <Typography variant='h6' sx={{ fontWeight: 700 }}>
+            <Typography variant='h6'>
               history
             </Typography>
           </ListItem>
@@ -52,95 +53,77 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
       </List>
       <Divider />
       <List>
-        <Link href='#portfolio'>
+        <Link href='#portfolio' color='inherit' underline='none'>
           <ListItem style={{display: 'flex', justifyContent: 'center'}}>
-            <Typography variant='h6' sx={{ fontWeight: 700 }}>
+            <Typography variant='h6'>
               portfolio
             </Typography>
           </ListItem>
         </Link>
       </List>
       <Divider />
-      <Box sx={{ display: 'flex', justifyContent: 'center', pt: 1, pb: 1 }}>
-        <Box sx={{ p: 2, display: 'inline' }}>
-          <Link href={socialLinks.email} aria-label='Email Link'>
-            <EmailIcon fontSize='small' />
-          </Link>
-        </Box>
-        <Box sx={{ p: 2, display: 'inline' }}>
-          <Link href={socialLinks.github} aria-label='GitHub Link' target='_blank' rel='noopener noreferrer'>
-            <GitHubIcon fontSize='small' />
-          </Link>
-        </Box>
-        <Box sx={{ p: 2, display: 'inline' }}>
-          <Link href={socialLinks.linkedin} aria-label='LinkedIn Link' target='_blank' rel='noopener noreferrer'>
-            <LinkedInIcon />
-          </Link>
-        </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, py: 1 }}>
+        {socialButtons()}
       </Box>
     </div>
+  );
+
+  const socialButtons = () => (
+    <>
+      <IconButton component='a' href={socialLinks.email} aria-label='Email'>
+        <EmailIcon />
+      </IconButton>
+      <IconButton
+        component='a'
+        href={socialLinks.github}
+        aria-label='GitHub'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <GitHubIcon />
+      </IconButton>
+      <IconButton
+        component='a'
+        href={socialLinks.linkedin}
+        aria-label='LinkedIn'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <LinkedInIcon />
+      </IconButton>
+    </>
   );
 
   const appBarList = () => (
-    <div>
-      <Box sx={{ display: 'inline-block', p: 1 }}>
-        <Typography variant='h6' sx={{ fontWeight: 700 }}>
-          <Link href='#history'>
-            history
-          </Link>
-        </Typography>
-      </Box>
-      <Box sx={{ display: 'inline-block', p: 1 }}>
-        <Typography variant='h6' sx={{ fontWeight: 700 }}>
-          <Link href='#portfolio'>
-            portfolio
-          </Link>
-        </Typography>
-      </Box>
-    </div>
+    <Box sx={{ display: 'flex', gap: 1 }}>
+      <Button href='#history' color='inherit'>
+        history
+      </Button>
+      <Button href='#portfolio' color='inherit'>
+        portfolio
+      </Button>
+    </Box>
   );
 
   const appBarListSocial = () => (
-    <div>
-      <Box sx={{ p: 1, pl: 4, display: 'inline' }}>
-        <Link href={socialLinks.email} aria-label='Email Link'>
-          <EmailIcon fontSize='large' />
-        </Link>
-      </Box>
-      <Box sx={{ p: 1, display: 'inline' }}>
-        <Link href={socialLinks.github} aria-label='GitHub Link' target='_blank' rel='noopener noreferrer'>
-          <GitHubIcon fontSize='large' />
-        </Link>
-      </Box>
-      <Box sx={{ p: 1, display: 'inline' }}>
-        <Link href={socialLinks.linkedin} aria-label='LinkedIn Link' target='_blank' rel='noopener noreferrer'>
-          <LinkedInIcon fontSize='large' />
-        </Link>
-      </Box>
-    </div>
+    <Box sx={{ display: 'flex', pl: 3 }}>
+      {socialButtons()}
+    </Box>
   );
 
   const appBarTitle = () => (
-    <Box sx={{flexGrow: 1}}>
-      <Typography variant='h5' >
-        <Link href='/'>
+    <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+      <Typography variant='h6' component='div'>
+        <Link href='/' color='inherit' underline='none'>
           Thomas Laurenson
         </Link>
-        <Box sx={{ display: 'inline', pl: 2 }}>
-          {isDarkTheme ? (
-            <LightMode
-              fontSize='small'
-              onClick={() => changeTheme()}
-            />
-          ) : (
-            <DarkMode
-              fontSize='small'
-              onClick={() => changeTheme()}
-            />
-          )
-          }
-        </Box>
       </Typography>
+      <IconButton
+        onClick={() => changeTheme()}
+        aria-label={isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'}
+      >
+        {isDarkTheme ? <LightMode /> : <DarkMode />}
+      </IconButton>
     </Box>
 
   );
@@ -173,8 +156,7 @@ const Navbar = ({changeTheme, isDarkTheme}) => {
         <Toolbar>
           {appBarTitle()}
           <IconButton
-            edge='start'
-            color='inherit'
+            edge='end'
             aria-label='menu'
             onClick={handleDrawerToggle}
           >

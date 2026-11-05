@@ -11,7 +11,7 @@ const History = () => {
   return (
     <Box sx={{ pt: 6, pb: 4 }} id='history'>
       <Box sx={{ pb: 6 }}>
-        <Typography variant='h4' align='center' sx={{ fontWeight: 700 }}>
+        <Typography variant='h4' component='h2' align='center'>
           History
         </Typography>
       </Box>

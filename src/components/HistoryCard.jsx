@@ -24,7 +24,7 @@ const HistoryCard = ({data}) => {
             />
           }
           title={
-            <Typography variant='h5' color='textPrimary'>
+            <Typography variant='h6' color='textPrimary'>
               {data.position}
             </Typography>
           }

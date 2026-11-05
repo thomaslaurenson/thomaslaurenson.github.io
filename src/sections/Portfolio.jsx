@@ -11,7 +11,7 @@ const Portfolio = () => {
   return (
     <Box sx={{ pt: 6, pb: 4 }} id='portfolio'>
       <Box sx={{ pb: 4 }}>
-        <Typography variant='h4' align='center' sx={{ fontWeight: 700 }}>
+        <Typography variant='h4' component='h2' align='center'>
           Security Projects
         </Typography>
       </Box>
@@ -27,7 +27,7 @@ const Portfolio = () => {
         })}
       </Grid>
       <Box sx={{ pt: 6, pb: 4 }}>
-        <Typography variant='h4' align='center' sx={{ fontWeight: 700 }}>
+        <Typography variant='h4' component='h2' align='center'>
           Hobby Projects
         </Typography>
       </Box>
