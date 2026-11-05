@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  IRDNumberScanner: how a potential IRD number is checked, over the
+  bulk_extractor help the scanner plugs into.
+
+  The flowchart is a simplified view of the check in validate_numbers.cpp,
+  which also retries with a second set of weights when the first gives a
+  check digit of 10.
+
+  The terminal lines are bulk_extractor 2.0.0's --help output, only the lines
+  the card leaves in view; the rows it covers are blank. The prompt is
+  shortened to $, as in the other terminal thumbnails.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+<style>
+  /* The help runs off the bottom, so start at the top rather than centring.
+     A smaller size than the other terminals fits the version line. */
+  body {
+    justify-content: flex-start;
+  }
+  .terminal {
+    padding-top: 4px;
+    font-size: 13px;
+    line-height: 17px;
+  }
+
+  #chart {
+    position: absolute;
+    inset: 0;
+  }
+
+  .card {
+    fill: var(--surface-container-high);
+    stroke: var(--outline-variant);
+  }
+
+  .terminator {
+    fill: var(--tertiary-container);
+  }
+  .step {
+    fill: var(--primary-container);
+  }
+  .terminator-text,
+  .step-text {
+    font-size: 10px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+  .terminator-text {
+    fill: var(--on-tertiary-container);
+  }
+  .step-text {
+    fill: var(--on-primary-container);
+  }
+
+  .wire {
+    fill: none;
+    stroke: var(--outline);
+    stroke-width: 1.5;
+  }
+  .arrowhead {
+    fill: var(--outline);
+  }
+  .answer {
+    font-size: 9px;
+    font-weight: 600;
+    fill: var(--on-surface-variant);
+  }
+</style>
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: '$',
+    blocks: [
+      {
+        command: 'bulk_extractor --help',
+        output: [
+          'bulk_extractor version 2.0.0: A high-performance flexible digital forensics program.',
+          'Usage:',
+          '  bulk_extractor [OPTION...] image_name',
+          '', '', '', '', '', '', '', '', '',
+          '  -f, --find arg                search for a pattern (can be repeated)',
+          '  -F, --find_file arg           read patterns to search from a file (can be repeated)',
+          '  -G, --pagesize arg            page size in bytes (default: 16777216)',
+          '  -g, --marginsize arg          margin size in bytes (default: 4194304)',
+          '  -j, --threads arg             number of threads (default: 1)',
+        ],
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+
+<svg id="chart" width="700" height="300" viewBox="0 0 700 300">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7"
+            markerUnits="userSpaceOnUse" orient="auto">
+      <path class="arrowhead" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="card" x="16" y="74" width="668" height="162" rx="12"/>
+
+  <!-- Wires first, so the nodes sit on top of their ends -->
+  <g class="wire" marker-end="url(#arrow)">
+    <path d="M122,126 H136"/>
+    <path d="M280,126 H302"/>
+    <path d="M406,126 H424"/>
+    <path d="M520,126 H538"/>
+    <!-- Out of range: straight to invalid -->
+    <path d="M208,172 V212 H266"/>
+    <!-- Check digit does not match: invalid -->
+    <path d="M600,172 V186 H330 V196"/>
+    <!-- Check digit matches: valid -->
+    <path d="M662,126 H674 V212 H528"/>
+  </g>
+  <text class="answer" x="291" y="120" text-anchor="middle">Yes</text>
+  <text class="answer" x="214" y="186">No</text>
+  <text class="answer" x="606" y="182">No</text>
+  <text class="answer" x="668" y="170" text-anchor="end">Yes</text>
+
+  <rect class="terminator" x="30" y="108" width="92" height="36" rx="18"/>
+  <text class="terminator-text" x="76" y="120">Potential</text>
+  <text class="terminator-text" x="76" y="132">IRD number</text>
+
+  <polygon class="step" points="136,126 208,80 280,126 208,172"/>
+  <text class="step-text" x="208" y="114">Is the number</text>
+  <text class="step-text" x="208" y="126">between 10 million</text>
+  <text class="step-text" x="208" y="138">and 150 million?</text>
+
+  <rect class="step" x="302" y="100" width="104" height="52" rx="6"/>
+  <text class="step-text" x="354" y="114">Remove last digit</text>
+  <text class="step-text" x="354" y="126">from potential</text>
+  <text class="step-text" x="354" y="138">IRD number</text>
+
+  <rect class="step" x="424" y="100" width="96" height="52" rx="6"/>
+  <text class="step-text" x="472" y="120">Perform modulus</text>
+  <text class="step-text" x="472" y="132">11 algorithm</text>
+
+  <polygon class="step" points="538,126 600,80 662,126 600,172"/>
+  <text class="step-text" x="600" y="108">Is the</text>
+  <text class="step-text" x="600" y="120">remainder the</text>
+  <text class="step-text" x="600" y="132">same as the</text>
+  <text class="step-text" x="600" y="144">last digit?</text>
+
+  <rect class="terminator" x="268" y="196" width="124" height="32" rx="16"/>
+  <text class="terminator-text" x="330" y="212">Invalid IRD number</text>
+  <rect class="terminator" x="414" y="196" width="112" height="32" rx="16"/>
+  <text class="terminator-text" x="470" y="212">Valid IRD number</text>
+</svg>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* Shared by the templates drawn in the site's own style. scripts/thumbnails.mjs
+   adds the colour roles from src/theme/colorRoles.js as variables on :root. */
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  src: url(../../../node_modules/@fontsource/montserrat/files/montserrat-latin-400-normal.woff2);
+}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 600;
+  src: url(../../../node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2);
+}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  src: url(../../../node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2);
+}
+
+:root {
+  --font-mono: 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+}
+
+html,
+body {
+  margin: 0;
+  width: 700px;
+  height: 300px;
+  overflow: hidden;
+}
+
+body {
+  box-sizing: border-box;
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: Montserrat, sans-serif;
+}
+
+/* Material icons are defined once as <symbol>s and drawn with <use> */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: currentColor;
+}

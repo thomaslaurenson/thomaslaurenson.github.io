@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  mpqcli: small commands that pipe into each other.
+
+  The output is real, from running these commands on
+  WoW-1.12.0-enUS-patch.exe with mpqcli 0.13.0. The extract pipeline is too
+  long for one line, so it breaks after a pipe, as you would type it in bash.
+  The [*] lines are mpqcli's status messages, which go to stderr.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: '$',
+    blocks: [
+      {
+        command: 'mpqcli info -q file-count WoW-1.12.0-enUS-patch.exe',
+        output: ['28534'],
+      },
+      {
+        command: 'mpqcli list -d WoW-1.12.0-enUS-patch.exe | sort -nr | head -3',
+        output: [
+          ' 3199580 enUS 2006-08-17 13:49:34  revert.lst',
+          ' 3129240 enUS 2006-08-17 13:44:00  MadScientist.m2',
+          ' 2842623 enUS 2006-08-17 13:49:31  patch.lst',
+        ],
+      },
+      {
+        command: 'mpqcli list WoW-1.12.0-enUS-patch.exe | grep Victory |\n'
+          + 'mpqcli extract WoW-1.12.0-enUS-patch.exe -',
+        output: [
+          '[*] Extracted: PVPVictoryAlliance.wav',
+          '[*] Extracted: PVPVictoryHorde.wav',
+        ],
+        highlight: 'Victory',
+      },
+      {
+        command: 'mpqcli verify WoW-1.12.0-enUS-patch.exe',
+        output: ['[*] Verify success'],
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+</body>
+</html>

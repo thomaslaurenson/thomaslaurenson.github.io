@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  SecureMilkCarton: the milk carton from the project's logo, redrawn as a
+  vector in the site colours.
+
+  The carton is drawn in its own coordinates, about 530 by 870, in the pose
+  of securemilkcarton/securemilkcarton_logo.jpg in the repo, and scaled to
+  fit. It is an ink drawing in both modes: dark outlines, a pale gable and
+  label, and a mid-green body. Only the backdrop and the body change with the
+  theme, so the carton reads as the same object in light and dark.
+-->
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  :root {
+    --ink: var(--on-surface);
+    --paper: var(--surface-container-lowest);
+    --paper-shade: var(--surface-container-high);
+    --carton: var(--inverse-primary);
+    --backdrop: var(--primary-container);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: var(--surface-container-lowest);
+      --paper: var(--on-surface);
+      --paper-shade: var(--on-surface-variant);
+      --carton: var(--primary);
+      --backdrop: var(--primary-container);
+    }
+  }
+
+  body {
+    background: var(--backdrop);
+  }
+
+  svg {
+    display: block;
+  }
+
+  .outline {
+    stroke: var(--ink);
+    stroke-width: 11;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .detail {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+  .carton { fill: var(--carton); }
+  .paper { fill: var(--paper); }
+  .paper-shade { fill: var(--paper-shade); }
+
+  .label {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 82px;
+    letter-spacing: 4px;
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 7;
+    stroke-linejoin: round;
+    paint-order: stroke;
+  }
+</style>
+</head>
+<body>
+<svg width="700" height="300" viewBox="0 0 700 300">
+  <g transform="translate(252 3) scale(0.31)">
+    <!-- Body: the narrow left face and the wide front face -->
+    <polygon class="carton outline" points="56,320 300,378 302,905 58,830"/>
+    <polygon class="carton outline" points="300,378 576,312 578,840 302,905"/>
+
+    <!-- Creases where the gable is folded down onto each face -->
+    <path class="detail" d="M150,352 Q175,360 200,364"/>
+    <path class="detail" d="M396,380 Q420,374 446,368"/>
+
+    <!-- Gable: the sloping roof, then the end triangle, folded across -->
+    <polygon class="paper outline" points="182,134 450,110 576,312 300,378"/>
+    <polygon class="paper-shade outline" points="182,134 264,282 56,320"/>
+    <polygon class="paper outline" points="56,320 264,282 300,378"/>
+
+    <!-- The sealed fin along the top -->
+    <polygon class="carton outline" points="178,56 448,46 450,110 182,134"/>
+
+    <!-- Front face: the label and two dots, sloped with the face -->
+    <g transform="translate(440 580) skewY(-13.4)">
+      <text class="label" text-anchor="middle">MILK</text>
+    </g>
+    <ellipse class="paper outline" cx="338" cy="650" rx="8" ry="12" style="stroke-width: 6"/>
+    <ellipse class="paper outline" cx="540" cy="602" rx="8" ry="12" style="stroke-width: 6"/>
+
+    <!-- Left face: two lines of small print and a panel -->
+    <path class="detail" d="M82,628 L140,642"/>
+    <path class="detail" d="M82,656 L130,668"/>
+    <polygon class="paper outline" points="80,692 136,705 136,810 80,797" style="stroke-width: 7"/>
+  </g>
+</svg>
+<script>
+  document.fonts.load('700 82px Montserrat').then(() => document.fonts.ready).then(() => {
+    document.body.dataset.ready = '';
+  });
+</script>
+</body>
+</html>

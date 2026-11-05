@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<!--
+  letsblaze: the theme's own light and dark modes in one image.
+
+  The top of the letsblaze exampleSite home page. The <style> is a copy of
+  layouts/_partials/head-styles.html and the body is a copy of the built
+  exampleSite/public/index.html, cut off after the first list, as nothing
+  below it is in view. Copy them again if the theme changes.
+
+  This template keeps the theme's colours rather than the site's, so it does
+  not use shared/base.css. thumbnail-split makes scripts/thumbnails.mjs join the
+  light and dark renders into one image: the dark render shows inside the
+  polygon, which runs from 60% of the width at the top to 36% at the bottom.
+-->
+<meta name="thumbnail-split" content="420,0 700,0 700,300 252,300">
+<style>
+  :root { color-scheme: light dark; }
+
+  .skip-link { position: absolute; left: -9999px; top: 0; }
+  .skip-link:focus { left: 0; z-index: 1; background: #fff; padding: 0.5rem 1rem; }
+
+  body { max-width: 100ch; margin: 0 auto; padding: 1rem; font-size: 18px; line-height: 1.6; }
+
+  img { max-width: 100%; height: auto; }
+
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; }
+  th, td { border: 1px solid; padding: 0.4rem 0.8rem; }
+  [data-align="left"]   { text-align: left; }
+  [data-align="center"] { text-align: center; }
+  [data-align="right"]  { text-align: right; }
+
+  pre { overflow-x: auto; }
+
+  math[display="block"] { display: block; overflow-x: auto; max-width: 100%; }
+
+  nav ul { list-style: none; margin: 0; padding: 0; }
+
+  header nav ul li { display: inline; }
+  header nav ul li + li::before { content: " / " / ""; }
+
+  nav[aria-label="Tags"] ul li { display: inline; }
+
+  nav[aria-label="Breadcrumb"] ol { list-style: none; margin: 0; padding: 0; }
+  nav[aria-label="Breadcrumb"] ol li { display: inline; }
+  nav[aria-label="Breadcrumb"] ol li + li::before { content: " \203A " / ""; }
+
+  [aria-current="page"] { font-weight: bold; }
+
+  .post-meta { display: grid; grid-template-columns: max-content 1fr; column-gap: 1rem; row-gap: 0.1rem; margin: 0 0 1rem; }
+  .post-meta dt { font-weight: bold; }
+  .post-meta dd { margin: 0; }
+
+  @media (prefers-color-scheme: dark) {
+    body { background-color: #111; color: #ddd; }
+    a { color: #6ab0f5; }
+    a:visited { color: #c9a0f5; }
+    :not(pre) > code { background-color: #1e1e1e; color: #ddd; }
+    mark { background-color: #5a4a00; color: #fff; }
+    table, th, td { border-color: #444; }
+    .skip-link:focus { background: #111; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header>
+    <a href="/">letsblaze</a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+    <hr>
+  </header>
+  <main id="main-content">
+<h1>letsblaze</h1>
+<p>A blazingly fast, no-JS Hugo theme built for blogs and docs.</p>
+<h2>Blog</h2>
+  <h3>2026</h3>
+  <ul>
+      <li><a href="/blog/welcome-to-letsblaze/">Welcome to letsblaze</a></li>
+      <li><a href="/blog/tags-and-taxonomy/">Tags and Taxonomy</a></li>
+      <li><a href="/blog/working-with-images/">Working with Images</a></li>
+      <li><a href="/blog/code-and-syntax-highlighting/">Code and Syntax Highlighting</a></li>
+      <li><a href="/blog/writing-content/">Writing Content</a></li>
+  </ul>
+  </main>
+  <script>
+    document.fonts.ready.then(() => {
+      document.body.dataset.ready = '';
+    });
+  </script>
+</body>
+</html>

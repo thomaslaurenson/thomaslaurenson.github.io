@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  narc: wrap a command, get the access rules it needs.
+
+  The proxy, catalog and rule lines are from a real narc session running
+  openstack server list. The rest follows narc's status messages in
+  cmd/run.go. -o keeps the output path short enough to fit on one line.
+  All of these lines go to stderr; narc hides the wrapped command's stdout.
+  The jq output is from running jq on those three rules written the way
+  narc writes them (WriteRules in internal/analyzer/analyzer.go).
+-->
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/terminal.css">
+</head>
+<body>
+<script>
+  window.session = {
+    prompt: '$',
+    blocks: [
+      {
+        command: 'narc run -o rules.json -- openstack server list',
+        output: [
+          '[*] Proxy listening on http://127.0.0.1:9099',
+          '[*] Service catalog loaded (46 services)',
+          '[+] compute              GET      /',
+          '[+] image                GET      /**',
+          '[+] compute              GET      /servers/detail',
+          '[*] Shutting down...',
+          '[*] Done. 3 unique access rule(s) written to rules.json',
+        ],
+        highlight: '[+]',
+      },
+      {
+        command: "jq -c '.[]' rules.json",
+        output: [
+          '{"service":"compute","method":"GET","path":"/"}',
+          '{"service":"image","method":"GET","path":"/**"}',
+          '{"service":"compute","method":"GET","path":"/servers/detail"}',
+        ],
+      },
+    ],
+  };
+</script>
+<script src="shared/terminal.js"></script>
+</body>
+</html>

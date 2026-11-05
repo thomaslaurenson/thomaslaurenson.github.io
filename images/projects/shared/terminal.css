@@ -1,0 +1,45 @@
+/* Terminal session drawn by terminal.js */
+
+/* Centred vertically, so a session of any length has even margins. Twelve
+   lines leave 24px above and below. */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--surface-container-lowest);
+}
+
+.terminal {
+  margin: 0;
+  padding: 0 28px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+.prompt {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.command {
+  color: var(--on-surface);
+}
+
+.output {
+  color: var(--on-surface-variant);
+}
+
+.output.accent {
+  color: var(--primary);
+}
+
+.cursor {
+  background: var(--on-surface-variant);
+}
+
+.match {
+  color: var(--tertiary);
+  font-weight: bold;
+}
