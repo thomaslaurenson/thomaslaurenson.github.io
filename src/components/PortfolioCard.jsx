@@ -16,7 +16,6 @@ import {
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkIcon from '@mui/icons-material/Link';
 import ArchivedRibbon from './ArchivedRibbon';
-import MediaPlaceholder from './MediaPlaceholder';
 
 const PortfolioCard = ({project}) => {
   const theme = useTheme();
@@ -37,27 +36,23 @@ const PortfolioCard = ({project}) => {
       >
         {project.archived && <ArchivedRibbon />}
         <Link href={project.primarylink} aria-label={project.name} target="_blank" rel="noopener noreferrer">
-          {project.img ? (
-            <CardMedia component="picture">
-              <source
-                srcSet={`projects/${img}.avif`}
-                type="image/avif"
-              />
-              <source
-                srcSet={`projects/${img}.webp`}
-                type="image/webp"
-              />
-              <img
-                src={`projects/${img}.jpg`}
-                alt={project.name}
-                height="100%"
-                width="100%"
-                loading="lazy"
-              />
-            </CardMedia>
-          ) : (
-            <MediaPlaceholder name={project.name} />
-          )}
+          <CardMedia component="picture">
+            <source
+              srcSet={`projects/${img}.avif`}
+              type="image/avif"
+            />
+            <source
+              srcSet={`projects/${img}.webp`}
+              type="image/webp"
+            />
+            <img
+              src={`projects/${img}.jpg`}
+              alt={project.name}
+              height="100%"
+              width="100%"
+              loading="lazy"
+            />
+          </CardMedia>
         </Link>
 
         <CardHeader
@@ -121,7 +116,7 @@ PortfolioCard.propTypes = {
   project: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    img: PropTypes.string,
+    img: PropTypes.string.isRequired,
     themed: PropTypes.bool.isRequired,
     primarylink: PropTypes.string.isRequired,
     tech: PropTypes.arrayOf(PropTypes.string).isRequired,
